@@ -1,0 +1,39 @@
+.card-product {
+  overflow: hidden;
+  height: 111px;
+  width: 315px;
+  background-color: #03203A;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 100%;
+    width: 120px;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
+
+  .card-product-infos {
+      padding: 4px 16px;
+    }
+}
+
+
+
+
