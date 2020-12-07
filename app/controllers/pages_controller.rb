@@ -5,5 +5,6 @@ class PagesController < ApplicationController
   end
 
   def uikit
+    @user = current_user
   end
 end
