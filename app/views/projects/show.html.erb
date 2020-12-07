@@ -1,0 +1,6 @@
+<h1>Projects#show</h1>
+<p>Find me in app/views/projects/show.html.erb</p>
+
+<%= @project.title %>
+<%= @project.description %>
+<%= cl_image_tag @project.photo.key, crop: :fill, width: 640, height: 420 %>
