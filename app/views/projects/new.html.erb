@@ -2,8 +2,9 @@
 <%= simple_form_for(@project) do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
+  <%= f.input :start_date, as: :string, type: :text %>
+  <%= f.input :end_date, as: :string, type: :text %>
   <%= f.input :photo, as: :file %>
-  <!-- date picker -->
   <%= f.submit "Submit", class: "btn btn-flat" %>
 <% end %>
 
