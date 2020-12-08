@@ -3,6 +3,7 @@ const datePicker = () => {
 
   const startDateInput = document.getElementById('project_start_date');
   const endDateInput = document.getElementById('project_end_date');
+  endDateInput.disabled = true
 
   flatpickr(startDateInput, {
     minDate: "today",
