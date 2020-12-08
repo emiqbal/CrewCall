@@ -3,4 +3,5 @@
 
 <%= @project.title %>
 <%= @project.description %>
-<%= cl_image_tag @project.photo.key, crop: :fill, width: 640, height: 420 %>
+<p><%= @project.start_date %> to <%= @project.end_date %></p>
+<%= cl_image_tag @project.photo.key, crop: :fill, width: 375, height: 420 %>
