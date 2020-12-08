@@ -4,15 +4,22 @@
 
 <%= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <input class="form-control string required px-4" type="text" name="search[query]" id="search_query", placeholder="Search" />
     <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-search"></i> Search
+      <i class="fas fa-search"></i>
     </button>
   </div>
 <% end %>
 
 
 <h3>Type Field</h3>
+<div class="type-form-control form-group">
+    <input class="form-control string required" type="text" name="message" id="message" placeholder="Type here" />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="far fa-paper-plane"></i> Send
+    </button>
+  </div>
+
 <h3>Bottom Nav Bar</h3>
 <h3>Project Card</h3>
 
