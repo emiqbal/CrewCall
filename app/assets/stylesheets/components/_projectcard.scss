@@ -27,11 +27,15 @@
     opacity: .7;
     margin-bottom: 0;
     margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+
   }
 
   .card-product-infos {
       padding: 4px 16px;
-    }
+  }
 }
 
 
