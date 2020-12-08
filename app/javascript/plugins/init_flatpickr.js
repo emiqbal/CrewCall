@@ -5,24 +5,28 @@ const datePicker = () => {
 
   const startDateInput = document.getElementById('project_start_date');
   const endDateInput = document.getElementById('project_end_date');
-  endDateInput.disabled = true
 
-  flatpickr(startDateInput, {
-    minDate: "today",
-    dateFormat: "Y-m-d",
-  });
+  // if startDateInput and endDateInput presentm (aka not null), then run the following)
+  if (startDateInput && endDateInput) {
+    endDateInput.disabled = true
 
-  console.log('im in the file')
+    flatpickr(startDateInput, {
+      minDate: "today",
+      dateFormat: "Y-m-d",
+    });
 
-  startDateInput.addEventListener("change", (e) => {
-    if (startDateInput != "") {
-      endDateInput.disabled = false
-    }
-    flatpickr(endDateInput, {
-      minDate: e.target.value,
-      dateFormat: "Y-m-d"
-      });
-    })
+    console.log('im in the file')
+
+    startDateInput.addEventListener("change", (e) => {
+      if (startDateInput != "") {
+        endDateInput.disabled = false
+      }
+      flatpickr(endDateInput, {
+        minDate: e.target.value,
+        dateFormat: "Y-m-d"
+        });
+      })
+  }
 };
 
 export { datePicker };
