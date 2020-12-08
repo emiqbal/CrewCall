@@ -1,8 +1,12 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
 
-<%= @project.title %>
+<h1>Project: <%= @project.title %></h1>
+
+<%= cl_image_tag @project.photo.key, class: "photobanner" %>
+<h3>About the Project</h3>
 <%= @project.description %>
+<%= @project.user.username %>
+<h3>Project Timeline</h3>
+<p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
+<h3>Project Jobs</h3>
 
-<p><%= @project.start_date %> to <%= @project.end_date %></p>
-<%= cl_image_tag @project.photo.key, crop: :fill, width: 375, height: 420 %>
+<%= link_to "Back", :back, class: 'btn btn-flat'  %>
