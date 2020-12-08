@@ -18,8 +18,6 @@ class Project < ApplicationRecord
     end
  end
 
-  private
-
   def purge_photo
     photo.purge
   end
