@@ -3,34 +3,32 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :is_producer, label: "I am a Producer?", as: :boolean, checked_value: true, unchecked_value: false %>
+  <div class="form-inputs type-form-control">
     <%= f.input :username,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "username" },
-                placeholder: 'Pink'
+                placeholder: 'Jesse Pinkman'
                 %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" },
-                placeholder: 'PinkMan@gmail.com'
+                placeholder: 'Pinkman@gmail.com'
                 %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" },
-                placeholder: 'pink11' %>
+                input_html: { autocomplete: "new-password" }%>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" },
-                placeholder: 'pink11'%>
-    <%= f.input :photo, as: :file %>
+                input_html: { autocomplete: "new-password" }%>
+    <%= f.input :is_producer, label: "Tick if you are a Producer.", as: :boolean, checked_value: true, unchecked_value: false %>
+    <%= f.input :photo, label: "Upload Profile Photo", as: :file %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: 'btn-flat btn-flat:hover' %>
+    <%= f.button :submit, "Sign Up", class: 'btn btn-flat' %>
   </div>
 <% end %>
-Already signed up? Go to: <%= render "devise/shared/links" %> now
+Already signed up? Go to <%= render "devise/shared/links" %> now
