@@ -9,7 +9,7 @@
 
 .navbar-dark a {
   color: gray;
-  :hover {
+  &:hover {
     color: white;
   }
 }
