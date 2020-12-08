@@ -1,4 +1,6 @@
 // First we define two variables that are going to grab our inputs field. You can check the ids of the inputs with the Chrome inspector.
+
+
 const datePicker = () => {
 
   const startDateInput = document.getElementById('project_start_date');
