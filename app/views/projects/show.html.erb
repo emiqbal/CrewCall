@@ -1,6 +1,6 @@
 
 <h2>Project: <%= @project.title %></h2>
-<p>by <%= cl_image_tag @project.user.photo.key class: "avatar" %>
+<p>by <%= cl_image_tag @project.user.photo.key, class: "avatar"%>
   <%= @project.user.username %></p>
 <!-- with mini avatar and can click into producer show pg -->
 <div class="rounded border">
