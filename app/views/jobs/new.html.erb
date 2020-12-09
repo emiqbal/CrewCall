@@ -1,5 +1,5 @@
-<h1>Add a new Job to</h1>
-  <%= simple_form_for([@project, @job], remote: true) do |f| %>
+<h1>Add a new Job to <%=  @project.title %></h1>
+  <%= simple_form_for([@project, @job]) do |f| %>
     <div class="form-inputs type-form-control">
       <%= f.input :description %>
       <%= f.input :salary, label: "Salary per Day" %>
