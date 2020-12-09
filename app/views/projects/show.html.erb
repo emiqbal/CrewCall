@@ -1,12 +1,12 @@
 
-<h1>Project: <%= @project.title %></h1>
+<h2>Project: <%= @project.title %></h2>
 
 <%= cl_image_tag @project.photo.key, class: "photobanner" %>
-<h3>About the Project</h3>
+<h4 class = "my-4">About the Project</h4>
 <%= @project.description %>
 <%= @project.user.username %>
-<h3>Project Timeline</h3>
+<h4>Project Timeline</h4>
 <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
-<h3>Project Jobs</h3>
+<h4>Project Jobs</h4>
 
 <%= link_to "Back", :back, class: 'btn btn-flat'  %>
