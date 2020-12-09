@@ -1,10 +1,19 @@
-
+<div class="showpageheader">
 <h2>Project: <%= @project.title %></h2>
-<p>by <%= cl_image_tag @project.user.photo.key, class: "avatar"%>
-  <%= @project.user.username %></p>
-<!-- with mini avatar and can click into producer show pg -->
+</div>
+<p>by
+  <% if @project.user.photo.attached? %>
+    <%= cl_image_tag @project.user.photo.key, class: "avatar"%>
+  <% else %>
+    <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar" %>
+  <% end %>
+
+<%= @project.user.username %></p>
+<!-- link mini-avatar and name to user show page -->
 <div class="rounded border">
-  <%= cl_image_tag @project.user.photo.key, class: "photobanner" %>
+  <% if @project.photo.attached? %>
+  <%= cl_image_tag @project.photo.key, class: "photobanner" %>
+  <% end %>
 </div>
 <h4 class= "mt-3"><strong>About the Project</strong></h4>
 <%= @project.description %>
@@ -25,4 +34,3 @@
   <% end %>
 
 <%= link_to "Back", :back, class: 'btn btn-flat'  %>
-
