@@ -1,12 +1,26 @@
+<div class="showpageheader">
+<h2><strong><%= @project.title %></strong></h2>
+</div>
 
-<h1>Project: <%= @project.title %></h1>
-
-<%= cl_image_tag @project.photo.key, class: "photobanner" %>
-<h3>About the Project</h3>
-<%= @project.description %>
+<div class="my-3">
+  <% if @project.user.photo.attached? %>
+    <%= cl_image_tag @project.user.photo.key, class: "avatar"%>
+  <% else %>
+    <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar" %>
+  <% end %>
 <%= @project.user.username %>
-<h3>Project Timeline</h3>
+</div>
+<!-- link mini-avatar and name to user show page -->
+<div class="rounded border">
+  <% if @project.photo.attached? %>
+  <%= cl_image_tag @project.photo.key, class: "photobanner" %>
+  <% end %>
+</div>
+<h4 class= "mt-3"><strong>About the Project</strong></h4>
+<%= @project.description %>
+<h4 class= "mt-3">Project Timeline</h4>
 <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
+
 <h3>Project Jobs</h3>
 <% if current_user == @project.user %>
   <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
@@ -19,4 +33,5 @@
       <p>End Date:<%= job.end_date.strftime('%d %b %Y') %></p>
     <% end %>
   <% end %>
+
 <%= link_to "Back", :back, class: 'btn btn-flat'  %>
