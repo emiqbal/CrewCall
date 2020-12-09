@@ -2,7 +2,7 @@ class Job < ApplicationRecord
   belongs_to :project
 
   validates :description, presence: true
-  validates :salary, presence: true, numericality: { only_integer: true }
+  validates :salary, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date

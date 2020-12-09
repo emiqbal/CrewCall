@@ -33,5 +33,6 @@ import { datePicker } from "../plugins/init_flatpickr.js";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  datePicker();
+  datePicker('job');
+  datePicker('project');
 });
