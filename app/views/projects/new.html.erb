@@ -1,9 +1,14 @@
 <h1>Start a new Project</h1>
   <%= simple_form_for([@project], remote: true) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :start_date, as: :string, type: :text %>
-    <%= f.input :end_date, as: :string, type: :text %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Submit", class: "btn btn-flat" %>
+    <div class="form-inputs type-form-control">
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :start_date, label: "Start Date", as: :string, type: :text %>
+      <%= f.input :end_date, label: "End Date", as: :string, type: :text %>
+      <%= f.input :photo, as: :file %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "Submit", class: "btn btn-flat" %>
+    </div>
   <% end %>
