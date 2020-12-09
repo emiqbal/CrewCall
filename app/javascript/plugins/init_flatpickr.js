@@ -3,8 +3,8 @@
 
 const datePicker = () => {
 
-  const startDateInput = document.getElementById('project_start_date');
-  const endDateInput = document.getElementById('project_end_date');
+  const startDateInput = document.getElementById('job_start_date');
+  const endDateInput = document.getElementById('job_end_date');
 
   // if startDateInput and endDateInput presentm (aka not null), then run the following)
   if (startDateInput && endDateInput) {
