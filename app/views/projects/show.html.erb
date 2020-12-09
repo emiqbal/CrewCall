@@ -1,12 +1,16 @@
 
 <h2>Project: <%= @project.title %></h2>
-
-<%= cl_image_tag @project.photo.key, class: "photobanner" %>
-<h4 class = "my-4">About the Project</h4>
+<p>by <%= cl_image_tag @project.user.photo.key %>
+  <%= @project.user.username %></p>
+<!-- with mini avatar and can click into producer show pg -->
+<div class="rounded border">
+  <%= cl_image_tag @project.user.photo.key, class: "photobanner" %>
+</div>
+<h4 class= "mt-3"><strong>About the Project</strong></h4>
 <%= @project.description %>
-<%= @project.user.username %>
-<h4>Project Timeline</h4>
+<h4 class= "mt-3">Project Timeline</h4>
 <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
 <h4>Project Jobs</h4>
 
 <%= link_to "Back", :back, class: 'btn btn-flat'  %>
+
