@@ -7,7 +7,6 @@ class JobsController < ApplicationController
   end
 
   def create
-    raise
     @job = Job.new(job_params)
     @job.project = Project.find(params[:project_id])
     if @job.save
