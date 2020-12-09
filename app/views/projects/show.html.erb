@@ -8,12 +8,15 @@
 <h3>Project Timeline</h3>
 <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
 <h3>Project Jobs</h3>
+<% if current_user == @project.user %>
+  <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
+<% end %>
   <% if @project.jobs.exists? %>
     <% @project.jobs.each do |job| %>
-      <p><%= job.description %></p>
-      <p><%= job.salary / 100 %> per Day</p>
-      <p><%= job.start_date.strftime('%d %b %Y') %></p>
-      <p><%= job.end_date.strftime('%d %b %Y') %></p>
+      <p>Description: <%= job.description %></p>
+      <p>Salary:<%= job.salary / 100 %> per Day</p>
+      <p>Start Date:<%= job.start_date.strftime('%d %b %Y') %></p>
+      <p>End Date:<%= job.end_date.strftime('%d %b %Y') %></p>
     <% end %>
   <% end %>
 <%= link_to "Back", :back, class: 'btn btn-flat'  %>
