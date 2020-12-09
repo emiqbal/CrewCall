@@ -16,11 +16,11 @@
 
 <div>
   <% @profiles.each do |profile| %>
-    <%= link_to profile_path(profile) do %>
+    <%= link_to profiles_path(profile) do %>
       <div class="card-product">
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <div class="card-product-infos">
-          <h2><%= profile.title %></h2>
+          <h2><%= profile.department %></h2>
           <p><%= profile.bio %></p>
         </div>
       </div>
