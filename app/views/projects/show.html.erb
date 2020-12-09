@@ -1,14 +1,15 @@
 <div class="showpageheader">
-<h2>Project: <%= @project.title %></h2>
+<h2><strong><%= @project.title %></strong></h2>
 </div>
-<p>by
+
+<div class="my-3">
   <% if @project.user.photo.attached? %>
     <%= cl_image_tag @project.user.photo.key, class: "avatar"%>
   <% else %>
     <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar" %>
   <% end %>
-
-<%= @project.user.username %></p>
+<%= @project.user.username %>
+</div>
 <!-- link mini-avatar and name to user show page -->
 <div class="rounded border">
   <% if @project.photo.attached? %>
