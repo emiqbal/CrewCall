@@ -13,17 +13,27 @@ class ProfilesController < ApplicationController
   end
 
   def create
+    @profile = Profile.new(profile_params)
+    @profile.user = current_user
+    if @profile.save
+      redirect_to profile_path(@profile)
+    else
+      render :new
+    end
   end
 
   def edit
+    @profile = Profile.find(params[:id])
   end
 
   def update
+    @profile = Profile.find(params[:id])
+    @profile.update(profile_params)
   end
 
   private
 
   def profile_params
-    params.require(:profile).permit(:title, :description, :photo, :start_date, :end_date)
+    params.require(:profile).permit(:bio, :department, :company_name)
   end
 end
