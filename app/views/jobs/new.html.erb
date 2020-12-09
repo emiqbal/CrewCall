@@ -1,2 +1,13 @@
-<h1>Jobs#new</h1>
-<p>Find me in app/views/jobs/new.html.erb</p>
+<h1>Add a new Job to <%=  @project.title %></h1>
+  <%= simple_form_for([@project, @job], remote: true) do |f| %>
+    <div class="form-inputs type-form-control">
+      <%= f.input :description %>
+      <%= f.input :salary, label: "Salary per Day" %>
+      <%= f.input :start_date, label: "Start Date", as: :string, type: :text %>
+      <%= f.input :end_date, label: "End Date", as: :string, type: :text %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "Submit", class: "btn btn-flat" %>
+    </div>
+  <% end %>
