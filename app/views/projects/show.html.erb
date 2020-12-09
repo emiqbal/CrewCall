@@ -8,5 +8,12 @@
 <h3>Project Timeline</h3>
 <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
 <h3>Project Jobs</h3>
-
+  <% if @project.jobs.exists? %>
+    <% @project.jobs.each do |job| %>
+      <p><%= job.description %></p>
+      <p><%= job.salary / 100 %> per Day</p>
+      <p><%= job.start_date.strftime('%d %b %Y') %></p>
+      <p><%= job.end_date.strftime('%d %b %Y') %></p>
+    <% end %>
+  <% end %>
 <%= link_to "Back", :back, class: 'btn btn-flat'  %>
