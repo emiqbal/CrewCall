@@ -4,5 +4,6 @@ class PagesController < ApplicationController
     @user = current_user
   end
 
-
+  def sitemap
+  end
 end
