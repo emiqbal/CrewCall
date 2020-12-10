@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :is_producer, :photo])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :is_producer, :photo])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :is_producer, :photo])
   end
 
 end
