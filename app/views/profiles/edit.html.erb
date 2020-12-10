@@ -1,2 +1,21 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2><strong>Profile</strong></h2>
+  </div>
+  <div class="row justify-content-center">
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar-xlarge" %>
+      <% else %>
+      <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-xlarge" %>
+    <% end %>
+  </div>
+  <div class="row justify-content-center">
+    <%= simple_form_for(@profile) do |f| %>
+      <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+      <%= f.input :company_name, label: 'Are you from a company?' %>
+      <%= f.input :bio, label: 'Personal Biography' %>
+      <%= f.input :department, collection: %w(Actor Actress Cameraman Lighting_Specialist Video_Editor Script_Writer) %>
+      <%= f.submit "Post", class: "btn btn-primary w-100" %>
+    <% end %>
+  </div>
+</div>
