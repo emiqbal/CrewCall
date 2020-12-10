@@ -1,2 +1,29 @@
-<h1>Profiles#index</h1>
-<p>Find me in app/views/profiles/index.html.erb</p>
+<h2 class="text-center pb-2">CREWCALL</h2>
+<% if user_signed_in? %>
+<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary my-2" %>
+<% else %>
+<%= link_to "Login", new_user_session_path, class: "btn btn-primary my-2" %>
+<% end %>
+
+<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required px-4" type="text" name="search[query]" id="search_query", placeholder="Search" />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+<% end %>
+
+<div>
+  <% @profiles.each do |profile| %>
+    <%= link_to profiles_path(profile) do %>
+      <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2><%= profile.department %></h2>
+          <p><%= profile.bio %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
