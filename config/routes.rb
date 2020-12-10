@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :profiles, except: [:destroy]
+  resources :profiles, only: [:index, :show]
   resources :projects, only: [:index, :show, :new, :create] do
     resources :jobs, only: [:new, :create]
   end
+  get '/profiles/edit', to: 'profiles#edit'
+  patch '/profiles', to: 'profiles#update'
   resources :jobs, only: [:show]
   root to: 'projects#index'
   get '/uikit', to: 'pages#uikit'
