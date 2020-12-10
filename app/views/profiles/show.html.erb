@@ -1,34 +1,26 @@
-<<<<<<< HEAD
 <h2 class="text-center pb-2">Your Profile Card</h2>
 
 <div class="container">
   <div class="card-profile">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <%= cl_image_tag @profile.photo.key, gravity: :face %>
+    <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
     <div class="card-profile-infos">
       <div>
+        <h2><%= "#{@profile.last_name} #{@profile.last_name}" %></h2>
         <h2><%= @profile.department  %></h2>
         <p><%= @profile.bio %></p>
       </div>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-profile-user avatar-bordered" />
     </div>
   </div>
+  
+    <%= link_to "Edit",  edit_profile_path, class: "btn btn-primary my-2" %>
+      <%= link_to "Complete", projects_path, class: "btn btn-primary my-2" %>
 
-  <%= link_to "Edit", profiles_edit_path, class: "btn btn-primary my-2" %>    
-  <%= link_to "Complete", projects_path, class: "btn btn-primary my-2" %>
-
-  <% if user_signed_in? %>
-  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary my-2" %>
-  <% else %>
-  <%= link_to "Login", new_user_session_path, class: "btn btn-primary my-2" %>
-  <% end %>
-
+      <% if user_signed_in? %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary my-2" %>
+      <% else %>
+      <%= link_to "Login", new_user_session_path, class: "btn btn-primary my-2" %>
+      <% end %>
 </div>
 
 
-
-
-
-=======
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
->>>>>>> a19f2a1bdfbc7a6b6c46ada33d3f9e3c2f3db209
