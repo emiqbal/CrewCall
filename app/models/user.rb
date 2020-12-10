@@ -5,4 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :photo
+  before_destroy :purge_photo
+
+  private
+
+  def purge_photo
+    photo.purge
+  end
 end
