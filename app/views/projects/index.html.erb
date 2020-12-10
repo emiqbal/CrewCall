@@ -19,9 +19,9 @@
           <!-- <p><%= project.description %></p> -->
           <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
               <% if project.user.photo.attached? %>
-                <%= cl_image_tag project.user.photo.key, class: "avatar-card" %>
+                <%= cl_image_tag project.user.photo.key, width: 25, height: 25, crop: :fill, class: "avatar-card" %>
               <% else %>
-                <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-card"%>
+                <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar-card"%>
               <% end %>
           <div class="card-avatar-infos">
             <%= project.user.username %>
