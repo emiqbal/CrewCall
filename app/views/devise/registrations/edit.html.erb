@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-=======
 <h2>Edit <%= resource_name.to_s.humanize %> Account</h2>
->>>>>>> a19f2a1bdfbc7a6b6c46ada33d3f9e3c2f3db209
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -34,20 +30,12 @@
   </div>
 
   <div class="form-actions">
-<<<<<<< HEAD
-    <%= f.button :submit, "Update Profile", class: 'btn btn-flat' %>
-=======
     <%= f.button :submit, "Update Account", class: 'btn btn-flat' %>
->>>>>>> a19f2a1bdfbc7a6b6c46ada33d3f9e3c2f3db209
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<<<<<<< HEAD
-<p>Unhappy? <%= link_to "Cancel my Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %></p>
-=======
 <p><%= link_to "Cancel my Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %></p>
->>>>>>> a19f2a1bdfbc7a6b6c46ada33d3f9e3c2f3db209
 
 <%= link_to "Back", :back, class: 'btn btn-flat'  %>
