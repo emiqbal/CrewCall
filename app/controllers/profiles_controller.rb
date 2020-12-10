@@ -23,12 +23,12 @@ class ProfilesController < ApplicationController
   # end
 
   def edit
-    @profile = Profile.where(user: current_user)
+    @profile = Profile.find_by(user: current_user)
     @profile = Profile.new if @profile.nil?
   end
 
   def update
-    @profile = Profile.where(user: current_user)
+    @profile = Profile.find_by(user: current_user)
     save_status = false
     if @profile.nil?
       # profile doesn't exist and must be created
