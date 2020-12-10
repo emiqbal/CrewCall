@@ -9,6 +9,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.project = Project.find(params[:project_id])
+    @job.salary *= 100
     if @job.save
       redirect_to project_path(@job.project)
     else
