@@ -1,10 +1,18 @@
 <div class="navbar fixed-bottom navbar-expand-sm navbar-dark navbar-lewagon">
   <% if user_signed_in? %>
     <%= link_to root_path, class: "nav-link" do %>
-        <i class="fas fa-home"></i>
-      <% end %>
-    <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
-    <a class="nav-link" href="#"><i class="fas fa-envelope"></i></a>
+      <i class="fas fa-home"></i>
+    <% end %>
+    <%= link_to root_path, class: "nav-link" do %>
+      <i class="fas fa-bell"></i>
+    <% end %>
+    <%= link_to new_project_path, class: "nav-link" do %>
+      <i class="fas fa-plus"></i>
+      <!-- TODO only producers + will create project, users + will create application -->
+    <% end %>
+    <%= link_to root_path, class: "nav-link" do %>
+      <i class="fas fa-envelope"></i>
+    <% end %>
     <% if current_user.profile.nil? %>
       <%= link_to edit_profile_path, class: "nav-link" do %>
         <i class="fas fa-user"></i>
