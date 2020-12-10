@@ -22,7 +22,7 @@
         <div class="card-product-infos">
           <h2><%= project.title %></h2>
           <!-- <p><%= project.description %></p> -->
-          <p><%= "#{project.start_date.strftime('%d-%b-%Y')} to #{project.end_date.strftime('%d-%b-%Y')}" %></p>
+          <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
               <% if project.user.photo.attached? %>
                 <%= cl_image_tag project.user.photo.key, class: "avatar-card" %>
               <% else %>
