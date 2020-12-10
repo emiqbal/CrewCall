@@ -1,12 +1,11 @@
 
   <div class="container">
     <h2><strong>Profile</strong></h2>
-  
 
   <div class="justify-content-center">
     <% if current_user.photo.attached? %>
       <%= cl_image_tag current_user.photo.key, gravity: :face, class: "avatar-xlarge" %>
-      <% else %>
+    <% else %>
       <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-xlarge" %>
     <% end %>
   </div>  
