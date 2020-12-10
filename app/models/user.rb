@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :photo
   has_one :profile
+  has_many :user_jobs
   before_destroy :purge_photo
 
   private

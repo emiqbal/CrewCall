@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
   belongs_to :project
+  has_many :user_jobs
 
   validates :description, presence: true
   validates :salary, presence: true, numericality: { only_integer: true, greater_than: 0 }
