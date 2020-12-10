@@ -2,6 +2,7 @@ class Project < ApplicationRecord
   before_destroy :purge_photo
   has_one_attached :photo
   belongs_to :user
+  has_many :jobs
   validates :title, presence: true, length: { maximum: 40 }
   validates :description, presence: true
 
@@ -16,7 +17,7 @@ class Project < ApplicationRecord
     if end_date < start_date
       errors.add(:end_date, "must be after the start date")
     end
- end
+  end
 
   def purge_photo
     photo.purge
