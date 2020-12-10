@@ -5,18 +5,19 @@
 </div>
 
 <div class="pt-2">
-<h1><strong><%= @project.title %></strong></h1>
+  <h1><strong><%= @project.title %></strong></h1>
 </div>
-
-<div class="usernameheader">
-  <% if @project.user.photo.attached? %>
-    <%= cl_image_tag @project.user.photo.key, class: "avatar"%>
-  <% else %>
-    <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar" %>
-  <% end %>
-<%= @project.user.username %>
-  <div class=" d-flex ">
-    <%= link_to root_path, class: "nav-link" do %>
+<div class="usernameheader d-flex justify-content-between">
+  <div>
+    <% if @project.user.photo.attached? %>
+      <%= cl_image_tag @project.user.photo.key, class: "avatar"%>
+    <% else %>
+      <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar" %>
+    <% end %>
+    <%= @project.user.username %>
+  </div>
+  <div>
+    <%= link_to root_path do %>
       <i class="fas fa-comment"></i>
     <% end %>
   </div>
@@ -35,10 +36,10 @@
   <% if @project.jobs.exists? %>
     <% @project.jobs.each do |job| %>
       <p>Description: <%= job.description %></p>
-      <p>Salary:<%= job.salary / 100 %> per Day</p>
+      <p>Salary: $<%= job.salary / 100 %> per Day</p>
       <p>Start Date:<%= job.start_date.strftime('%d %b %Y') %></p>
       <p>End Date:<%= job.end_date.strftime('%d %b %Y') %></p>
     <% end %>
   <% end %>
 
-<%= link_to "Back", :back, class: 'btn btn-flat'  %>
+<%= link_to "Back", root_path, class: 'btn btn-flat'  %>

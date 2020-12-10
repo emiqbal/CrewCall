@@ -4,4 +4,17 @@
   color: white;
   border-radius: 5px;
   padding: 8px;
+  align-items: center;
+
+  a {
+  color: white;
+  border-radius: 30px;
+  padding-right: 4px;
+  transition: background 0.3s ease;
+  text-transform: capitalize;
+}
+  a:hover {
+  color: white;
+}
+
 }
