@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root to: 'projects#index'
   get '/uikit', to: 'pages#uikit'
   get '/sitemap', to: 'pages#sitemap'
+<<<<<<< HEAD
   resources :profiles, only: [:index, :show]
+=======
+  resources :profiles, only: [:index, :show, :new, :create, :edit, :update]
+>>>>>>> master
   resources :projects, only: [:index, :show, :new, :create] do
     resources :jobs, only: [:new, :create]
   end
