@@ -12,28 +12,45 @@ require_relative 'scraping'
 puts 'Clearing Database...'
 Job.destroy_all
 Project.destroy_all
-# User.destroy_all
+User.destroy_all # comment this out if you don't want to delete all your Users
 
 puts 'Clearing Database done!'
 
-# profile = 'https://www.flaticon.com/svg/static/icons/svg/599/599305.svg'
-# people = %w[syakiran iqbal josh rupert grace]
-# random_boolean = [true, false].sample
+# ~~~~~~~ USER SEED ~~~~~~~
 
-# people.each do |person|
-#   pic = URI.open(profile)
-#   puts "Creating User using seed..."
-#   user = User.new(
-#     username: "#{person}",
-#     email: "#{person}@gmail.com",
-#     password: "123456",
-#     is_producer: random_boolean
-#     )
 
-#   user.photo.attach(io: pic, filename: "#{person}.png", content_type: 'image/png')
-#   user.save!
-# end
-# puts "User Seeding done!"
+profile = 'https://source.unsplash.com/500x500/?face'
+people = %w[syakiran josh rupert grace]
+random_boolean = [true, false].sample
+
+pic1 = URI.open(profile)
+puts "Creating User using seed..."
+user1 = User.new(
+    username: "iqbal",
+    email: "iqbal@gmail.com",
+    password: "123456",
+    is_producer: true
+    )
+
+user1.photo.attach(io: pic1, filename: "iqbal.png", content_type: 'image/png')
+user1.save!
+
+people.each do |person|
+  pic = URI.open(profile)
+  puts "Creating User using seed..."
+  user = User.new(
+    username: "#{person}",
+    email: "#{person}@gmail.com",
+    password: "123456",
+    is_producer: random_boolean
+    )
+
+  user.photo.attach(io: pic, filename: "#{person}.png", content_type: 'image/png')
+  user.save!
+end
+puts "User Seeding done!"
+
+# ~~~~~~~ PROJECT SEED ~~~~~~~
 
 title = scraping_project
 
