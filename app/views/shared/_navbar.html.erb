@@ -26,9 +26,9 @@
 
       <%= link_to edit_profile_path, class: "nav-link" do %>
         <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, class: "avatar-card" %>
+          <%= cl_image_tag current_user.photo.key, width: 25, height: 25, crop: :fill, class: "avatar-card" %>
         <% else %>
-          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-card"%>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar-card"%>
         <% end %>
       <% end %>
 
