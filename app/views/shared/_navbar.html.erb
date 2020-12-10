@@ -1,28 +1,55 @@
 <div class="navbar fixed-bottom navbar-expand-sm navbar-dark navbar-lewagon">
   <% if user_signed_in? %>
+
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-home"></i>
     <% end %>
+
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-bell"></i>
     <% end %>
-    <%= link_to new_project_path, class: "nav-link" do %>
-      <i class="fas fa-plus"></i>
-      <!-- TODO only producers + will create project, users + will create application -->
+
+    <% if current_user.is_producer? %>
+
+      <%= link_to new_project_path, class: "nav-link" do %>
+        <i class="fas fa-plus"></i>
+        <!-- TODO only producers + will create project, users + will create application -->
+      <% end %>
+
     <% end %>
+
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-envelope"></i>
     <% end %>
+
     <% if current_user.profile.nil? %>
+
       <%= link_to edit_profile_path, class: "nav-link" do %>
-        <i class="fas fa-user"></i>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-card" %>
+        <% else %>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-card"%>
+        <% end %>
       <% end %>
+
     <% else %>
+
      <%= link_to profile_path(current_user.profile), class: "nav-link" do %>
-        <i class="fas fa-user"></i>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-card" %>
+        <% else %>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-card"%>
+        <% end %>
       <% end %>
+
     <% end %>
+
+    <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+      <i class="fas fa-sign-out-alt"></i>
+      <% end %>
+
   <% else %>
+
     <%= link_to "Login", new_user_session_path, class: "btn nav-link" %>
     <%= link_to root_path, class: "nav-link" do %>
         <i class="fas fa-home"></i>
