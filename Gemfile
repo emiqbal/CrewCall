@@ -3,10 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a19f2a1bdfbc7a6b6c46ada33d3f9e3c2f3db209
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
@@ -36,11 +32,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
 
-<<<<<<< HEAD
-=======
 gem 'pg_search', '~> 2.3.0'
 
->>>>>>> a19f2a1bdfbc7a6b6c46ada33d3f9e3c2f3db209
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.15.1'
 gem 'simple_form'
