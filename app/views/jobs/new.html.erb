@@ -2,7 +2,7 @@
   <%= simple_form_for([@project, @job]) do |f| %>
     <div class="form-inputs type-form-control">
       <%= f.input :description %>
-      <%= f.input :salary, label: "Salary per Day" %>
+      <%= f.input :salary, label: "Salary per Day in $" %>
       <%= f.input :start_date, label: "Start Date", as: :string, type: :text %>
       <%= f.input :end_date, label: "End Date", as: :string, type: :text %>
     </div>
