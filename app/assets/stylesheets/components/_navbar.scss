@@ -1,0 +1,16 @@
+.navbar-lewagon {
+  justify-content: space-between;
+  background-color: #03203A;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.navbar-dark a {
+  color: gray;
+  &:hover {
+    color: white;
+  }
+}
+

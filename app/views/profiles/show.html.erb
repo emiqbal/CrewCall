@@ -1,0 +1,29 @@
+<h2 class="text-center pb-2">Your Profile Card</h2>
+
+<div class="container">
+  <div class="card-profile">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-profile-infos">
+      <div>
+        <h2><%= @profile.department  %></h2>
+        <p><%= @profile.bio %></p>
+      </div>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-profile-user avatar-bordered" />
+    </div>
+  </div>
+
+  <%= link_to "Edit", profiles_edit_path, class: "btn btn-primary my-2" %>    
+  <%= link_to "Complete", projects_path, class: "btn btn-primary my-2" %>
+
+  <% if user_signed_in? %>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary my-2" %>
+  <% else %>
+  <%= link_to "Login", new_user_session_path, class: "btn btn-primary my-2" %>
+  <% end %>
+
+</div>
+
+
+
+
+

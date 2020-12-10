@@ -1,0 +1,65 @@
+<h1>Welcome to CrewCall UIKit</h1>
+
+<h3 class='text-centre'>Search Field</h3>
+
+<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required px-4" type="text" name="search[query]" id="search_query", placeholder="Search" />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+<% end %>
+
+
+<h3>Type Field</h3>
+<div class="type-form-control form-group">
+    <input class="form-control string required px-4" type="text" name="message" id="message" placeholder="Send a Message" />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="far fa-paper-plane"></i>
+    </button>
+  </div>
+
+<h3>Project Card</h3>
+
+<div class="card-product">
+  <img class="project-image" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+    <h2>Project name</h2>
+    <p>Project description with <strong>relevant info</strong> only.</p>
+  </div>
+</div>
+
+
+<h3>Buttons</h3>
+
+<%= link_to "Book now", "#", class: "btn btn-flat" %>
+<i class="fab fa-twitter"></i>
+<i class="fab fa-facebook"></i>
+<i class="fab fa-linkedin"></i>
+<i class="fab fa-instagram"></i>
+
+<h3>Avatar</h3>
+
+<%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar", alt: "avatar" %>
+
+
+<h3>Bottom Nav Bar</h3>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
