@@ -25,13 +25,21 @@
     <% if current_user.profile.nil? %>
 
       <%= link_to edit_profile_path, class: "nav-link" do %>
-        <i class="fas fa-user"></i>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-card" %>
+        <% else %>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-card"%>
+        <% end %>
       <% end %>
 
     <% else %>
 
      <%= link_to profile_path(current_user.profile), class: "nav-link" do %>
-        <i class="fas fa-user"></i>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-card" %>
+        <% else %>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-card"%>
+        <% end %>
       <% end %>
 
     <% end %>
