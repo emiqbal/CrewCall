@@ -1,9 +1,4 @@
 <h2 class="text-center pb-2">CREWCALL</h2>
-<% if user_signed_in? %>
-<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-flat my-2" %>
-<% else %>
-<%= link_to "Login", new_user_session_path, class: "btn btn-flat my-2" %>
-<% end %>
 
 <%= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
@@ -24,9 +19,9 @@
           <!-- <p><%= project.description %></p> -->
           <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
               <% if project.user.photo.attached? %>
-                <%= cl_image_tag project.user.photo.key, class: "avatar-card" %>
+                <%= cl_image_tag project.user.photo.key, width: 25, height: 25, crop: :fill, class: "avatar-card" %>
               <% else %>
-                <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-card"%>
+                <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar-card"%>
               <% end %>
           <div class="card-avatar-infos">
             <%= project.user.username %>

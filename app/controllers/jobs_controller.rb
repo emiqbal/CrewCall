@@ -9,6 +9,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.project = Project.find(params[:project_id])
+    @job.salary *= 100
     if @job.save
       redirect_to project_path(@job.project)
     else
@@ -19,6 +20,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:description, :salary, :start_date, :end_date)
+    params.require(:job).permit(:description, :salary, :start_date, :end_date, :department)
   end
 end
