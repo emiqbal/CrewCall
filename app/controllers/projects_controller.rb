@@ -3,7 +3,12 @@ require 'open-uri'
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @projects = Project.all
+    # raise
+    if params[:query]
+      @projects = Project.search_by_project(params[:query]).order(updated_at: :desc)
+    else
+      @projects = Project.all.order(updated_at: :desc)
+    end
   end
 
   def show
