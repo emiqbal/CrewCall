@@ -9,6 +9,16 @@ class Project < ApplicationRecord
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
 
+<<<<<<< HEAD
+=======
+  include PgSearch::Model
+  pg_search_scope :search_by_project,
+  against: [:title, :description],
+  using: {
+    tsearch: { prefix: true }
+  }
+
+>>>>>>> a19f2a1bdfbc7a6b6c46ada33d3f9e3c2f3db209
   private
 
   def end_date_after_start_date
