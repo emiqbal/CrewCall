@@ -6,9 +6,11 @@
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-bell"></i>
     <% end %>
-    <%= link_to new_project_path, class: "nav-link" do %>
-      <i class="fas fa-plus"></i>
-      <!-- TODO only producers + will create project, users + will create application -->
+    <% if current_user.is_producer? %>
+      <%= link_to new_project_path, class: "nav-link" do %>
+        <i class="fas fa-plus"></i>
+        <!-- TODO only producers + will create project, users + will create application -->
+      <% end %>
     <% end %>
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-envelope"></i>
