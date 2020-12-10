@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show, :new, :create] do
     resources :jobs, only: [:new, :create]
   end
+  # Jobs#show (not nested)
+  # nested under jobs#show user_jobs#new & create, update(status) don't need show, index
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
