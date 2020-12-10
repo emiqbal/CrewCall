@@ -1,10 +1,10 @@
 // First we define two variables that are going to grab our inputs field. You can check the ids of the inputs with the Chrome inspector.
 
 
-const datePicker = () => {
+const datePicker = (resource) => {
 
-  const startDateInput = document.getElementById('project_start_date');
-  const endDateInput = document.getElementById('project_end_date');
+  const startDateInput = document.getElementById(`${resource}_start_date`);
+  const endDateInput = document.getElementById(`${resource}_end_date`);
 
   // if startDateInput and endDateInput presentm (aka not null), then run the following)
   if (startDateInput && endDateInput) {

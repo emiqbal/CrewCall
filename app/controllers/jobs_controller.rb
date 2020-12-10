@@ -1,6 +1,4 @@
 class JobsController < ApplicationController
-  def show
-  end
 
   def new
     @job = Job.new
@@ -12,7 +10,7 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.project = Project.find(params[:project_id])
     if @job.save
-      redirect_to project_path(@project)
+      redirect_to project_path(@job.project)
     else
       render :new
     end
