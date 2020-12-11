@@ -9,7 +9,6 @@ class User < ApplicationRecord
   before_destroy :purge_photo
 
   private
-
   def purge_photo
     photo.purge
   end
