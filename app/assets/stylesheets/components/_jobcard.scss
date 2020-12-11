@@ -1,3 +1,17 @@
+.projcontainer {
+  border-top-width: 1px;
+  border-top-color: #DDD9E1;
+  border-top-style: solid;
+  margin: 8px 0px;
+  padding: 8px 0px;
+  p {
+    margin: 0;
+  }
+  btn {
+    display: inherit;
+  }
+}
+
 .jobcard {
   width: 100%;
   background-color: #03203A;
@@ -8,15 +22,6 @@
   flex-direction: column;
   margin-bottom: 15px;
   padding-bottom: 15px;
-
-  .jobcard-info {
-    justify-content: center;
-
-    p {
-      padding-left: 24px;
-      padding-right: 24px;
-    }
-  }
 
   p {
     font-size: 12px;
@@ -29,11 +34,21 @@
     width: 100%;
   }
 
+  .jobcard-info {
+    justify-content: center;
+
+    p {
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-bottom: 8px;
+    }
+  }
+
   .jobcard-info-glance {
+    border-top-width: 1px;
+    border-top-color: #DDD9E1;
+    border-top-style: solid;
     display:flex;
     justify-content: space-around;
-
-    div {
-    }
   }
 }
