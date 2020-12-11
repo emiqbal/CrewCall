@@ -6,7 +6,7 @@
 
 <div class="container">
   <div class="pt-2">
-  <h3><strong><%= @project.title.upcase %></strong></h3>
+    <h3><strong><%= @project.title.upcase %></strong></h3>
   </div>
   <div class="usernameheader d-flex justify-content-between">
     <div>
@@ -34,12 +34,13 @@
   <div class="projcontainer">
     <h4>Project Jobs</h4>
     <% if @project.jobs.exists? %>
-        <div>
-      <% @project.jobs.each do |job| %>
+      <div>
+        <% @project.jobs.each do |job| %>
         <div class="jobcard">
           <div class="jobcard-info">
             <p>Description: <%= job.description %></p>
           </div>
+
           <div class="jobcard-info-glance">
             <div><p>Salary</p> <p>$<%= job.salary / 100 %> per Day</p></div>
             <div><p>Start Date</p> <p><%= job.start_date.strftime('%d %b %Y') %></p></div>
@@ -52,6 +53,8 @@
             <div><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat'  %></div>
           <% end %>
         </div>
+      <% end %>
+    </div>
   <% end %>
   <% if current_user == @project.user %>
     <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
