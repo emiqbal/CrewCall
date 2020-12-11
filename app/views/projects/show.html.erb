@@ -1,6 +1,6 @@
 <div class="rounded border">
   <% if @project.photo.attached? %>
-  <%= cl_image_tag @project.photo.key, class: "photobanner" %>
+  <%= cl_image_tag @project.photo.key, height: 200, crop: :fill, class: "photobanner" %>
   <% end %>
 </div>
 
@@ -10,7 +10,7 @@
 <div class="usernameheader d-flex justify-content-between">
   <div>
     <% if @project.user.photo.attached? %>
-      <%= cl_image_tag @project.user.photo.key, class: "avatar"%>
+      <%= cl_image_tag @project.user.photo.key, width: 25, height: 25, crop: :fill, class: "avatar"%>
     <% else %>
       <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar" %>
     <% end %>
@@ -23,14 +23,14 @@
   </div>
 </div>
 <!-- link mini-avatar and name to user show page -->
-<div class="border-top">
 <h4 class= "mt-3"><strong>About the Project</strong></h4>
 <%= @project.description %>
-<h4 class= "mt-3">Project Timeline</h4>
+<div class="projcontainer">
+<h4>Project Timeline</h4>
 <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
 </div>
 
-<div>
+<div class="projcontainer">
 <h4>Project Jobs</h4>
 <% if current_user == @project.user %>
   <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
