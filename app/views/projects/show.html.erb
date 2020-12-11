@@ -1,11 +1,12 @@
 <div class="rounded border">
   <% if @project.photo.attached? %>
-  <%= cl_image_tag @project.photo.key, class: "photobanner" %>
+  <%= cl_image_tag @project.photo.key, height: 200, crop: :fill, class: "photobanner" %>
   <% end %>
 </div>
+
 <div class="container">
   <div class="pt-2">
-    <h1><strong><%= @project.title %></strong></h1>
+  <h3><strong><%= @project.title.upcase %></strong></h3>
   </div>
   <div class="usernameheader d-flex justify-content-between">
     <div>
@@ -23,24 +24,35 @@
     </div>
   </div>
   <!-- link mini-avatar and name to user show page -->
-
   <h4 class= "mt-3"><strong>About the Project</strong></h4>
   <%= @project.description %>
-  <h4 class= "mt-3">Project Timeline</h4>
-  <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
+  <div class="projcontainer">
+    <h4>Project Timeline</h4>
+    <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
+  </div>
 
-  <h3>Project Jobs</h3>
-  <% if current_user == @project.user %>
-    <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
-  <% end %>
+  <div class="projcontainer">
+    <h4>Project Jobs</h4>
     <% if @project.jobs.exists? %>
-      <% @project.jobs.each do |job| %>
-        <p>Description: <%= job.description %></p>
-        <p>Salary: $<%= job.salary / 100 %> per Day</p>
-        <p>Start Date:<%= job.start_date.strftime('%d %b %Y') %></p>
-        <p>End Date:<%= job.end_date.strftime('%d %b %Y') %></p>
-      <% end %>
+        <div>
+          <% @project.jobs.each do |job| %>
+            <div class="jobcard">
+              <div class="jobcard-info">
+                <p>Description: <%= job.description %></p>
+              </div>
+              <div class="jobcard-info-glance">
+                <div><p>Salary</p> <p>$<%= job.salary / 100 %> per Day</p></div>
+                <div><p>Start Date</p> <p><%= job.start_date.strftime('%d %b %Y') %></p></div>
+                <div><p>End Date</p> <p><%= job.end_date.strftime('%d %b %Y') %></p></div>
+              </div>
+            </div>
+          <% end %>
+        </div>
     <% end %>
+    <% if current_user == @project.user %>
+      <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
+    <% end %>
+  </div>
 
   <%= link_to "Back", root_path, class: 'btn btn-flat'  %>
 </div>
