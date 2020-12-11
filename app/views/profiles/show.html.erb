@@ -1,2 +1,36 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class= "row justify-content-center">
+
+  <div class= "">
+    <h2 class="text-center pb-2">PROFILE</h2>
+    <div class=" justify-content-center rounded border">
+      <% if @profile.photo.attached? %>
+          <%= cl_image_tag @profile.photo.key,:gravity=>"face", height: 400, crop: :fill %>
+        <% else %>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg",:gravity=>"face", height: 400, crop: :fill %>
+        <% end %>
+    </div>
+
+    <div class="pt-2">
+      <h2><strong><%= "#{@profile.last_name} #{@profile.last_name}" %></strong></h2>
+    </div>
+
+    <div class="pt-2">
+      <h5 class= "mt-3"><strong>Department :</strong></h5>
+      <p><%= @profile.department %></p>
+      <div>
+      <h5 class= "mt-3"><strong>Bio</strong></h5>
+      <p><%= @profile.bio %></p>
+      </div>
+    </div>
+
+    <!-- link mini-avatar and name to user show page -->
+      <% if current_user.profile == @profile %>
+        <%= link_to "Edit",  edit_profile_path, class: "btn btn-primary my-2" %>
+        <%= link_to "Complete", projects_path, class: "btn btn-primary my-2" %>
+
+        <% if user_signed_in? %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary my-2" %>
+        <% end %>
+      <% end %>
+    </div>
+</div>
