@@ -1,45 +1,58 @@
 <div class="rounded border">
   <% if @project.photo.attached? %>
-  <%= cl_image_tag @project.photo.key, class: "photobanner" %>
+  <%= cl_image_tag @project.photo.key, height: 200, crop: :fill, class: "photobanner" %>
   <% end %>
 </div>
 
-<div class="pt-2">
-  <h1><strong><%= @project.title %></strong></h1>
-</div>
-<div class="usernameheader d-flex justify-content-between">
-  <div>
-    <% if @project.user.photo.attached? %>
-      <%= cl_image_tag @project.user.photo.key, class: "avatar"%>
-    <% else %>
-      <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar" %>
-    <% end %>
-    <%= @project.user.username %>
+<div class="container">
+  <div class="pt-2">
+  <h3><strong><%= @project.title.upcase %></strong></h3>
   </div>
-  <div>
-    <%= link_to root_path do %>
-      <i class="fas fa-comment"></i>
+  <div class="usernameheader d-flex justify-content-between">
+    <div>
+      <% if @project.user.photo.attached? %>
+        <%= cl_image_tag @project.user.photo.key, width: 25, height: 25, crop: :fill, class: "avatar"%>
+      <% else %>
+        <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar" %>
+      <% end %>
+      <%= @project.user.username %>
+    </div>
+    <div>
+      <%= link_to root_path do %>
+        <i class="fas fa-comment"></i>
+      <% end %>
+    </div>
+  </div>
+  <!-- link mini-avatar and name to user show page -->
+  <h4 class= "mt-3"><strong>About the Project</strong></h4>
+  <%= @project.description %>
+  <div class="projcontainer">
+    <h4>Project Timeline</h4>
+    <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
+  </div>
+
+  <div class="projcontainer">
+    <h4>Project Jobs</h4>
+    <% if @project.jobs.exists? %>
+        <div>
+          <% @project.jobs.each do |job| %>
+            <div class="jobcard">
+              <div class="jobcard-info">
+                <p>Description: <%= job.description %></p>
+              </div>
+              <div class="jobcard-info-glance">
+                <div><p>Salary</p> <p>$<%= job.salary / 100 %> per Day</p></div>
+                <div><p>Start Date</p> <p><%= job.start_date.strftime('%d %b %Y') %></p></div>
+                <div><p>End Date</p> <p><%= job.end_date.strftime('%d %b %Y') %></p></div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    <% end %>
+    <% if current_user == @project.user %>
+      <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
     <% end %>
   </div>
+
+  <%= link_to "Back", root_path, class: 'btn btn-flat'  %>
 </div>
-<!-- link mini-avatar and name to user show page -->
-
-<h4 class= "mt-3"><strong>About the Project</strong></h4>
-<%= @project.description %>
-<h4 class= "mt-3">Project Timeline</h4>
-<p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
-
-<h3>Project Jobs</h3>
-<% if current_user == @project.user %>
-  <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
-<% end %>
-  <% if @project.jobs.exists? %>
-    <% @project.jobs.each do |job| %>
-      <p>Description: <%= job.description %></p>
-      <p>Salary: $<%= job.salary / 100 %> per Day</p>
-      <p>Start Date:<%= job.start_date.strftime('%d %b %Y') %></p>
-      <p>End Date:<%= job.end_date.strftime('%d %b %Y') %></p>
-    <% end %>
-  <% end %>
-
-<%= link_to "Back", root_path, class: 'btn btn-flat'  %>
