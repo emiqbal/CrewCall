@@ -43,28 +43,19 @@
             <div><p>Salary</p> <p>$<%= job.salary / 100 %> per Day</p></div>
             <div><p>Start Date</p> <p><%= job.start_date.strftime('%d %b %Y') %></p></div>
             <div><p>End Date</p> <p><%= job.end_date.strftime('%d %b %Y') %></p></div>
-
           </div>
+          <% user_job = UserJob.where(job: job.id) %>
+          <% if user_job.first.status == "Applied" && user_job.first.user == current_user %>
+            <div><p>Status: </p> <p>Job Applied</p></div>
+          <% else %>
+            <div><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat'  %></div>
+          <% end %>
         </div>
       <% end %>
     </div>
   <% end %>
-<% if current_user == @project.user %>
-  <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
-<% end %>
-  <% if @project.jobs.exists? %>
-    <% @project.jobs.each do |job| %>
-      <p>Description: <%= job.description %></p>
-      <p>Salary: $<%= job.salary / 100 %> per Day</p>
-      <p>Start Date:<%= job.start_date.strftime('%d %b %Y') %></p>
-      <p>End Date:<%= job.end_date.strftime('%d %b %Y') %></p>
-      <% user_job = UserJob.where(job: job.id) %>
-      <% if user_job.first.status == "Applied" %>
-      <p> Status: Job Applied </p>
-      <% else %>
-      <%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat'  %>
-      <% end %>
-    <% end %>
+  <% if current_user == @project.user %>
+    <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
   <% end %>
 </div>
 
