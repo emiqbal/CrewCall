@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="card-profile">
-    <%= cl_image_tag @profile.photo.key, gravity: :auto %>
+    <%= cl_image_tag @profile.photo.key,:gravity=>"auto", :crop=>"scale" %>
     <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
     <div class="card-profile-infos">
       <div>
