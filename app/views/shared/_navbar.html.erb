@@ -47,9 +47,7 @@
     <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
       <i class="fas fa-sign-out-alt"></i>
       <% end %>
-
   <% else %>
-
     <%= link_to "Login", new_user_session_path, class: "btn nav-link" %>
     <%= link_to root_path, class: "nav-link" do %>
         <i class="fas fa-home"></i>
