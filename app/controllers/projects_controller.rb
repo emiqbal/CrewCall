@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   def new
   # @producer = current_producer
     @project = Project.new
+    @jobs = Job.where(project: @project)
   end
 
   def create
