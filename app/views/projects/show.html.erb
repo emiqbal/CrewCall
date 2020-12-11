@@ -5,7 +5,7 @@
 </div>
 
 <div class="pt-2">
-  <h1><strong><%= @project.title %></strong></h1>
+  <h3><strong><%= @project.title.upcase %></strong></h3>
 </div>
 <div class="usernameheader d-flex justify-content-between">
   <div>
@@ -23,23 +23,28 @@
   </div>
 </div>
 <!-- link mini-avatar and name to user show page -->
-
+<div class="border-top">
 <h4 class= "mt-3"><strong>About the Project</strong></h4>
 <%= @project.description %>
 <h4 class= "mt-3">Project Timeline</h4>
 <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
+</div>
 
-<h3>Project Jobs</h3>
+<div>
+<h4>Project Jobs</h4>
 <% if current_user == @project.user %>
   <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
 <% end %>
   <% if @project.jobs.exists? %>
-    <% @project.jobs.each do |job| %>
-      <p>Description: <%= job.description %></p>
-      <p>Salary: $<%= job.salary / 100 %> per Day</p>
-      <p>Start Date:<%= job.start_date.strftime('%d %b %Y') %></p>
-      <p>End Date:<%= job.end_date.strftime('%d %b %Y') %></p>
-    <% end %>
+    <div>
+      <% @project.jobs.each do |job| %>
+        <p>Description: <%= job.description %></p>
+        <p>Salary: $<%= job.salary / 100 %> per Day</p>
+        <p>Start Date: <%= job.start_date.strftime('%d %b %Y') %></p>
+        <p>End Date: <%= job.end_date.strftime('%d %b %Y') %></p>
+      <% end %>
+    </div>
   <% end %>
+</div>
 
 <%= link_to "Back", root_path, class: 'btn btn-flat'  %>
