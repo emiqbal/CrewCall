@@ -12,7 +12,7 @@
 
   <div class=" justify-content-center ">
     <%= simple_form_for(@profile, url: update_profile_path, method: :patch) do |f| %>
-      <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+      <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
       <%= f.input :first_name, label: 'First Name' %>
       <%= f.input :last_name, label: 'Last Name' %>
       <%= f.input :company_name, label: 'Are you from a company?' %>
