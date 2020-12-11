@@ -1,0 +1,54 @@
+.projcontainer {
+  border-top-width: 1px;
+  border-top-color: #DDD9E1;
+  border-top-style: solid;
+  margin: 8px 0px;
+  padding: 8px 0px;
+  p {
+    margin: 0;
+  }
+  btn {
+    display: inherit;
+  }
+}
+
+.jobcard {
+  width: 100%;
+  background-color: #03203A;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+
+  p {
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  .jobcard-info {
+    justify-content: center;
+
+    p {
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-bottom: 8px;
+    }
+  }
+
+  .jobcard-info-glance {
+    border-top-width: 1px;
+    border-top-color: #DDD9E1;
+    border-top-style: solid;
+    display:flex;
+    justify-content: space-around;
+  }
+}
