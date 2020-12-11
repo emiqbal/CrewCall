@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_12_11_071957) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 

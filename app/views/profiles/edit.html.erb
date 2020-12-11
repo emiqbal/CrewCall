@@ -1,17 +1,20 @@
 <div class="container">
-  <div class="row">
-    <h2><strong>Profile</strong></h2>
-  </div>
-  <div class="row justify-content-center">
-    <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, class: "avatar-xlarge" %>
-      <% else %>
+  <h2><strong>PROFILE</strong></h2>
+  
+
+  <div class="justify-content-center">
+    <% if current_user.profile.photo.attached? %>
+      <%= cl_image_tag current_user.profile.photo.key, gravity: :face, class: "avatar-xlarge" %>
+    <% else %>
       <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-xlarge" %>
     <% end %>
-  </div>
-  <div class="row justify-content-center">
-    <%= simple_form_for(@profile, method: :patch, url: update_profile_path) do |f| %>
-      <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+  </div>  
+
+  <div class=" justify-content-center ">
+    <%= simple_form_for(@profile, url: update_profile_path, method: :patch) do |f| %>
+      <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
+      <%= f.input :first_name, label: 'First Name' %>
+      <%= f.input :last_name, label: 'Last Name' %>
       <%= f.input :company_name, label: 'Are you from a company?' %>
       <%= f.input :bio, label: 'Personal Biography' %>
       <%= f.input :department, collection: %w(Actor Actress Cameraman Lighting_Specialist Video_Editor Script_Writer) %>
