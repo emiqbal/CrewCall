@@ -1,35 +1,52 @@
 <div class="navbar fixed-bottom navbar-expand-sm navbar-dark navbar-lewagon">
   <% if user_signed_in? %>
+
     <%= link_to root_path, class: "nav-link" do %>
-<<<<<<< HEAD
-        <i class="fas fa-home"></i>
-      <% end %>
-    <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
-    <a class="nav-link" href="#"><i class="fas fa-envelope"></i></a>
-    <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
-=======
       <i class="fas fa-home"></i>
     <% end %>
+
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-bell"></i>
     <% end %>
-    <%= link_to new_project_path, class: "nav-link" do %>
-      <i class="fas fa-plus"></i>
-      <!-- TODO only producers + will create project, users + will create application -->
+
+    <% if current_user.is_producer? %>
+
+      <%= link_to new_project_path, class: "nav-link" do %>
+        <i class="fas fa-plus"></i>
+        <!-- TODO only producers + will create project, users + will create application -->
+      <% end %>
+
     <% end %>
+
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-envelope"></i>
     <% end %>
+
     <% if current_user.profile.nil? %>
+
       <%= link_to edit_profile_path, class: "nav-link" do %>
-        <i class="fas fa-user"></i>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, width: 25, height: 25, crop: :fill, class: "avatar-card" %>
+        <% else %>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar-card"%>
+        <% end %>
       <% end %>
+
     <% else %>
+
      <%= link_to profile_path(current_user.profile), class: "nav-link" do %>
-        <i class="fas fa-user"></i>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-card" %>
+        <% else %>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-card"%>
+        <% end %>
       <% end %>
+
     <% end %>
->>>>>>> a19f2a1bdfbc7a6b6c46ada33d3f9e3c2f3db209
+
+    <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+      <i class="fas fa-sign-out-alt"></i>
+      <% end %>
   <% else %>
     <%= link_to "Login", new_user_session_path, class: "btn nav-link" %>
     <%= link_to root_path, class: "nav-link" do %>
