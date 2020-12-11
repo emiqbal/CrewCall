@@ -6,12 +6,10 @@ class UserJobsController < ApplicationController
   end
 
   def create
-    user = current_user
     job = Job.find(params[:job_id])
-    @user_job = UserJob.new(user_job_params)
-    @user_job.status = "Applied"
+    @user_job = UserJob.new(status: "Applied")
     @user_job.job = job
-    @user_job.user = user
+    @user_job.user = current_user
     if @user_job.save
       redirect_to project_path(job.project)
     else
@@ -22,9 +20,4 @@ class UserJobsController < ApplicationController
   def update
   end
 
-  private
-
-  def user_job_params
-    params.require(:project).permit(:status)
-  end
 end
