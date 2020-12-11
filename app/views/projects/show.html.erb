@@ -32,19 +32,26 @@
 
 <div class="projcontainer">
 <h4>Project Jobs</h4>
-<% if current_user == @project.user %>
-  <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
-<% end %>
   <% if @project.jobs.exists? %>
     <div>
       <% @project.jobs.each do |job| %>
-        <p>Description: <%= job.description %></p>
-        <p>Salary: $<%= job.salary / 100 %> per Day</p>
-        <p>Start Date: <%= job.start_date.strftime('%d %b %Y') %></p>
-        <p>End Date: <%= job.end_date.strftime('%d %b %Y') %></p>
+        <div class="jobcard">
+          <div class="jobcard-info">
+            <p>Description: <%= job.description %></p>
+          </div>
+          <div class="jobcard-info-glance">
+            <div><p>Salary</p> <p>$<%= job.salary / 100 %> per Day</p></div>
+            <div><p>Start Date</p> <p><%= job.start_date.strftime('%d %b %Y') %></p></div>
+            <div><p>End Date</p> <p><%= job.end_date.strftime('%d %b %Y') %></p></div>
+
+          </div>
+        </div>
       <% end %>
     </div>
   <% end %>
+<% if current_user == @project.user %>
+  <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
+<% end %>
 </div>
 
 <%= link_to "Back", root_path, class: 'btn btn-flat'  %>
