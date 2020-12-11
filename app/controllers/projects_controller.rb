@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    render layout: 'no-container'
   end
 
   def new
