@@ -39,6 +39,12 @@
       <p>Salary: $<%= job.salary / 100 %> per Day</p>
       <p>Start Date:<%= job.start_date.strftime('%d %b %Y') %></p>
       <p>End Date:<%= job.end_date.strftime('%d %b %Y') %></p>
+      <% user_job = UserJob.where(job: job.id) %>
+      <% if user_job.first.status == "Applied" %>
+      <p> Status: Job Applied </p>
+      <% else %>
+      <%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat'  %>
+      <% end %>
     <% end %>
   <% end %>
 
