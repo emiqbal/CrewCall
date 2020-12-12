@@ -16,7 +16,6 @@
         <%= cl_image_tag project.photo.key, gravity: :auto, class: "project-image" %>
         <div class="card-product-infos">
           <h2><%= project.title %></h2>
-          <!-- <p><%= project.description %></p> -->
           <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
               <%= link_to profile_path(project.user.profile) do %>
               <% if project.user.photo.attached? %>
