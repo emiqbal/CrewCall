@@ -37,7 +37,6 @@ class ProfilesController < ApplicationController
       @profile = Profile.new(profile_params)
       @profile.user = current_user
       save_status
-      raise
     else
       @profile = Profile.find_by(user: current_user)
       # profile already exists, just update it
