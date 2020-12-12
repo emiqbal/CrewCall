@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show, :new, :create] do
     resources :jobs, only: [:new, :create]
   end
+  get '/overview', to: 'projects#overview'
   resources :jobs, only: [:show] do
     resources :user_jobs, only: [:new, :create, :update]
   end

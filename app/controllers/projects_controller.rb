@@ -38,6 +38,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def overview
+    @projects = Project.where(user: current_user)
+    # @user_jobs = UserJob.where()
+  end
+
   private
 
   def project_params
