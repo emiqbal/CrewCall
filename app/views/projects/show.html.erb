@@ -50,7 +50,9 @@
           <% if user_signed_in? %>
             <% user_job = UserJob.find_by(job: job.id, user: current_user) %>
             <% if user_job.nil? %>
-              <div><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat'  %></div>
+              <% if job.project.user != current_user %>
+                <div><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat'  %></div>
+              <% end %>
             <% else %>
               <% if user_job.status == "Applied" && user_job.user == current_user %>
                 <div>Status: <p class="badge rounded-pill bg-primary">Applied</p></div>
