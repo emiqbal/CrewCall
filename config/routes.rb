@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get '/uikit', to: 'pages#uikit'
   get '/sitemap', to: 'pages#sitemap'
   get '/profiles/edit', to: 'profiles#edit', as: 'edit_profile'
-  patch '/profiles', to: 'profiles#update', as: 'update_profile'
+  post '/profiles', to: 'profiles#update', as: 'create_profile'
+  patch '/profiles/:id', to: 'profiles#update', as: 'update_profile'
   resources :profiles, only: [:index, :show]
   resources :projects, only: [:index, :show, :new, :create] do
     resources :jobs, only: [:new, :create]
