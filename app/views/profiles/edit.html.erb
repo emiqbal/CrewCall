@@ -1,24 +1,27 @@
-<div class="container">
   <h2><strong>PROFILE</strong></h2>
-  
 
-  <div class="justify-content-center">
-    <% if current_user.profile.photo.attached? %>
-      <%= cl_image_tag current_user.profile.photo.key, gravity: :face, class: "avatar-xlarge" %>
-    <% else %>
-      <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", class: "avatar-xlarge" %>
-    <% end %>
-  </div>  
-
-  <div class=" justify-content-center ">
-    <%= simple_form_for(@profile, url: update_profile_path, method: :patch) do |f| %>
-      <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
-      <%= f.input :first_name, label: 'First Name' %>
-      <%= f.input :last_name, label: 'Last Name' %>
-      <%= f.input :company_name, label: 'Are you from a company?' %>
-      <%= f.input :bio, label: 'Personal Biography' %>
-      <%= f.input :department, collection: %w(Actor Actress Cameraman Lighting_Specialist Video_Editor Script_Writer) %>
-      <%= f.submit "Post", class: "btn btn-primary w-100" %>
-    <% end %>
-  </div>
-</div>
+  <% if current_user.is_producer? %>
+      <%= simple_form_for(@profile, url: update_profile_path, method: :patch) do |f| %>
+        <div class="form-inputs type-form-control">
+          <%= f.input :first_name, label: 'First Name' %>
+          <%= f.input :last_name, label: 'Last Name' %>
+          <%= f.input :company_name, label: "What's your company?" %>
+          <%= f.input :bio, label: 'Personal Biography' %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "Post", class: "btn btn-flat" %>
+        </div>
+      <% end %>
+  <% else %>
+      <%= simple_form_for(@profile, url: update_profile_path, method: :patch) do |f| %>
+        <div class="form-inputs type-form-control">
+          <%= f.input :first_name, label: 'First Name' %>
+          <%= f.input :last_name, label: 'Last Name' %>
+          <%= f.input :bio, label: 'Personal Biography' %>
+          <%= f.input :department, collection: %w(Actor Actress Cameraman Lighting_Specialist Video_Editor Script_Writer) %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "Post", class: "btn btn-flat" %>
+        </div>
+      <% end %>
+  <% end %>
