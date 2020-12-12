@@ -1,9 +1,4 @@
 <h2 class="text-center pb-2">CREWCALL</h2>
-<% if user_signed_in? %>
-<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary my-2" %>
-<% else %>
-<%= link_to "Login", new_user_session_path, class: "btn btn-primary my-2" %>
-<% end %>
 
 <%= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
@@ -16,13 +11,18 @@
 
 <div>
   <% @profiles.each do |profile| %>
-    <%= link_to profiles_path(profile) do %>
+    <%= link_to profile_path(profile) do %>
       <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% if profile.user.photo.attached? %>
+          <%= cl_image_tag profile.user.photo.key, gravity: :auto, class: "project-image" %>
+        <% else %>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar-card"%>
+        <% end %>
         <div class="card-product-infos">
-          <h2><%= profile.department %></h2>
-          <p><%= profile.bio %></p>
-        </div>
+          <h2><%= profile.first_name %> <%= profile.last_name %></h2>
+          <p><%= profile.user.username %></p>
+          <p><%= profile.department unless profile.user.is_producer %></p>
+       </div>
       </div>
     <% end %>
   <% end %>
