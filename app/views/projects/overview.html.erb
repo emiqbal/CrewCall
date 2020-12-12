@@ -8,7 +8,8 @@
     <h5>Jobs Application</h5>
     <% project.jobs.each do |job| %>
       <% job.user_jobs.each do |user_job| %>
-        <%= link_to profile_path(user_job.user.profile()) do %>
+        <% raise %>
+        <%= link_to profile_path(user_job.user.profile.first) do %>
           <p><%= user_job.user.username %></p>
         <% end %>
         <p><%= user_job.status %></p>
