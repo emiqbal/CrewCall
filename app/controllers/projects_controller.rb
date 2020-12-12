@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   def new
   # @producer = current_producer
     @project = Project.new
+    @jobs = Job.where(project: @project)
   end
 
   def create
@@ -35,6 +36,11 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def overview
+    @projects = Project.where(user: current_user)
+    # @user_jobs = UserJob.where()
   end
 
   private
