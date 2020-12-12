@@ -2,24 +2,28 @@
   <h2><strong>PROFILE</strong></h2>
 
   <% if current_user.is_producer? %>
-    <div class=" justify-content-center ">
       <%= simple_form_for(@profile, url: update_profile_path, method: :patch) do |f| %>
-        <%= f.input :first_name, label: 'First Name' %>
-        <%= f.input :last_name, label: 'Last Name' %>
-        <%= f.input :company_name, label: "What's your company?" %>
-        <%= f.input :bio, label: 'Personal Biography' %>
-        <%= f.submit "Post", class: "btn btn-primary w-100" %>
+        <div class="form-inputs type-form-control">
+          <%= f.input :first_name, label: 'First Name' %>
+          <%= f.input :last_name, label: 'Last Name' %>
+          <%= f.input :company_name, label: "What's your company?" %>
+          <%= f.input :bio, label: 'Personal Biography' %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "Post", class: "btn btn-flat" %>
+        </div>
       <% end %>
-    </div>
   <% else %>
-    <div class=" justify-content-center ">
       <%= simple_form_for(@profile, url: update_profile_path, method: :patch) do |f| %>
-        <%= f.input :first_name, label: 'First Name' %>
-        <%= f.input :last_name, label: 'Last Name' %>
-        <%= f.input :bio, label: 'Personal Biography' %>
-        <%= f.input :department, collection: %w(Actor Actress Cameraman Lighting_Specialist Video_Editor Script_Writer) %>
-        <%= f.submit "Post", class: "btn btn-primary w-100" %>
+        <div class="form-inputs type-form-control">
+          <%= f.input :first_name, label: 'First Name' %>
+          <%= f.input :last_name, label: 'Last Name' %>
+          <%= f.input :bio, label: 'Personal Biography' %>
+          <%= f.input :department, collection: %w(Actor Actress Cameraman Lighting_Specialist Video_Editor Script_Writer) %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "Post", class: "btn btn-flat" %>
+        </div>
       <% end %>
-    </div>
   <% end %>
 </div>

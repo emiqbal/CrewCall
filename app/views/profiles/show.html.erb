@@ -3,15 +3,15 @@
   <div class= "">
     <h2 class="text-center pb-2">PROFILE</h2>
     <div class=" justify-content-center rounded border">
-      <% if @profile.photo.attached? %>
-          <%= cl_image_tag @profile.photo.key,:gravity=>"face", height: 400, crop: :fill %>
+      <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, gravity: :face, width: 200, height: 200, crop: :fill %>
         <% else %>
-          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg",:gravity=>"face", height: 400, crop: :fill %>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", gravity: :face, width: 200, height: 200, crop: :fill %>
         <% end %>
     </div>
 
     <div class="pt-2">
-      <h2><strong><%= "#{@profile.last_name} #{@profile.last_name}" %></strong></h2>
+      <h2><strong><%= "#{@profile.first_name} #{@profile.last_name}" %></strong></h2>
     </div>
 
     <div class="pt-2">
