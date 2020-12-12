@@ -6,5 +6,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :is_producer, :photo])
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :is_producer, :photo])
   end
-
 end

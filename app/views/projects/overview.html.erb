@@ -1,0 +1,18 @@
+<h1>Overview of My Projects</h1>
+
+<% @projects.each do |project| %>
+  <div class="jobcard">
+    <p><%= project.title %></p>
+    <p><%= project.start_date %></p>
+    <p><%= project.end_date %></p>
+    <h5>Jobs Application</h5>
+    <% project.jobs.each do |job| %>
+      <% job.user_jobs.each do |user_job| %>
+        <%= link_to profile_path(user_job.user.profile()) do %>
+          <p><%= user_job.user.username %></p>
+        <% end %>
+        <p><%= user_job.status %></p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
