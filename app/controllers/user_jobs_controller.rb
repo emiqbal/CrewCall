@@ -18,6 +18,6 @@ class UserJobsController < ApplicationController
   end
 
   def update
+    @user_job = UserJob.find_by(job_id: params[:job_id], id: params[:id])
   end
-
 end

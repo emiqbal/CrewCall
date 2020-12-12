@@ -47,11 +47,17 @@
             <div><p>Start Date</p> <p><%= job.start_date.strftime('%d %b %Y') %></p></div>
             <div><p>End Date</p> <p><%= job.end_date.strftime('%d %b %Y') %></p></div>
           </div>
-          <% user_job = UserJob.where(job: job.id, user: current_user) %>
-          <% if user_job.first.status == "Applied" && user_job.first.user == current_user %>
-            <div>Status: <p class="badge rounded-pill bg-primary">Applied</p></div>
-          <% else %>
-            <div><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat'  %></div>
+          <% if user_signed_in? %>
+            <% user_job = UserJob.find_by(job: job.id, user: current_user) %>
+            <% if user_job.nil? %>
+              <div><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat'  %></div>
+            <% else %>
+              <% if user_job.status == "Applied" && user_job.user == current_user %>
+                <div>Status: <p class="badge rounded-pill bg-primary">Applied</p></div>
+              <% else %>
+                <div><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat'  %></div>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
       <% end %>
