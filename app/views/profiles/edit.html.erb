@@ -1,7 +1,7 @@
   <h2><strong>PROFILE</strong></h2>
 
   <% if current_user.is_producer? %>
-      <%= simple_form_for(@profile, url: update_profile_path, method: :patch) do |f| %>
+      <%= simple_form_for(@profile) do |f| %>
         <div class="form-inputs type-form-control">
           <%= f.input :first_name, label: 'First Name' %>
           <%= f.input :last_name, label: 'Last Name' %>
@@ -13,7 +13,7 @@
         </div>
       <% end %>
   <% else %>
-      <%= simple_form_for(@profile, url: update_profile_path, method: :patch) do |f| %>
+      <%= simple_form_for(@profile) do |f| %>
         <div class="form-inputs type-form-control">
           <%= f.input :first_name, label: 'First Name' %>
           <%= f.input :last_name, label: 'Last Name' %>
