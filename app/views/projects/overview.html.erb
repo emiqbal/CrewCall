@@ -3,16 +3,15 @@
 <% @projects.each do |project| %>
   <div class="jobcard">
     <p><%= project.title %></p>
-    <p><%= project.start_date %></p>
-    <p><%= project.end_date %></p>
+    <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
     <h5>Jobs Application</h5>
     <% project.jobs.each do |job| %>
       <% job.user_jobs.each do |user_job| %>
-        <% raise %>
-        <%= link_to profile_path(user_job.user.profile.first) do %>
+        <%= link_to profile_path(user_job.user.profile) do %>
           <p><%= user_job.user.username %></p>
+          <p><%= user_job.status %>
+          <%= link_to "Update Status", edit_job_user_job_path(job, user_job), class: "btn btn-flat" %></p>
         <% end %>
-        <p><%= user_job.status %></p>
       <% end %>
     <% end %>
   </div>

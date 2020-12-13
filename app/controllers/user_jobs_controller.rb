@@ -17,7 +17,23 @@ class UserJobsController < ApplicationController
     end
   end
 
+  def edit
+    @user_job = UserJob.find_by(job_id: params[:job_id], id: params[:id])
+  end
+
   def update
     @user_job = UserJob.find_by(job_id: params[:job_id], id: params[:id])
+    @user_job.update(user_job_params)
+    if @user_job.save
+      redirect_to overview_path
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def user_job_params
+    params.require(:user_job).permit(:status)
   end
 end
