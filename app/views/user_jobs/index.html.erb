@@ -1,14 +1,27 @@
 <h1>All My Jobs Application</h1>
 
 <% @user_jobs.each do |user_job| %>
-  <div class="submissions">
-    <%= link_to project_path(user_job.job.project) do%>
-    <h5><%= user_job.job.project.title %></h5>
-    <% end %>
-    <p>Job Title: <%= user_job.job.title %> </p>
-    <p>Job Dates: <%= "#{user_job.job.start_date.strftime('%d %b %Y')} to #{user_job.job.end_date.strftime('%d %b %Y')}" %></p>
-    <p>Job Status: <%= user_job.status %> </p>
-  </div>
+  <% if user_job.status == "Applied" %>
+    <h3>Applied</h3>
+      <div class="submissions">
+        <%= link_to project_path(user_job.job.project) do%>
+        <h5><%= user_job.job.project.title %></h5>
+        <% end %>
+        <p>Job Title: <%= user_job.job.title %> </p>
+        <p>Job Dates: <%= "#{user_job.job.start_date.strftime('%d %b %Y')} to #{user_job.job.end_date.strftime('%d %b %Y')}" %></p>
+        <p>Job Status: <%= user_job.status %> </p>
+      </div>
+  <% elsif user_job.status == "Approved" %>
+    <h3>Approved</h3>
+      <div class="submissions">
+        <%= link_to project_path(user_job.job.project) do%>
+        <h5><%= user_job.job.project.title %></h5>
+        <% end %>
+        <p>Job Title: <%= user_job.job.title %> </p>
+        <p>Job Dates: <%= "#{user_job.job.start_date.strftime('%d %b %Y')} to #{user_job.job.end_date.strftime('%d %b %Y')}" %></p>
+        <p>Job Status: <%= user_job.status %> </p>
+      </div>
+  <% end %>
 <% end %>
 
 <%= link_to "Back", :back, class: 'btn btn-flat'  %>
