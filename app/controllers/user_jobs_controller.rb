@@ -1,6 +1,6 @@
 class UserJobsController < ApplicationController
   def index
-
+    @user_jobs = UserJob.where(user: current_user)
   end
 
   def new
