@@ -7,66 +7,30 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "open-uri"
-require_relative 'scraping'
+require_relative 'project_seed'
+require_relative 'user_seed'
+require_relative 'profile_seed'
 
 puts 'Clearing Database...'
 Job.destroy_all
 Project.destroy_all
+Profile.destroy_all # comment this out if you don't want to delete all your Profiles
 User.destroy_all # comment this out if you don't want to delete all your Users
 
 puts 'Clearing Database done!'
 
 # ~~~~~~~ USER SEED ~~~~~~~
 
+user_seed
 
-profile = 'https://source.unsplash.com/500x500/?face'
-people = %w[syakiran josh rupert grace]
-random_boolean = [true, false].sample
+# ~~~~~~~ PROFILE SEED ~~~~~~~
 
-pic1 = URI.open(profile)
-puts "Creating User using seed..."
-user1 = User.new(
-    username: "iqbal",
-    email: "iqbal@gmail.com",
-    password: "123456",
-    is_producer: true
-    )
-
-user1.photo.attach(io: pic1, filename: "iqbal.png", content_type: 'image/png')
-user1.save!
-
-people.each do |person|
-  pic = URI.open(profile)
-  puts "Creating User using seed..."
-  user = User.new(
-    username: "#{person}",
-    email: "#{person}@gmail.com",
-    password: "123456",
-    is_producer: random_boolean
-    )
-
-  user.photo.attach(io: pic, filename: "#{person}.png", content_type: 'image/png')
-  user.save!
-end
-puts "User Seeding done!"
+profile_seed
 
 # ~~~~~~~ PROJECT SEED ~~~~~~~
 
-title = scraping_project
+project_seed
 
-5.times do |n|
-  puts "Creating Project using seed..."
-  project = Project.new(
-    title: title.first[:title],
-    description: title.first[:description],
-    user: User.where(is_producer: true).sample,
-    start_date: DateTime.parse("#{n+n+1}/12/2020 17:00"),
-    end_date: DateTime.parse("#{n+n+2}/12/2020 17:00"),
-    )
-  file = URI.open("https://source.unsplash.com/random?film,video")
-  project.photo.attach(io: file, filename: "#{title.first[:title]}.png", content_type: 'image/png')
-  project.save!
-  title.shift
-end
+# ~~~~~~~ JOB SEED ~~~~~~~
 
-puts "Project Seeding done!"
+job_seed
