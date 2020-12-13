@@ -18,8 +18,8 @@
           <h2><%= project.title %></h2>
           <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
 <!--               <%= link_to profile_path(project.user.profile) do %> -->
-              <% if project.user.photo.attached? %>
-                <%= cl_image_tag project.user.photo.key, width: 25, height: 25, crop: :fill, class: "avatar-card" %>
+              <% if project.user.profile.photo.attached? %>
+                <%= cl_image_tag project.user.profile.photo.key, width: 25, height: 25, crop: :fill, class: "avatar-card" %>
               <% else %>
                 <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar-card"%>
               <% end %>
