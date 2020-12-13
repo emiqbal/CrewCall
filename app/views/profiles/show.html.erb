@@ -1,5 +1,5 @@
-<% if @user.photo.attached? %>
-  <%= cl_image_tag @user.photo.key, gravity: :face, width: 180, height: 180, crop: :fill, class: "avatar-xlarge" %>
+<% if @profile.photo.attached? %>
+  <%= cl_image_tag @profile.photo.key, gravity: :face, width: 180, height: 180, crop: :fill, class: "avatar-xlarge" %>
 <% else %>
   <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", gravity: :face, width: 180, height: 180, crop: :fill %>
 <% end %>
