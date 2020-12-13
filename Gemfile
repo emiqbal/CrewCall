@@ -23,7 +23,8 @@ gem 'redis', '~> 4.0'
 gem 'cloudinary', '~> 1.16.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+# Faker for Seeding
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -37,7 +38,8 @@ gem 'pg_search', '~> 2.3.0'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.15.1'
 gem 'simple_form'
-group :development, :test do  gem 'pry-byebug'
+group :development, :test do
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
 

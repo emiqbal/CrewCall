@@ -1,8 +1,15 @@
   <h2><strong>PROFILE</strong></h2>
 
+<% if @profile.photo.attached? %>
+  <%= cl_image_tag @profile.photo.key, gravity: :face, width: 180, height: 180, crop: :fill, class: "avatar-xlarge" %>
+<% else %>
+  <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", gravity: :face, width: 180, height: 180, crop: :fill %>
+<% end %>
+
   <% if current_user.is_producer? %>
       <%= simple_form_for(@profile) do |f| %>
         <div class="form-inputs type-form-control">
+          <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
           <%= f.input :first_name, required: true, label: 'First Name' %>
           <%= f.input :last_name, required: true, label: 'Last Name' %>
           <%= f.input :company_name, required: true, label: "What's your company?" %>
