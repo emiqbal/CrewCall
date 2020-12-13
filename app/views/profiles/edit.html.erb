@@ -22,6 +22,7 @@
   <% else %>
       <%= simple_form_for(@profile) do |f| %>
         <div class="form-inputs type-form-control">
+          <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
           <%= f.input :first_name, required: true, label: 'First Name' %>
           <%= f.input :last_name, required: true, label: 'Last Name' %>
           <%= f.input :bio, required: true, label: 'Personal Biography' %>
