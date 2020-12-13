@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
   has_many :jobs
-  validates :title, presence: true, length: { maximum: 40 }
+  validates :title, presence: true, length: { maximum: 70 }
   validates :description, presence: true
 
   validates :start_date, :end_date, presence: true
