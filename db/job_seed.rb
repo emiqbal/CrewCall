@@ -1,6 +1,7 @@
 def job_seed
   projects = Project.all
   projects.each do |project|
+    puts "Creating a Job for each Project using seed..."
     job = Job.new(
       title: "Production Assistant Driver",
       description: "Drive the Production truck throughout the shoot, and run errands",
@@ -12,4 +13,5 @@ def job_seed
     job.project = project
     job.save!
   end
+  puts "Job Seeding done!"
 end

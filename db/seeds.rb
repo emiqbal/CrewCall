@@ -10,8 +10,10 @@ require "open-uri"
 require_relative 'project_seed'
 require_relative 'user_seed'
 require_relative 'profile_seed'
+require_relative 'job_seed'
 
 puts 'Clearing Database...'
+UserJob.destroy_all
 Job.destroy_all
 Project.destroy_all
 Profile.destroy_all # comment this out if you don't want to delete all your Profiles
