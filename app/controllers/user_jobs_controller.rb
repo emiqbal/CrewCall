@@ -1,4 +1,8 @@
 class UserJobsController < ApplicationController
+  def index
+
+  end
+
   def new
     @user = current_user
     @job = Job.find(params[:job_id])
