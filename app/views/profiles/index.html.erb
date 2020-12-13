@@ -13,8 +13,8 @@
   <% @profiles.each do |profile| %>
     <%= link_to profile_path(profile) do %>
       <div class="card-product">
-        <% if profile.user.photo.attached? %>
-          <%= cl_image_tag profile.user.photo.key, gravity: :auto, class: "project-image" %>
+        <% if profile.user.profile.photo.attached? %>
+          <%= cl_image_tag profile.user.profile.photo.key, gravity: :auto, class: "project-image" %>
         <% else %>
           <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar-card"%>
         <% end %>
