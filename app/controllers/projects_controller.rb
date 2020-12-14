@@ -17,9 +17,12 @@ class ProjectsController < ApplicationController
   end
 
   def new
-  # @producer = current_producer
+    if current_user.profile.nil?
+      redirect_to edit_profile_path
+    else
     @project = Project.new
     @jobs = Job.where(project: @project)
+    end
   end
 
   def create
