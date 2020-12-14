@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :user_jobs
   has_many :jobs, through: :user_jobs
   before_destroy :purge_photo
+  validates :username, format: {
+    with: /\A\S+\z/,
+    message: "Please choose a name that is only 1 word."
+  }
 
   private
 
