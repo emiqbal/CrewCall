@@ -1,6 +1,7 @@
 class UserJobsController < ApplicationController
   def index
     @user_jobs = UserJob.where(user: current_user)
+    @notifications = current_user.notifications.unread
   end
 
   def new
@@ -14,7 +15,7 @@ class UserJobsController < ApplicationController
     @user_job = UserJob.new(status: "Applied")
     @user_job.job = job
     @user_job.user = current_user
-    if @user_job.save
+    if @user_job.save!
       redirect_to project_path(job.project)
     else
       render :new
@@ -29,6 +30,8 @@ class UserJobsController < ApplicationController
     @user_job = UserJob.find_by(job_id: params[:job_id], id: params[:id])
     @user_job.update(user_job_params)
     if @user_job.save
+      notification = CommentNotification.with(comment: "Your application status for #{@user_job.job.project.title} is now #{@user_job.status}.")
+      notification.deliver(@user_job.user)
       redirect_to overview_path
     else
       render :edit
