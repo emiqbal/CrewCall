@@ -13,8 +13,8 @@
     <p>User Applications</p>
     <div class="container py-3">
         <% project.jobs.each do |job| %>
-      <button type="button" class="btn btn-info w-100" data-toggle='collapse' data-target="#demo">View Applicants</button>
-      <div id="demo" class ="collapse">
+      <button type="button" class="btn btn-info w-100" data-toggle='collapse' data-target="#demo-<%=job.id%>">View Applicants</button>
+      <div id="demo-<%= job.id%>" class ="collapse">
           <% job.user_jobs.each do |user_job| %>
             <div class="submissions-user">
               <%= link_to profile_path(user_job.user.profile) do %>
