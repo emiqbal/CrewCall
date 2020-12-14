@@ -8,7 +8,11 @@
     <% if current_user.is_producer? %>
 
       <%= link_to overview_path, class: "nav-link" do %>
-        <i class="fas fa-bell"></i>
+        <% if current_user.notifications.unread.empty? %>
+          <i class="fas fa-bell"></i>
+        <% else %>
+          <i class="fas fa-bell" style="color: red;"></i>
+        <% end %>
       <% end %>
 
       <%= link_to new_project_path, class: "nav-link" do %>
@@ -19,7 +23,11 @@
     <% else %>
 
       <%= link_to user_jobs_path, class: "nav-link" do %>
-        <i class="fas fa-bell"></i>
+        <% if current_user.notifications.unread.empty? %>
+          <i class="fas fa-bell"></i>
+        <% else %>
+          <i class="fas fa-bell" style="color: red;"></i>
+        <% end %>
       <% end %>
 
     <% end %>
