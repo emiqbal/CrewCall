@@ -43,6 +43,8 @@ class ProjectsController < ApplicationController
 
   def overview
     @projects = Project.where(user: current_user)
+    @notifications = current_user.notifications.unread
+
     # @user_jobs = UserJob.where()
   end
 
