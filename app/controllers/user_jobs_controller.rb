@@ -10,14 +10,18 @@ class UserJobsController < ApplicationController
   end
 
   def create
-    job = Job.find(params[:job_id])
-    @user_job = UserJob.new(status: "Applied")
-    @user_job.job = job
-    @user_job.user = current_user
-    if @user_job.save
-      redirect_to project_path(job.project)
+    if current_user.profile.nil?
+      redirect_to edit_profile_path
     else
-      render :new
+      job = Job.find(params[:job_id])
+      @user_job = UserJob.new(status: "Applied")
+      @user_job.job = job
+      @user_job.user = current_user
+      if @user_job.save
+        redirect_to project_path(job.project)
+      else
+        render :new
+      end
     end
   end
 
