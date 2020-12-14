@@ -11,11 +11,10 @@
     <h5><%= project.title %></h5>
     <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
     <p>User Applications</p>
-    <div class="container">
-      <h4>Applicants-Collapsible</h4>
-      <button type="button" class="btn btn-info" data-toggle='collapse' data-target="#demo">Collapse</button>
-      <div id="demo" class ="collapse">
+    <div class="container py-3">
         <% project.jobs.each do |job| %>
+      <button type="button" class="btn btn-info w-100" data-toggle='collapse' data-target="#demo">View Applicants</button>
+      <div id="demo" class ="collapse">
           <% job.user_jobs.each do |user_job| %>
             <div class="submissions-user">
               <%= link_to profile_path(user_job.user.profile) do %>
@@ -26,8 +25,8 @@
               <%= link_to "Update Status", edit_job_user_job_path(job, user_job), class: "btn btn-rounded" %></p>
             </div>
           <% end %>
-        <% end %>
       </div>
+        <% end %>
     </div>
   </div>
 <% end %>
