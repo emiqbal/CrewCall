@@ -7,6 +7,12 @@
   <% end %>
 <% end %>
 
+<% @notifications.each do |notification| %>
+  <div class="alert alert-warning" role="alert">
+    <p><%= render notification %></p>
+  </div>
+<% end %>
+
 <% @user_jobs.each do |user_job| %>
   <% if user_job.status == "Applied" %>
     <h3>Applied</h3>
