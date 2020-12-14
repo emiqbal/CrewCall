@@ -16,6 +16,8 @@ class UserJobsController < ApplicationController
     @user_job.job = job
     @user_job.user = current_user
     if @user_job.save!
+      notification = CommentNotification.with(comment: "Test Producer Notification.")
+      notification.deliver(@user_job.job.project.user)
       redirect_to project_path(job.project)
     else
       render :new
