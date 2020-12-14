@@ -1,5 +1,9 @@
 <h1>All My Jobs Application</h1>
 
+<%= month_calendar do |date| %>
+  <%= date %>
+<% end %>
+
 <% @user_jobs.each do |user_job| %>
   <% if user_job.status == "Applied" %>
     <h3>Applied</h3>

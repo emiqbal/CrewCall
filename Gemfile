@@ -35,6 +35,8 @@ gem 'devise'
 
 gem 'pg_search', '~> 2.3.0'
 
+gem "simple_calendar", "~> 2.0"
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.15.1'
 gem 'simple_form'
