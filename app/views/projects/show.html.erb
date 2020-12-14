@@ -10,8 +10,8 @@
   </div>
   <div class="usernameheader d-flex justify-content-between">
     <div>
-      <% if @project.user.photo.attached? %>
-        <%= cl_image_tag @project.user.photo.key, width: 25, height: 25, crop: :fill, class: "avatar"%>
+      <% if @project.user.profile.photo.attached? %>
+        <%= cl_image_tag @project.user.profile.photo.key, width: 25, height: 25, crop: :fill, class: "avatar"%>
       <% else %>
         <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar" %>
       <% end %>
@@ -24,7 +24,7 @@
     </div>
   </div>
   <!-- link mini-avatar and name to user show page -->
-  <h4 class= "mt-3"><strong>About the Project</strong></h4>
+  <h4 class= "mt-3">About the Project</h4>
   <%= @project.description %>
   <div class="projcontainer">
 
@@ -39,6 +39,7 @@
         <% @project.jobs.each do |job| %>
         <div class="jobcard">
           <div class="jobcard-info">
+            <p>Title: <%= job.title %></p>
             <p>Description: <%= job.description %></p>
           </div>
 

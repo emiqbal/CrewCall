@@ -1,0 +1,16 @@
+<h2><strong>EDIT STATUS</strong></h2>
+
+<h3>For <%= @user_job.job.title %></h3>
+<h3>Applicant <%= @user_job.user.profile.first_name %> </h3>
+<%= link_to profile_path(@user_job.user.profile) do %>
+  <p>See Profile: <%= @user_job.user.username %></p>
+<% end %>
+
+<%= simple_form_for(@user_job, url: job_user_job_path, method: :patch) do |f| %>
+  <div class="form-inputs type-form-control">
+    <%= f.input :status, label: 'Status', as: :radio_buttons, collection: %w(Applied Approved Rejected Confirmed), class: "form-check-label"%>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Update Status", class: "btn btn-flat" %>
+  </div>
+<% end %>

@@ -1,11 +1,12 @@
 class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @profiles = Profile.all
+    @profiles = Profile.where(user: User.where(is_producer: false))
   end
 
   def show
     @profile = Profile.find(params[:id])
+    @user = @profile.user
   end
 
   # def new
@@ -23,30 +24,36 @@ class ProfilesController < ApplicationController
   # end
 
   def edit
-    @profile = Profile.find_by(user: current_user)
-    @profile = Profile.new if @profile.nil?
+    if current_user.profile.nil?
+      @profile = Profile.new
+    else
+      @profile = Profile.find_by(user: current_user)
+    end
   end
 
   def update
-    @profile = Profile.find_by(user: current_user)
-    save_status = false
-    if @profile.nil?
+    if current_user.profile.nil?
       # profile doesn't exist and must be created
       @profile = Profile.new(profile_params)
       @profile.user = current_user
-      save_status = @profile.save
+      save_status
     else
+      @profile = Profile.find_by(user: current_user)
       # profile already exists, just update it
-      save_status = @profile.update(profile_params)
+      @profile.update(profile_params)
+      save_status
     end
-    if save_status
+  end
+
+  private
+
+  def save_status
+    if @profile.save
       redirect_to profile_path(@profile)
     else
       render :edit
     end
   end
-
-  private
 
   def profile_params
     params.require(:profile).permit(:bio, :department, :company_name, :last_name, :first_name, :photo)

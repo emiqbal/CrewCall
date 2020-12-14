@@ -1,5 +1,5 @@
-<% if current_user.photo.attached? %>
-  <%= cl_image_tag current_user.photo.key, gravity: :face, width: 180, height: 180, crop: :fill, class: "avatar-xlarge" %>
+<% if @profile.photo.attached? %>
+  <%= cl_image_tag @profile.photo.key, gravity: :face, width: 180, height: 180, crop: :fill, class: "avatar-xlarge" %>
 <% else %>
   <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", gravity: :face, width: 180, height: 180, crop: :fill %>
 <% end %>
@@ -23,8 +23,12 @@
 <!-- link mini-avatar and name to user show page -->
 <% if user_signed_in? %>
   <% if current_user.profile == @profile %>
-    <%= link_to "Edit",  edit_profile_path, class: "btn btn-flat my-2" %>
-    <%= link_to "Complete", projects_path, class: "btn btn-flat my-2" %>
+    <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-flat" %>
+    <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-flat" %>
+  <% elsif current_user.profile != @profile && current_user.is_producer %>
+    <%= link_to "Back to Profiles List", profiles_path, class: "btn btn-flat" %>
+  <% else %>
+    <%= link_to "Back", :back, class: "btn btn-flat" %>
   <% end %>
   <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-flat my-2" %>
 <% end %>
