@@ -3,6 +3,9 @@ class JobsController < ApplicationController
   def new
     @job = Job.new
     @project = Project.find(params[:project_id])
+    #create instance variables for min date and max date
+    @min_date = @project.start_date
+    @max_date = @project.end_date
     @user = current_user
   end
 
@@ -20,6 +23,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:description, :salary, :start_date, :end_date, :department)
+    params.require(:job).permit(:title, :description, :salary, :start_date, :end_date, :department)
   end
 end

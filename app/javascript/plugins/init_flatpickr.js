@@ -10,10 +10,22 @@ const datePicker = (resource) => {
   if (startDateInput && endDateInput) {
     endDateInput.disabled = true
 
-    flatpickr(startDateInput, {
-      minDate: "today",
+    if (resource == 'job') {
+      const formElement = document.getElementById('form_with_calendar');
+      const minJobDate = formElement.dataset.minDate;
+      const maxJobDate = formElement.dataset.maxDate;
+      flatpickr(startDateInput, {
+      minDate: minJobDate,
+      maxDate: maxJobDate,
       dateFormat: "Y-m-d",
-    });
+      });
+    } else {
+      flatpickr(startDateInput, {
+        minDate: "today",
+        dateFormat: "Y-m-d",
+      });
+    }
+
 
     console.log('im in the file')
 
@@ -21,10 +33,20 @@ const datePicker = (resource) => {
       if (startDateInput != "") {
         endDateInput.disabled = false
       }
-      flatpickr(endDateInput, {
-        minDate: e.target.value,
-        dateFormat: "Y-m-d"
+      if (resource == 'job') {
+        const formElement = document.getElementById('form_with_calendar');
+        const maxJobDate = formElement.dataset.maxDate;
+        flatpickr(endDateInput, {
+          minDate: e.target.value,
+          maxDate: maxJobDate,
+          dateFormat: "Y-m-d"
         });
+      } else {
+          flatpickr(endDateInput, {
+            minDate: e.target.value,
+            dateFormat: "Y-m-d"
+            });
+      }
       })
   }
 };
