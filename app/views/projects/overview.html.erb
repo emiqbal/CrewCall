@@ -1,7 +1,11 @@
 <h1>Overview of My Projects</h1>
+
 <div class="alert alert-warning" role="alert">
-<%= render @notifications %>
+  <% @notifications.each do |notification| %>
+    <p><%= render notification %></p>
+  <% end %>
 </div>
+
 <% @projects.each do |project| %>
   <div class="submissions">
     <h5><%= project.title %></h5>

@@ -1,6 +1,8 @@
 <h1>All My Jobs Application</h1>
 <div class="alert alert-warning" role="alert">
-<%= render @notifications %>
+  <% @notifications.each do |notification| %>
+    <p><%= render notification %></p>
+  <% end %>
 </div>
 <% @user_jobs.each do |user_job| %>
   <% if user_job.status == "Applied" %>
