@@ -1,0 +1,89 @@
+//
+// Provides a drop-in pointer for the default Trix stylesheet that will format the toolbar and
+// the trix-editor content (whether displayed or under editing). Feel free to incorporate this
+// inclusion directly in any other asset bundle and remove this file.
+//
+//= require trix/dist/trix
+@import "trix/dist/trix";
+
+// We need to override trix.css’s image gallery styles to accommodate the
+// <action-text-attachment> element we wrap around attachments. Otherwise,
+// images in galleries will be squished by the max-width: 33%; rule.
+.trix-content {
+  .attachment-gallery {
+    > action-text-attachment,
+    > .attachment {
+      flex: 1 0 33%;
+      padding: 0 0.5em;
+      max-width: 33%;
+    }
+
+    &.attachment-gallery--2,
+    &.attachment-gallery--4 {
+      > action-text-attachment,
+      > .attachment {
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+    }
+  }
+
+  action-text-attachment {
+    .attachment {
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+  }
+}
+
+trix-toolbar .trix-button-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+trix-editor {
+    border: 1px solid #E7E7E7;
+    border-radius: 36px;
+    margin: 0;
+    padding: 0.4em 2em;
+    min-height: 5em;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border-radius: 50px;
+    background-color: white;
+}
+
+trix-editor:focus {
+  border: 1px solid #03203A;
+  outline: none !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+trix-toolbar .trix-button-group {
+  display: flex;
+  margin-bottom: 10px;
+  border: none;
+}
+
+trix-toolbar .trix-button {
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 0px 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.trix-dialog__link-fields {
+  .trix-input {
+    border: 1px solid #E7E7E7;
+    border-radius: 36px;
+    margin: 0;
+    height: 3.5em;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border-radius: 50px;
+    background-color: white;
+  }
+}

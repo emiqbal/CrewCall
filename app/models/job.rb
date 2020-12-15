@@ -1,12 +1,14 @@
 class Job < ApplicationRecord
   belongs_to :project
-  has_many :user_jobs
+  has_many :user_jobs, dependent: :destroy
   has_many :users, through: :user_jobs
+  has_rich_text :rich_description
 
   validates :title, presence: true, length: { maximum: 40 }
-  validates :description, presence: true
+  validates :rich_description, presence: true
   validates :salary, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :department, presence: true, inclusion: { in: %w(Camera Lighting Casting Talent AD Production Transport Location)}
+
 
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date

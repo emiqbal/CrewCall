@@ -1,4 +1,4 @@
-<h1>Add a new Job to <%=  @project.title %></h1>
+<h1>Edit Job for <%=  @project.title %></h1>
   <%= simple_form_for([@project, @job]) do |f| %>
     <div id="form_with_calendar" data-min-date="<%= @min_date %>" data-max-date="<%= @max_date %>">
     <div class="form-inputs type-form-control">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.submit "Submit", class: "btn btn-flat" %>
+      <%= f.submit "Update", class: "btn btn-flat" %>
     </div>
   <% end %>
 
