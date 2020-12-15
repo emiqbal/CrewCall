@@ -37,6 +37,16 @@
         <p>Job Dates: <%= "#{user_job.job.start_date.strftime('%d %b %Y')} to #{user_job.job.end_date.strftime('%d %b %Y')}" %></p>
         <p>Job Status: <%= user_job.status %> </p>
       </div>
+    <% elsif user_job.status == "Confirmed" %>
+    <h3>Confirmed</h3>
+      <div class="submissions">
+        <%= link_to project_path(user_job.job.project) do%>
+        <h5><%= user_job.job.project.title %></h5>
+        <% end %>
+        <p>Job Title: <%= user_job.job.title %> </p>
+        <p>Job Dates: <%= "#{user_job.job.start_date.strftime('%d %b %Y')} to #{user_job.job.end_date.strftime('%d %b %Y')}" %></p>
+        <p>Job Status: <%= user_job.status %> </p>
+      </div>
     <% elsif user_job.status == "Rejected" %>
     <h3>Rejected</h3>
       <div class="submissions">
