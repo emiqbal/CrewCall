@@ -10,24 +10,10 @@
   <div class="submissions">
     <h5><%= project.title %></h5>
     <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
-    <p>User Applications</p>
-    <div class="container py-3">
-        <% project.jobs.each do |job| %>
-      <button type="button" class="btn btn-info w-100" data-toggle='collapse' data-target="#demo-<%=job.id%>">View Applicants</button>
-      <div id="demo-<%= job.id%>" class ="collapse">
-          <% job.user_jobs.each do |user_job| %>
-            <div class="submissions-user">
-              <%= link_to profile_path(user_job.user.profile) do %>
-                <p><%= user_job.user.profile.first_name %> <%= user_job.user.profile.last_name %> (@<%= user_job.user.username %>)</p>
-              <% end %>
-              <p>Job Title: <%= job.title %></p>
-              <p>Status: <%= user_job.status %>
-              <%= link_to "Update Status", edit_job_user_job_path(job, user_job), class: "btn btn-rounded" %></p>
-            </div>
-          <% end %>
-      </div>
+    <p>Jobs <%= link_to "See All Jobs Applicants", project_jobs_path(project), class: 'btn btn-flat' %></p>
+      <% project.jobs.each do |job| %>
+        <p><%= job.title %> (<%= job.user_jobs.count %>) </p>
         <% end %>
-    </div>
   </div>
 <% end %>
 
