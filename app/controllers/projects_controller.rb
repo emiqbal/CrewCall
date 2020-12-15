@@ -46,13 +46,12 @@ class ProjectsController < ApplicationController
   def overview
     @projects = Project.where(user: current_user)
     @notifications = current_user.notifications.unread
-
     # @user_jobs = UserJob.where()
   end
 
   private
 
   def project_params
-    params.require(:project).permit(:title, :description, :photo, :start_date, :end_date)
+    params.require(:project).permit(:title, :description, :photo, :start_date, :end_date, :rich_description)
   end
 end
