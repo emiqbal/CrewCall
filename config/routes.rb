@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   patch '/profiles/:id', to: 'profiles#update', as: 'update_profile'
   get '/overview', to: 'projects#overview'
   resources :profiles, only: [:index, :show]
-  resources :projects, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :projects, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :jobs, only: [:index, :new, :create]
   end
   resources :user_jobs, only: [:index]
