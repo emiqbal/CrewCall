@@ -2,7 +2,7 @@
   <%= simple_form_for([@project]) do |f| %>
     <div class="form-inputs type-form-control">
       <%= f.input :title %>
-      <%= f.input :description %>
+      <%= f.rich_text_area :rich_description %>
       <%= f.input :start_date, label: "Start Date", as: :string, type: :text %>
       <%= f.input :end_date, label: "End Date", as: :string, type: :text %>
       <%= f.input :photo, as: :file %>
