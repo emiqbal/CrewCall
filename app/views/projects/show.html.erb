@@ -44,6 +44,12 @@
             <p class="job-title"><%= job.title %></p>
             <p class="job-dept badge rounded-pill bg-light text-dark"><%= job.department %></p>
             <%= job.rich_description %>
+            <%= link_to "Edit Job", edit_project_job_path(@project, job), class: 'btn btn-flat' %>
+            <%= link_to "Delete Job",
+                job_path(job),
+                class: 'btn btn-danger',
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
           </div>
 
           <div class="jobcard-info-glance">
@@ -77,6 +83,12 @@
   <% end %>
   <% if current_user == @project.user %>
     <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
+    <%= link_to "Edit Project", edit_project_path(@project), class: 'btn btn-flat' %>
+    <%= link_to "Delete #{@project.title} Project",
+        project_path(@project),
+        class: 'btn btn-danger',
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
   <% end %>
 </div>
 

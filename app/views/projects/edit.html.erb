@@ -1,0 +1,14 @@
+<h1>Edit Project</h1>
+  <%= simple_form_for([@project]) do |f| %>
+    <div class="form-inputs type-form-control">
+      <%= f.input :title %>
+      <p>Description</p>
+      <%= f.rich_text_area :rich_description, required: true, label: "Description" %>
+      <%= f.input :start_date, label: "Start Date", as: :string, type: :text %>
+      <%= f.input :end_date, label: "End Date", as: :string, type: :text %>
+      <%= f.input :photo, as: :file %>
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Update", class: "btn btn-flat" %>
+    </div>
+  <% end %>

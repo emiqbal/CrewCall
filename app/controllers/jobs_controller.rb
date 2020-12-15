@@ -25,6 +25,28 @@ class JobsController < ApplicationController
     end
   end
 
+  def edit
+    @job = Job.find(params[:id])
+    @project = Project.find(params[:project_id])
+  end
+
+  def update
+    @job = Job.find(params[:id])
+    @job.update(job_params)
+    if @job.save
+      redirect_to project_path(@job.project)
+    else
+      @project = @job.project
+      render :edit
+    end
+  end
+
+  def destroy
+    @job = Job.find(params[:id])
+    @job.destroy
+    redirect_to project_path(@job.project)
+  end
+
   private
 
   def job_params
