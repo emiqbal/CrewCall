@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   before_destroy :purge_photo
   has_one_attached :photo
+  has_rich_text :rich_description
   belongs_to :user
   has_many :jobs
   validates :title, presence: true, length: { maximum: 70 }

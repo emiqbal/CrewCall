@@ -36,3 +36,6 @@ document.addEventListener('turbolinks:load', () => {
   datePicker('job');
   datePicker('project');
 });
+
+require("trix")
+require("@rails/actiontext")
