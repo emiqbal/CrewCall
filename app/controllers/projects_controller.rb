@@ -63,6 +63,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to overview_path
+  end
+
   def overview
     @projects = Project.where(user: current_user)
     @notifications = current_user.notifications.unread

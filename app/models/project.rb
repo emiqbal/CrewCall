@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   before_destroy :purge_photo
-  before_create :assign_color
+  # before_create :assign_color
   has_one_attached :photo
   has_rich_text :rich_description
   belongs_to :user

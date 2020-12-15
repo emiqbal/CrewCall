@@ -77,7 +77,12 @@
   <% end %>
   <% if current_user == @project.user %>
     <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
-    <%= link_to "Edit Project", edit_project_path(@project), class: 'btn btn-flat' %></p>
+    <%= link_to "Edit Project", edit_project_path(@project), class: 'btn btn-flat' %>
+    <%= link_to "Delete #{@project.title} Project",
+        project_path(@project),
+        class: 'btn btn-danger',
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
   <% end %>
 </div>
 
