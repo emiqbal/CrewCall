@@ -3,17 +3,17 @@
 <% @jobs.each do |job| %>
   <div class="submissions">
     <h5>Job Title: <%= job.title %></h5>
-      <button type="button" class="btn btn-info w-100" data-toggle='collapse' data-target="#demo-<%=job.id%>">View Applicants (<%= job.user_jobs.count %>)</button>
-      <div id="demo-<%= job.id%>" class ="collapse">
-    <% job.user_jobs.each do |user_job| %>
-      <div class="submissions-user">
-        <%= link_to profile_path(user_job.user.profile) do %>
-          <p><%= user_job.user.profile.first_name %> <%= user_job.user.profile.last_name %> (@<%= user_job.user.username %>)</p>
-        <% end %>x
-        <p>Status: <%= user_job.status %>
-        <%= link_to "Update Status", edit_job_user_job_path(job, user_job), class: "btn btn-flat" %></p>
-      </div>
-    <% end %>
-  </div>
+    <button type="button" class="btn btn-info w-100" data-toggle='collapse' data-target="#demo-<%=job.id%>">View Applicants (<%= job.user_jobs.count %>)</button>
+    <div id="demo-<%= job.id%>" class ="collapse">
+      <% job.user_jobs.each do |user_job| %>
+        <div class="submissions-user">
+          <%= link_to profile_path(user_job.user.profile) do %>
+            <p><%= user_job.user.profile.first_name %> <%= user_job.user.profile.last_name %> (@<%= user_job.user.username %>)</p>
+          <% end %>x
+          <p>Status: <%= user_job.status %>
+          <%= link_to "Update Status", edit_job_user_job_path(job, user_job), class: "btn btn-flat" %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>
