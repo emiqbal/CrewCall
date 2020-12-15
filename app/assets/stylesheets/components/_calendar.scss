@@ -1,7 +1,25 @@
 .simple-calendar {
   width: auto;
   .has-events {
+    // background-color: red;
+  }
+  .project-a {
+    background-color: blue;
+  }
+  .project-b {
+    background-color: green;
+  }
+  .project-confirmed{
+    background-color: green;
+  }
+  .project-rejected {
     background-color: red;
+  }
+  .project-approved {
+    background-color: blue;
+  }
+  .project-applied{
+    background-color: yellow;
   }
 }
 .calendar-heading {
