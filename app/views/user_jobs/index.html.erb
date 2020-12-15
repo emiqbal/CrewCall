@@ -38,6 +38,7 @@
         <p>Job Title: <%= user_job.job.title %> </p>
         <p>Job Dates: <%= "#{user_job.job.start_date.strftime('%d %b %Y')} to #{user_job.job.end_date.strftime('%d %b %Y')}" %></p>
         <p>Job Status: <%= user_job.status %> </p>
+        <%= link_to "Go to Project Acceptance Page", job_user_job_path(user_job.job, user_job), class: 'btn btn-flat'  %>
       </div>
       <% end %>
 

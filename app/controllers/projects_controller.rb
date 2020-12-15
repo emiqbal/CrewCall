@@ -3,7 +3,6 @@ require 'open-uri'
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    # raise
     if params[:query]
       @projects = Project.search_by_project(params[:query]).order(updated_at: :desc)
     else
@@ -32,7 +31,6 @@ class ProjectsController < ApplicationController
     @project.user = current_user
     if @project.save
       if project_params[:photo].nil?
-        # query = @project.name.split(' ').join(',')
         url = "https://source.unsplash.com/720x480/?filmmaking"
         image = URI.open(url)
         @project.photo.attach(io: image, filename: "project_#{@project.id}.jpeg", content_type: 'image/jpeg')
@@ -43,10 +41,34 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    @project.update(project_params)
+    if @project.save
+      if project_params[:photo].nil?
+        url = "https://source.unsplash.com/720x480/?filmmaking"
+        image = URI.open(url)
+        @project.photo.attach(io: image, filename: "project_#{@project.id}.jpeg", content_type: 'image/jpeg')
+        end
+      redirect_to project_path(@project)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to overview_path
+  end
+
   def overview
     @projects = Project.where(user: current_user)
     @notifications = current_user.notifications.unread
-    # @user_jobs = UserJob.where()
   end
 
   private
