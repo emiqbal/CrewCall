@@ -5,7 +5,7 @@ class Job < ApplicationRecord
   has_rich_text :rich_description
 
   validates :title, presence: true, length: { maximum: 40 }
-  validates :description, presence: true, length: { maximum: 100 }
+  validates :rich_description, presence: true
   validates :salary, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :department, presence: true, inclusion: { in: %w(Camera Lighting Casting Talent AD Production Transport Location)}
 

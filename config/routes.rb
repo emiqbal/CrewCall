@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :jobs, only: [:index, :new, :create, :edit, :update]
   end
   resources :user_jobs, only: [:index]
-  resources :jobs, only: [:show] do
+  resources :jobs, only: [:show, :destroy] do
     resources :user_jobs, only: [:new, :create, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -45,6 +45,11 @@
             <p class="job-dept badge rounded-pill bg-light text-dark"><%= job.department %></p>
             <%= job.rich_description %>
             <%= link_to "Edit Job", edit_project_job_path(@project, job), class: 'btn btn-flat' %>
+            <%= link_to "Delete Job",
+                job_path(job),
+                class: 'btn btn-danger',
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
           </div>
 
           <div class="jobcard-info-glance">
