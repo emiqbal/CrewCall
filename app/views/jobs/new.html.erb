@@ -3,7 +3,8 @@
     <div id="form_with_calendar" data-min-date="<%= @min_date %>" data-max-date="<%= @max_date %>">
     <div class="form-inputs type-form-control">
       <%= f.input :title %>
-      <%= f.input :description %>
+      <p>Description</p>
+      <%= f.rich_text_area :rich_description, required: true, label: "Description" %>
       <%= f.input :department, collection: %w(Camera Lighting Casting Talent AD Production Transport Location) %>
       <%= f.input :salary, label: "Salary per Day in $" %>
       <%= f.input :start_date, label: "Start Date", as: :string, type: :text %>
