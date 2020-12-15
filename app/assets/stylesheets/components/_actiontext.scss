@@ -4,6 +4,7 @@
 // inclusion directly in any other asset bundle and remove this file.
 //
 //= require trix/dist/trix
+@import "trix/dist/trix";
 
 // We need to override trix.css’s image gallery styles to accommodate the
 // <action-text-attachment> element we wrap around attachments. Otherwise,
@@ -33,4 +34,23 @@
       max-width: 100% !important;
     }
   }
+}
+
+trix-toolbar .trix-button-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 1.5rem;
+}
+
+trix-editor {
+    border: 1px solid #E7E7E7;
+    border-radius: 36px;
+    margin: 0;
+    padding: 0.4em 2em;
+    min-height: 5em;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border-radius: 50px;
+    background-color: white;
 }
