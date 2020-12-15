@@ -1,6 +1,7 @@
 class UserJobsController < ApplicationController
   def index
     @user_jobs = UserJob.where(user: current_user)
+    @calendar_events = @user_jobs.where("NOT status = 'Rejected'")
     @notifications = current_user.notifications.unread
   end
 

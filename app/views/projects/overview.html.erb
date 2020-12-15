@@ -1,11 +1,17 @@
 <h1>Overview of My Projects</h1>
 
-<%= month_calendar(events: @projects) do |date, projects| %>
-  <%= date.day %>
 
-  <% projects.each do |project| %>
-  <% end %>
+
+<%= ProducersCalendar.new(self, events: @projects).render do |date, projects| %>
+  <%= date.day %>
 <% end %>
+
+<%#(events: @projects) do |date, projects| %>
+  <%#= date.day %>
+
+  <%# projects.each do |project| %>
+  <%# end %>
+<%# end %>
 
   <% @notifications.each do |notification| %>
 <div class="alert alert-warning" role="alert">
