@@ -41,8 +41,9 @@
         <% @project.jobs.each do |job| %>
         <div class="jobcard">
           <div class="jobcard-info">
-            <p>Title: <%= job.title %></p>
-            <p>Description: <%= job.description %></p>
+            <p class="job-title"><%= job.title %></p>
+            <p class="job-dept badge rounded-pill bg-light text-dark"><%= job.department %></p>
+            <%= job.rich_description %>
           </div>
 
           <div class="jobcard-info-glance">
