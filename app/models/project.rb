@@ -4,7 +4,7 @@ class Project < ApplicationRecord
   has_one_attached :photo
   has_rich_text :rich_description
   belongs_to :user
-  has_many :jobs
+  has_many :jobs, dependent: :destroy
   validates :title, presence: true, length: { maximum: 70 }
 
   validates :start_date, :end_date, presence: true

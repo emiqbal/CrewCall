@@ -1,6 +1,6 @@
 class Job < ApplicationRecord
   belongs_to :project
-  has_many :user_jobs
+  has_many :user_jobs, dependent: :destroy
   has_many :users, through: :user_jobs
   has_rich_text :rich_description
 
