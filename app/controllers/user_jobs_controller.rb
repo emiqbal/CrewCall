@@ -12,7 +12,10 @@ class UserJobsController < ApplicationController
 
   def create
     if current_user.profile.nil?
+      notification = CommentNotification.with(comment: "Please complete your profile first.")
+      notification.deliver(current_user)
       redirect_to edit_profile_path
+
     else
       job = Job.find(params[:job_id])
       @user_job = UserJob.new(status: "Applied")
