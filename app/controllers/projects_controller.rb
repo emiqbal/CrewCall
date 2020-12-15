@@ -18,6 +18,8 @@ class ProjectsController < ApplicationController
 
   def new
     if current_user.profile.nil?
+      notification = CommentNotification.with(comment: "Please complete your profile first.")
+      notification.deliver(current_user)
       redirect_to edit_profile_path
     else
     @project = Project.new
@@ -43,6 +45,7 @@ class ProjectsController < ApplicationController
 
   def overview
     @projects = Project.where(user: current_user)
+    @notifications = current_user.notifications.unread
     # @user_jobs = UserJob.where()
   end
 

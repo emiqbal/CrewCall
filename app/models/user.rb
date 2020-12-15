@@ -8,7 +8,12 @@ class User < ApplicationRecord
   has_one :profile
   has_many :user_jobs
   has_many :jobs, through: :user_jobs
+  has_many :notifications, as: :recipient
   before_destroy :purge_photo
+  validates :username, uniqueness: true, format: {
+    with: /\A\S+\z/,
+    message: "must be only one word."
+  }
 
   private
 

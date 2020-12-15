@@ -10,12 +10,14 @@
   </div>
   <div class="usernameheader d-flex justify-content-between">
     <div>
+      <%= link_to profile_path(@project.user.profile) do %>
       <% if @project.user.profile.photo.attached? %>
         <%= cl_image_tag @project.user.profile.photo.key, width: 25, height: 25, crop: :fill, class: "avatar"%>
       <% else %>
         <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar" %>
       <% end %>
       <%= @project.user.username %>
+      <% end %>
     </div>
     <div>
       <%= link_to root_path do %>
