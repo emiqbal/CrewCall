@@ -6,7 +6,7 @@
 
 <h2><strong><%= "#{@profile.first_name} #{@profile.last_name}" %></strong></h2>
 
-  <% if @profile.department? %>
+  <% if @profile.department? && @profile.user.is_producer == false %>
     <p><%= @profile.department%> Department</p>
   <% end %>
 
@@ -20,11 +20,13 @@
     <p><%= @profile.company_name %></p>
   <% end %>
 
-  <h5 class= "mt-3"><strong>Showreel Video</strong></h5>
+  <% if @profile.videolink? %>
+    <h5 class= "mt-3"><strong>Showreel Video</strong></h5>
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="<%= video_embed(@profile.videolink) %>" allowfullscreen></iframe>
+    </div>
+  <% end %>
 
-  <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="<%= video_embed('https://youtu.be/ioKKjkUAdNQ') %>" allowfullscreen></iframe>
-</div>
 
 <!-- link mini-avatar and name to user show page -->
 <% if user_signed_in? %>
