@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/overview', to: 'projects#overview'
   resources :profiles, only: [:index, :show]
   resources :projects, only: [:index, :show, :new, :create] do
-    resources :jobs, only: [:new, :create]
+    resources :jobs, only: [:index, :new, :create]
   end
   resources :user_jobs, only: [:index]
   resources :jobs, only: [:show] do
