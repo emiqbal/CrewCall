@@ -10,8 +10,10 @@
       <%= link_to overview_path, class: "nav-link" do %>
         <% if current_user.notifications.unread.empty? %>
           <i class="fas fa-bell"></i>
+
         <% else %>
-          <i class="fas fa-bell" style="color: red;"></i>
+          <i class="fas fa-bell"></i>
+          <i class="fas fa-circle navbar-badge"></i>
         <% end %>
       <% end %>
 
@@ -26,7 +28,8 @@
         <% if current_user.notifications.unread.empty? %>
           <i class="fas fa-bell"></i>
         <% else %>
-          <i class="fas fa-bell" style="color: red;"></i>
+          <i class="fas fa-bell"></i>
+          <i class="fas fa-circle navbar-badge"></i>
         <% end %>
       <% end %>
 
