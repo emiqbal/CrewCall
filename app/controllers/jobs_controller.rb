@@ -1,5 +1,9 @@
 class JobsController < ApplicationController
 
+  def index
+    @jobs = Job.where(project: params[:project_id])
+  end
+
   def new
     @job = Job.new
     @project = Project.find(params[:project_id])
