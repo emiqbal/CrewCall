@@ -21,7 +21,7 @@
           <%= f.input :first_name, required: true, label: 'First Name' %>
           <%= f.input :last_name, required: true, label: 'Last Name' %>
           <%= f.input :company_name, required: true, label: "What's your company?" %>
-          <%= f.input :bio, required: true, label: 'Personal Biography' %>
+          <%= f.rich_text_area :rich_bio, required: true, label: 'Personal Biography' %>
           <%= f.input :videolink, label: 'Showreel Video', hint: "YouTube or Vimeo Link only" %>
         </div>
         <div class="form-actions">
@@ -34,7 +34,7 @@
           <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
           <%= f.input :first_name, required: true, label: 'First Name' %>
           <%= f.input :last_name, required: true, label: 'Last Name' %>
-          <%= f.input :bio, required: true, label: 'Personal Biography' %>
+          <%= f.rich_text_area :rich_bio, required: true, label: 'Personal Biography' %>
           <%= f.input :department, required: true, collection: %w(Camera Lighting Casting Talent AD Production Transport Location) %>
           <%= f.input :videolink, label: 'Showreel Video', hint: "YouTube or Vimeo Link only" %>
         </div>
