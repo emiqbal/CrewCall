@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   before_destroy :purge_photo
+  before_create :assign_color
   has_one_attached :photo
   has_rich_text :rich_description
   belongs_to :user
@@ -16,6 +17,14 @@ class Project < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  def start_time
+    self.start_date
+  end
+
+  def end_time
+    self.end_date
+  end
+
   private
 
   def end_date_after_start_date
@@ -28,5 +37,13 @@ class Project < ApplicationRecord
 
   def purge_photo
     photo.purge
+  end
+
+  def assign_color
+    if user.projects.empty?
+      self.color = 1
+    else
+      self.color = (self.user.projects.order(:created_at).last.color % 4) + 1
+    end
   end
 end
