@@ -16,9 +16,9 @@
   </div>
 <% end %>
 
-<% @user_jobs.each do |user_job| %>
-  <% if user_job.status == "Applied" %>
+
     <h3>Applied</h3>
+     <% @applied.each do | user_job | %>
       <div class="submissions">
         <%= link_to project_path(user_job.job.project) do%>
         <h5><%= user_job.job.project.title %></h5>
@@ -27,8 +27,10 @@
         <p>Job Dates: <%= "#{user_job.job.start_date.strftime('%d %b %Y')} to #{user_job.job.end_date.strftime('%d %b %Y')}" %></p>
         <p>Job Status: <%= user_job.status %> </p>
       </div>
-  <% elsif user_job.status == "Approved" %>
+    <% end %>
+
     <h3>Approved</h3>
+    <% @approved.each do | user_job | %>
       <div class="submissions">
         <%= link_to project_path(user_job.job.project) do%>
         <h5><%= user_job.job.project.title %></h5>
@@ -37,8 +39,10 @@
         <p>Job Dates: <%= "#{user_job.job.start_date.strftime('%d %b %Y')} to #{user_job.job.end_date.strftime('%d %b %Y')}" %></p>
         <p>Job Status: <%= user_job.status %> </p>
       </div>
-    <% elsif user_job.status == "Confirmed" %>
+      <% end %>
+
     <h3>Confirmed</h3>
+     <% @confirmed.each do | user_job | %>
       <div class="submissions">
         <%= link_to project_path(user_job.job.project) do%>
         <h5><%= user_job.job.project.title %></h5>
@@ -47,8 +51,10 @@
         <p>Job Dates: <%= "#{user_job.job.start_date.strftime('%d %b %Y')} to #{user_job.job.end_date.strftime('%d %b %Y')}" %></p>
         <p>Job Status: <%= user_job.status %> </p>
       </div>
-    <% elsif user_job.status == "Rejected" %>
+      <% end %>
+
     <h3>Rejected</h3>
+     <% @rejected.each do | user_job | %>
       <div class="submissions">
         <%= link_to project_path(user_job.job.project) do%>
         <h5><%= user_job.job.project.title %></h5>
@@ -57,8 +63,7 @@
         <p>Job Dates: <%= "#{user_job.job.start_date.strftime('%d %b %Y')} to #{user_job.job.end_date.strftime('%d %b %Y')}" %></p>
         <p>Job Status: <%= user_job.status %> </p>
       </div>
-  <% end %>
-<% end %>
+      <% end %>
 
 <%= link_to "Back", :back, class: 'btn btn-flat'  %>
 <%= link_to "Go to All Projects", root_path, class: 'btn btn-flat'  %>

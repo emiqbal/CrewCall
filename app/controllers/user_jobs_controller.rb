@@ -1,7 +1,11 @@
 class UserJobsController < ApplicationController
   def index
     @user_jobs = UserJob.where(user: current_user)
-    @calendar_events = @user_jobs.where("NOT status = 'Rejected'")
+    @approved = @user_jobs.where(status: 'Approved')
+    @applied = @user_jobs.where(status: 'Applied')
+    @confirmed = @user_jobs.where(status: 'Confirmed')
+    @rejected = @user_jobs.where(status: 'Rejected')
+    @calendar_events = @user_jobs.where.not(status: 'Rejected')
     @notifications = current_user.notifications.unread
   end
 
