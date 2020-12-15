@@ -1,5 +1,18 @@
 <h1>Overview of My Projects</h1>
 
+
+
+<%= ProducersCalendar.new(self, events: @projects).render do |date, projects| %>
+  <%= date.day %>
+<% end %>
+
+<%#(events: @projects) do |date, projects| %>
+  <%#= date.day %>
+
+  <%# projects.each do |project| %>
+  <%# end %>
+<%# end %>
+
   <% @notifications.each do |notification| %>
 <div class="alert alert-warning" role="alert">
     <p><%= render notification %></p>
@@ -10,7 +23,13 @@
   <div class="submissions">
     <h5><%= project.title %></h5>
     <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
-    <p>Jobs <%= link_to "See All Jobs Applicants", project_jobs_path(project), class: 'btn btn-flat' %></p>
+    <p><%= link_to "See All Jobs Applicants", project_jobs_path(project), class: 'btn btn-flat' %></p>
+    <p><%= link_to "Edit Project", edit_project_path(project), class: 'btn btn-flat' %></p>
+    <p><%= link_to "Delete #{project.title} Project",
+            project_path(project),
+            class: 'btn btn-danger',
+            method: :delete,
+            data: { confirm: "Are you sure?" } %></p>
       <% project.jobs.each do |job| %>
         <p><%= job.title %> (<%= job.user_jobs.count %>) </p>
         <% end %>

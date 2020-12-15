@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :photo
-  has_one :profile
-  has_many :user_jobs
+  has_one :profile, dependent: :destroy
+  has_many :user_jobs, dependent: :destroy
   has_many :jobs, through: :user_jobs
+  has_many :projects, dependent: :destroy
   has_many :notifications, as: :recipient
   before_destroy :purge_photo
   validates :username, uniqueness: true, format: {
