@@ -12,5 +12,19 @@
   &:hover {
     color: white;
   }
+  i .main-icon {
+    position: absolute;
+  }
+  i.navbar-badge {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #FD494C;
+    bottom: 7px;
+    right: 11px;
+    font-size: .75rem;
+  }
+
 }
 

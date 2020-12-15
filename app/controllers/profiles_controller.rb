@@ -25,6 +25,7 @@ class ProfilesController < ApplicationController
 
   def edit
     if current_user.profile.nil?
+      @notifications = current_user.notifications.unread
       @profile = Profile.new
     else
       @profile = Profile.find_by(user: current_user)
