@@ -40,7 +40,7 @@ trix-toolbar .trix-button-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 trix-editor {
@@ -59,4 +59,12 @@ trix-editor:focus {
   border: 1px solid #03203A;
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+trix-toolbar .trix-button:not(:disabled) {
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 24px;
+    margin: 0px 4px;
+    /* border-color: #03203A; */
 }
