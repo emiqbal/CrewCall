@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   patch '/profiles/:id', to: 'profiles#update', as: 'update_profile'
   get '/overview', to: 'projects#overview'
   resources :profiles, only: [:index, :show]
-  resources :projects, only: [:index, :show, :new, :create] do
-    resources :jobs, only: [:index, :new, :create]
+  resources :projects, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :jobs, only: [:index, :new, :create, :edit, :update]
   end
   resources :user_jobs, only: [:index]
-  resources :jobs, only: [:show] do
-    resources :user_jobs, only: [:new, :create, :edit, :update]
+  resources :jobs, only: [:show, :destroy] do
+    resources :user_jobs, only: [:show, :new, :create, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
