@@ -16,6 +16,14 @@ class Project < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  def start_time
+    self.start_date
+  end
+
+  def end_time
+    self.end_date
+  end
+
   private
 
   def end_date_after_start_date
