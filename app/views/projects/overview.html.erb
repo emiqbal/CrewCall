@@ -24,6 +24,7 @@
     <h5><%= project.title %></h5>
     <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
     <p>Jobs <%= link_to "See All Jobs Applicants", project_jobs_path(project), class: 'btn btn-flat' %></p>
+    <p>Jobs <%= link_to "Edit Project", edit_project_path(project), class: 'btn btn-flat' %></p>
       <% project.jobs.each do |job| %>
         <p><%= job.title %> (<%= job.user_jobs.count %>) </p>
         <% end %>

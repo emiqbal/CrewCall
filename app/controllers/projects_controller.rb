@@ -43,6 +43,26 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    @project.update(project_params)
+    if @project.save
+      if project_params[:photo].nil?
+        # query = @project.name.split(' ').join(',')
+        url = "https://source.unsplash.com/720x480/?filmmaking"
+        image = URI.open(url)
+        @project.photo.attach(io: image, filename: "project_#{@project.id}.jpeg", content_type: 'image/jpeg')
+        end
+      redirect_to project_path(@project)
+    else
+      render :edit
+    end
+  end
+
   def overview
     @projects = Project.where(user: current_user)
     @notifications = current_user.notifications.unread
