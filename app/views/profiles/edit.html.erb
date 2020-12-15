@@ -1,5 +1,11 @@
   <h2><strong>PROFILE</strong></h2>
 
+  <% @notifications.each do |notification| %>
+<div class="alert alert-warning" role="alert">
+    <p><%= render notification %></p>
+</div>
+  <% end %>
+
 <% if @profile.photo.attached? %>
   <%= cl_image_tag @profile.photo.key, gravity: :face, width: 180, height: 180, crop: :fill, class: "avatar-xlarge" %>
 <% else %>
