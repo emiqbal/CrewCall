@@ -20,6 +20,7 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to project_path(@job.project)
     else
+      @project = @job.project
       render :new
     end
   end

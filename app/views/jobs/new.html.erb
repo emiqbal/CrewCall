@@ -5,10 +5,10 @@
       <%= f.input :title %>
       <p>Description</p>
       <%= f.rich_text_area :rich_description, required: true, label: "Description" %>
-      <%= f.input :department, collection: %w(Camera Lighting Casting Talent AD Production Transport Location) %>
-      <%= f.input :salary, label: "Salary per Day in $" %>
-      <%= f.input :start_date, label: "Start Date", as: :string, type: :text %>
-      <%= f.input :end_date, label: "End Date", as: :string, type: :text %>
+      <%= f.input :department, required: true, collection: %w(Camera Lighting Casting Talent AD Production Transport Location) %>
+      <%= f.input :salary, required: true, label: "Salary per Day in $" %>
+      <%= f.input :start_date, required: true, label: "Start Date", as: :string, type: :text %>
+      <%= f.input :end_date, required: true, label: "End Date", as: :string, type: :text %>
     </div>
 
     <div class="form-actions">
