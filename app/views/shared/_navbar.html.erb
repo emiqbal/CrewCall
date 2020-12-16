@@ -15,7 +15,7 @@
           <i class="fas fa-bell"></i>
           <i class="fas fa-circle navbar-badge d-none"></i>
         <% else %>
-          <i class="fas fa-bell"></i>
+          <i class="fas fa-clipboard-list"></i>
           <i class="fas fa-circle navbar-badge"></i>
         <% end %>
       <% end %>
@@ -32,15 +32,11 @@
           <i class="fas fa-bell"></i>
           <i class="fas fa-circle navbar-badge d-none"></i>
         <% else %>
-          <i class="fas fa-bell"></i>
+          <i class="fas fa-clipboard-list"></i>
           <i class="fas fa-circle navbar-badge"></i>
         <% end %>
       <% end %>
 
-    <% end %>
-
-    <%= link_to root_path, class: "nav-link" do %>
-      <i class="fas fa-envelope"></i>
     <% end %>
 
     <% if current_user.profile.nil? %>
