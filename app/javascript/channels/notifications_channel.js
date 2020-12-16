@@ -8,7 +8,7 @@ const initNotificationsCable = () => {
   
     const recipient = document.getElementById('user-id').dataset.userId;
     const notificationBadge = document.querySelector('.navbar-badge');
-    const navBar = document.querySelector('.navbar.navba-lewagon');
+    const navBar = document.querySelector('.navbar.navbar-lewagon');
 
     if (recipient !== "") {
       console.log("notifschannel is connected");
