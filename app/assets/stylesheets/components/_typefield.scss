@@ -1,5 +1,10 @@
 .type-form-control {
   position: relative;
+  .form-check {
+    .form-check-label {
+      color: black;
+    }
+  }
 }
 
 .type-form-control .btn {
