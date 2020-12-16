@@ -39,8 +39,13 @@ class UserJobsController < ApplicationController
       # RequestItemsService.EgName = EgName
       redirect_to '/ds/mustAuthenticate'
     end
-    # if authenticated, render a view that allows them to go to the signature page
-    # else, render a view that prompts them to sign in first
+
+    if params[:signature] == 'success'
+      @user_job.status = "Confirmed"
+      binding.pry
+      @user_job.save
+      redirect_to user_jobs_path
+    end
   end
 
   def new
