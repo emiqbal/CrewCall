@@ -20,9 +20,11 @@
   View source file <a target="_blank" href="<%= @source_url %>"><%= @source_file %></a> on GitHub.
 </p>
 
-<form class="eg" id="data_form" action="signatures/create" method="post" data-busy="form">
+<form class="eg" id="data_form" action="/signatures" method="post" data-busy="form">
+
   <div class="form-group">
     <label for="signerEmail">Signer Email</label>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="email" class="form-control" id="signerEmail" name="signerEmail"
            aria-describedby="emailHelp" placeholder="pat@example.com" required
            value="<%= @config.signer_email %>">
