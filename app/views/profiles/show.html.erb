@@ -33,10 +33,10 @@
   <% if current_user.profile == @profile %>
     <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-flat" %>
     <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-flat" %>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-flat my-2" %>
   <% elsif current_user.profile != @profile && current_user.is_producer %>
     <%= link_to "Back to Profiles List", profiles_path, class: "btn btn-flat" %>
   <% else %>
     <%= link_to "Back", :back, class: "btn btn-flat" %>
   <% end %>
-  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-flat my-2" %>
 <% end %>
