@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @profiles = Profile.where(user: User.where(is_producer: false))
+    @profiles = Profile.all
   end
 
   def show
