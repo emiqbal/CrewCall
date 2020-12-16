@@ -40,12 +40,14 @@
             <p class="job-dept badge rounded-pill bg-light text-dark"><%= job.department %></p>
             <%= job.rich_description %>
             <% if current_user == @project.user %>
-              <%= link_to "Edit Job", edit_project_job_path(@project, job), class: 'btn btn-flat' %>
-              <%= link_to "Delete Job",
-                  job_path(job),
-                  class: 'btn btn-danger',
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
+              <div class="btn-abc">
+                <%= link_to "Edit Job", edit_project_job_path(@project, job), class: 'btn btn-primary' %>
+                <%= link_to "Delete Job",
+                    job_path(job),
+                    class: 'btn btn-danger',
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+              </div>
             <% end %>
           </div>
 
@@ -58,7 +60,7 @@
             <% user_job = UserJob.find_by(job: job.id, user: current_user) %>
             <% if user_job.nil? %>
               <% if job.project.user != current_user %>
-                <div><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat'  %></div>
+                <div class="btn-abc"><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-primary'  %></div>
               <% end %>
             <% else %>
               <% if user_job.status == "Applied" && user_job.user == current_user %>
