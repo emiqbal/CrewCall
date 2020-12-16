@@ -1,16 +1,13 @@
   <h2><strong>PROFILE</strong></h2>
 
-<!-- not sure why this code is here
-leaving it here as a comment
-but notifications have been moved to navbar
-<% # if current_user.profile.nil? %>
-  <% # @notifications.each do |notification| %>
+
+<% if current_user.profile.nil? %>
+  <% @notifications.each do |notification| %>
     <div class="alert alert-warning" role="alert">
-      <p><% #= render notification %></p>
+      <p><% render notification %></p>
     </div>
-  <% # end %>
-<% # end %>
--->
+  <% end %>
+<% end %>
 
 <% if @profile.photo.attached? %>
   <%= cl_image_tag @profile.photo.key, gravity: :face, width: 180, height: 180, crop: :fill, class: "avatar-xlarge" %>
