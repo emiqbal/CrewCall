@@ -1,28 +1,8 @@
 <h1>Job Acceptance Page for <%= @user_job.job.title %> for <%= @user_job.job.project.title %></h1>
 
-<h1> Now we go to Docusign </h1>
-
-<button> Go To Docusign </button>
-
-<h4>1. Use embedded signing</h4>
-<p>This example sends an envelope, and then uses embedded signing for the first signer.</p>
-<p>Embedded signing provides a smoother user experience for the signer: the DocuSign signing is initiated from your website.</p>
-
-<% if @show_doc %>
-  <p><a target='_blank' href='<%= @documentation %>'>Documentation</a> about this example.</p>
-<% end %>
-
-<p>API methods used:
-  <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/Envelopes/create">Envelopes::create</a> and
-  <a target ='_blank' href="https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeViews/createRecipient">EnvelopeViews::createRecipient</a>.
-</p>
-<p>
-  View source file <a target="_blank" href="<%= @source_url %>"><%= @source_file %></a> on GitHub.
-</p>
-
 <form class="eg" id="data_form" action="/signatures" method="post" data-busy="form">
 
-  <div class="form-group">
+  <div class="form-group form-inputs type-form-control">
     <label for="signerEmail">Signer Email</label>
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="email" class="form-control" id="signerEmail" name="signerEmail"
@@ -30,10 +10,10 @@
            value="<%= @config.signer_email %>">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
-  <div class="form-group">
+  <div class="form-group  form-inputs type-form-control">
     <label for="signerName">Signer Name</label>
     <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
            value="<%= @config.signer_name %>" required>
   </div>
-  <button type="submit" class="btn btn-docu">Submit</button>
+  <button type="submit" class="btn btn-flat">Submit</button>
 </form>
