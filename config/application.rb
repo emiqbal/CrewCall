@@ -19,7 +19,7 @@ module CrewCall
     # Configuration for DocuSign example.
     # For a production application, you will store the credentials
     # in config/environments/development.rb, production.rb, test.rb, etc
-    config.app_url = 'http://localhost:3000' # The public url of the application.
+    config.app_url = BASE_URL # The public url of the application.
      # Init DocuSign configuration, loaded from config/appsettings.yml file
      DOCUSIGN_CONFIG = YAML.load_file("#{Rails.root.to_s}/config/appsettings.yml")[Rails.env]
      DOCUSIGN_CONFIG.map do |k,v|
