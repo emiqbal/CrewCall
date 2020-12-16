@@ -26,7 +26,7 @@
           <%= f.input :videolink, label: 'Showreel Video', hint: "YouTube or Vimeo Link only" %>
         </div>
         <div class="form-actions">
-          <%= f.submit "Post", class: "btn btn-flat" %>
+          <%= f.submit "Submit Your Profile", class: "btn btn-flat w-100" %>
         </div>
       <% end %>
   <% else %>
@@ -35,12 +35,12 @@
           <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
           <%= f.input :first_name, required: true, label: 'First Name' %>
           <%= f.input :last_name, required: true, label: 'Last Name' %>
-          <%= f.rich_text_area :rich_bio, required: true, label: 'Personal Biography' %>
+          <%= f.input :rich_bio, as: :rich_text_area,input_html: {style: 'min-height:200px !important;'}, label: 'Personal Biography', placeholder: 'Text goes here'%>
           <%= f.input :department, required: true, collection: %w(Camera Lighting Casting Talent AD Production Transport Location) %>
           <%= f.input :videolink, label: 'Showreel Video', hint: "YouTube or Vimeo Link only" %>
         </div>
         <div class="form-actions">
-          <%= f.submit "Post", class: "btn btn-flat" %>
+          <%= f.submit "Submit Your Profile", class: "btn btn-flat w-100" %>
         </div>
       <% end %>
   <% end %>
