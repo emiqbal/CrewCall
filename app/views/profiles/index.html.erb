@@ -23,12 +23,12 @@
         <% end %>
         <div class="card-product-infos">
           <h2><%= profile.first_name.capitalize %> <%= profile.last_name.capitalize %></h2>
+          <p><%= profile.user.username %></p>
           <% if profile.user.is_producer %>
             <div class="badge rounded-pill bg-warning">Producer</div>
           <% else %>
             <div class="badge rounded-pill bg-primary"><%= profile.department %> Department</div>
           <% end %>
-          <p><%= profile.user.username %></p>
        </div>
       </div>
     <% end %>
