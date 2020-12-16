@@ -33,6 +33,7 @@ class JobsController < ApplicationController
   def update
     @job = Job.find(params[:id])
     @job.update(job_params)
+    @job.salary *= 100
     if @job.save
       redirect_to project_path(@job.project)
     else
