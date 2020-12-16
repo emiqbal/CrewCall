@@ -9,6 +9,10 @@ class UserJobsController < ApplicationController
     @notifications = current_user.notifications.unread
   end
 
+  def show
+    @user_job = UserJob.find(params[:id])
+  end
+
   def new
     @user = current_user
     @job = Job.find(params[:job_id])
