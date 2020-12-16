@@ -7,7 +7,7 @@ def profile_seed
     puts "Creating Profile for each Producer using seed..."
     pic = URI.open(url)
     profile = Profile.new(
-      bio: "I am #{producer.username}",
+      rich_bio: "I am #{producer.username}",
       department: "Production",
       company_name: "#{producer.username} Productions",
       first_name: "#{producer.username}",
@@ -24,7 +24,7 @@ def profile_seed
     puts "Creating Profile for each User using seed..."
     pic = URI.open(url)
     profile = Profile.new(
-      bio: "I am #{user.username}",
+      rich_bio: "I am #{user.username}",
       department: department.sample,
       first_name: "#{user.username}",
       last_name: "A"

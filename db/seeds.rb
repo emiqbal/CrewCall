@@ -36,3 +36,5 @@ project_seed
 # ~~~~~~~ JOB SEED ~~~~~~~
 
 job_seed
+
+puts 'Rails DB Seed done!'
