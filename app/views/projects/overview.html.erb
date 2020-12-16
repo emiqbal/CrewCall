@@ -1,4 +1,4 @@
-<h1>Overview of My Projects</h1>
+<h1>Overview</h1>
 
 
 
@@ -15,21 +15,16 @@
 
 <% @projects.each do |project| %>
   <div class="submissions">
-    <h5><%= project.title %></h5>
+    <div class="d-flex text-right">
+      <h5 class="text-left"><%= project.title %></h5>
+      <p><%= link_to "Edit", edit_project_path(project), class: 'btn btn-warning' %></p>
+    </div>
     <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
-    <p><%= link_to "See All Jobs Applicants", project_jobs_path(project), class: 'btn btn-flat' %></p>
-    <p><%= link_to "Edit Project", edit_project_path(project), class: 'btn btn-flat' %></p>
-    <p><%= link_to "Delete #{project.title} Project",
-            project_path(project),
-            class: 'btn btn-danger',
-            method: :delete,
-            data: { confirm: "Are you sure?" } %></p>
-      <% project.jobs.each do |job| %>
-        <p><%= job.title %> (<%= job.user_jobs.count %>) </p>
+    <p><%= link_to "See All Jobs Applicants", project_jobs_path(project), class: 'btn btn-success' %></p>
+    <% project.jobs.each do |job| %>
+      <p><%= job.title %> (<%= job.user_jobs.count %>) </p>
         <% end %>
   </div>
 <% end %>
 
 <%= link_to "Back", :back, class: 'btn btn-flat'  %>
-<%= link_to "Go to All Projects", root_path, class: 'btn btn-flat'  %>
-<%= link_to "Go to All Profiles", profiles_path, class: 'btn btn-flat'  %>
