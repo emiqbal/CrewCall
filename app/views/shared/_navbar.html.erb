@@ -1,5 +1,8 @@
 <div class="navbar fixed-bottom navbar-expand-sm navbar-dark navbar-lewagon">
+  <span id="user-id" class="d-none" data-user-id="<%= current_user.id if user_signed_in? %>"></span>
   <% if user_signed_in? %>
+
+
 
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-home"></i>
@@ -10,7 +13,7 @@
       <%= link_to overview_path, class: "nav-link" do %>
         <% if current_user.notifications.unread.empty? %>
           <i class="fas fa-bell"></i>
-
+          <i class="fas fa-circle navbar-badge d-none"></i>
         <% else %>
           <i class="fas fa-bell"></i>
           <i class="fas fa-circle navbar-badge"></i>
@@ -27,6 +30,7 @@
       <%= link_to user_jobs_path, class: "nav-link" do %>
         <% if current_user.notifications.unread.empty? %>
           <i class="fas fa-bell"></i>
+          <i class="fas fa-circle navbar-badge d-none"></i>
         <% else %>
           <i class="fas fa-bell"></i>
           <i class="fas fa-circle navbar-badge"></i>
@@ -68,3 +72,8 @@
     <%= link_to "Sign Up",  new_user_registration_path , class: "btn nav-link" %>
   <% end %>
 </div>
+<% @notifications.each do |notification| %>
+  <div class="alert alert-warning" role="alert">
+    <p><%= render notification %></p>
+  </div>
+<% end %>
