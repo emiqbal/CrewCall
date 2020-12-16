@@ -1,8 +1,8 @@
 class UserJobsController < ApplicationController
   def index
-    if params[:signature] == 'success'
-      flash[:messages] = "Your contract has been signed successfully."
-    end
+    # if params[:signature] == 'success'
+    #   flash[:messages] = "Your contract has been signed successfully."
+    # end
 
     @user_jobs = UserJob.where(user: current_user)
     @approved = @user_jobs.where(status: 'Approved')
@@ -42,7 +42,6 @@ class UserJobsController < ApplicationController
 
     if params[:signature] == 'success'
       @user_job.status = "Confirmed"
-      binding.pry
       @user_job.save
       redirect_to user_jobs_path
     end
