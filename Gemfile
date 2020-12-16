@@ -46,7 +46,6 @@ gem 'docusign_rooms', '~> 1.0'
 gem 'omniauth-oauth2', '~> 1.6'
 gem 'omniauth-rails_csrf_protection'
 
-
 gem 'wdm', '>= 0.1.0', platforms: %i[mingw mswin x64_mingw]
 
 group :development, :test do
