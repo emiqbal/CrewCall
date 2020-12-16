@@ -8,7 +8,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -29,7 +29,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '>= 1.4.5', require: false
 
 gem 'devise'
 
@@ -40,6 +40,14 @@ gem "simple_calendar", "~> 2.0"
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.15.1'
 gem 'simple_form'
+
+gem 'docusign_esign', '~> 3.6'
+gem 'docusign_rooms', '~> 1.0'
+gem 'omniauth-oauth2', '~> 1.6'
+gem 'omniauth-rails_csrf_protection'
+
+gem 'wdm', '>= 0.1.0', platforms: %i[mingw mswin x64_mingw]
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -54,8 +62,8 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring', '~> 2.1.0'
+  gem 'spring-watcher-listen', '~> 2.0.1'
 end
 
 group :test do

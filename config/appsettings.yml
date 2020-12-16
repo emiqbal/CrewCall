@@ -1,0 +1,48 @@
+default: &default
+  # Do not add a slash to the end of the app_url,
+  # It will break the JWT callback string
+  app_url: http://localhost:3000
+  # quickstart is an optional setting and can be enabled by setting it to: true
+  quickstart: true
+  # Set examples_API to 'Rooms' or 'eSignature' depending on which API you want to use
+  examples_API: 'eSignature'
+  # NOTE: The terms "client_id" and "Integration key" are synonyms. They refer to the same thing
+  # The integration_key value is the same between the development account and production account
+  integration_key: d9f36184-ab50-469b-aa49-6fb788e2b194
+  # integration secret key https://developers.docusign.com/platform/configuring-app/
+  integration_secret: fb27dc4f-ad11-465c-9b34-8a4e3a0f35d5
+  # NOTE: this jwt_integration_key can have the same value as the above integration_key
+  jwt_integration_key: d9f36184-ab50-469b-aa49-6fb788e2b194
+  # NOTE: impersonated_user_guid, "User ID" and "API Username" are synonyms. They refer to the same thing
+  # See: https://admindemo.docusign.com/users for the API Username
+  impersonated_user_guid: d7607e49-a936-403d-9c3d-f0ff3417fe31
+  signer_email:  engkuiqbal@outlook.com
+  signer_name: EM Iqbal B E A
+  # Authentication service endpoint is different between production and development
+  # https://developers.docusign.com/docs/esign-rest-api/go-live/after-go-live/
+  authorization_server: https://account-d.docusign.com
+  aud: account-d.docusign.com
+  rooms_host: "https://demo.rooms.docusign.com/restapi"
+  allow_silent_authentication: true # A user can be silently authenticated if they have an
+                                    # Active login session on another tab of the same browser
+                                    # Set if you want a specific DocuSign AccountId, If false, the users default account will be used.
+  target_account_id: false # Payment gateway information is optional. It is only needed for example 14.
+                           # See the PAYMENTS_INSTALLATION.md file for instructions
+  gateway_account_id: {DS_PAYMENT_GATEWAY_ID} # The remainder of this file is already configured.
+  demo_doc_path: demo_documents
+  doc_docx: World_Wide_Corp_Battle_Plan_Trafalgar.docx
+  doc_pdf: World_Wide_Corp_lorem.pdf
+  gateway_name: "stripe"
+  gateway_display_name: "Stripe"
+  github_example_url: https://github.com/docusign/code-examples-ruby/tree/master/app/controllers/
+  documentation: false
+  api_only: false
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
