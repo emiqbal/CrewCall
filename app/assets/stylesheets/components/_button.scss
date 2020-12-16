@@ -20,3 +20,15 @@
   transition: background 0.3s ease;
   text-transform: capitalize;
 }
+
+.btn-primary {
+  padding: 8px 24px;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+  text-transform: capitalize;
+}
+
+.btn-primary:hover {
+  background: #03203A;
+  color: white;
+}
