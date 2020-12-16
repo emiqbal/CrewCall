@@ -1,5 +1,6 @@
 <h2 class="text-center pb-2">CREWCALL</h2>
 
+
 <%= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
     <input class="form-control string required px-4" type="text" name="search[query]" id="search_query", placeholder="Search" />
@@ -9,10 +10,12 @@
   </div>
 <% end %>
 
+<%= link_to "View Projects", root_path, class: 'fw-light'  %>
+
 <div>
   <% @profiles.each do |profile| %>
     <%= link_to profile_path(profile) do %>
-      <div class="card-product">
+      <div class="card-product mt-2">
         <% if profile.user.profile.photo.attached? %>
           <%= cl_image_tag profile.user.profile.photo.key, gravity: :auto, class: "project-image" %>
         <% else %>
