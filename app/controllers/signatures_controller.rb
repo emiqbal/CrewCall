@@ -1,6 +1,5 @@
 class SignaturesController < ApplicationController
   def create
-    binding.pry
     minimum_buffer_min = 10
     token_ok = check_token(minimum_buffer_min)
     unless token_ok
