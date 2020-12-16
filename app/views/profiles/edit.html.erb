@@ -14,7 +14,7 @@
 <% else %>
   <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", gravity: :face, width: 180, height: 180, crop: :fill %>
 <% end %>
-
+   
   <% if current_user.is_producer? %>
       <%= simple_form_for(@profile) do |f| %>
         <div class="form-inputs type-form-control">
