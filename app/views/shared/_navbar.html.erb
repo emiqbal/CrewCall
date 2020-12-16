@@ -1,9 +1,6 @@
 <div class="navbar fixed-bottom navbar-expand-sm navbar-dark navbar-lewagon">
   <span id="user-id" class="d-none" data-user-id="<%= current_user.id if user_signed_in? %>"></span>
   <% if user_signed_in? %>
-
-
-
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-home"></i>
     <% end %>
@@ -47,7 +44,7 @@
 
     <% else %>
 
-     <%= link_to profile_path(current_user.profile), class: "nav-link" do %>
+      <%= link_to profile_path(current_user.profile), class: "nav-link" do %>
         <% if current_user.profile.photo.attached? %>
           <%= cl_image_tag current_user.profile.photo.key, width: 25, height: 25, crop: :fill, class: "avatar-card" %>
         <% else %>
@@ -59,17 +56,21 @@
 
     <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
       <i class="fas fa-sign-out-alt"></i>
-      <% end %>
+    <% end %>
   <% else %>
     <%= link_to "Login", new_user_session_path, class: "btn nav-link" %>
     <%= link_to root_path, class: "nav-link" do %>
-        <i class="fas fa-home"></i>
-      <% end %>
+      <i class="fas fa-home"></i>
+    <% end %>
     <%= link_to "Sign Up",  new_user_registration_path , class: "btn nav-link" %>
   <% end %>
 </div>
-<% @notifications.each do |notification| %>
-  <div class="alert alert-warning" role="alert">
-    <p><%= render notification %></p>
-  </div>
+  
+<% unless @notification.nil? do %>
+  <% @notifications.each do |notification| %>
+    <div class="alert alert-warning" role="alert">
+      <p><%= render notification %></p>
+    </div>
+  <% end %>
+<% end %>
 <% end %>
