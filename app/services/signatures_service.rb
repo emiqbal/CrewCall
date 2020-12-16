@@ -13,6 +13,8 @@ class SignaturesService
       base_path: session[:ds_base_path],
       access_token: session[:ds_access_token]
     }
+    @return_user_job_id = session[:ds_user_job_to_sign]
+    @return_job_id = UserJob.find(session[:ds_user_job_to_sign]).job.id
   end
 
   def call
@@ -24,7 +26,7 @@ class SignaturesService
   # ***DS.snippet.0.start
   def worker
     ds_ping_url = Rails.application.config.app_url
-    ds_return_url = "#{ds_ping_url}/ds_common-return"
+    ds_return_url = ds_ping_url + "/jobs/#{@return_job_id}/user_jobs/#{@return_user_job_id}"
     signer_client_id = 1000
     pdf_filename = 'World_Wide_Corp_lorem.pdf'
 
@@ -63,7 +65,7 @@ class SignaturesService
     # the DocuSign signing. It's usually better to use
     # the session mechanism of your web framework. Query parameters
     # can be changed/spoofed very easily.
-    view_request.return_url = ds_return_url + '?state=123'
+    view_request.return_url = ds_return_url + '?signature=success'
 
     # How has your app authenticated the user? In addition to your app's
     # authentication, you can include authenticate steps from DocuSign;

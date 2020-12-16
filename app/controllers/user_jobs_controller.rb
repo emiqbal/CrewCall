@@ -1,5 +1,9 @@
 class UserJobsController < ApplicationController
   def index
+    if params[:signature] == 'success'
+      flash[:messages] = "Your contract has been signed successfully."
+    end
+
     @user_jobs = UserJob.where(user: current_user)
     @approved = @user_jobs.where(status: 'Approved')
     @applied = @user_jobs.where(status: 'Applied')
@@ -17,7 +21,6 @@ class UserJobsController < ApplicationController
 
     @token_ok = check_token
     # check if the user is authenticated on Docusign
-    binding.pry
     if @token_ok
       # do crazy shit and then render the view
       # addSpecialAttributes(model)
