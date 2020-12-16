@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'ds_common#create_session'
 
   get '/ds/mustAuthenticate' => 'ds_common#ds_must_authenticate'
+
+  resources :signatures, only: :create
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
