@@ -320,7 +320,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  bootsnap (>= 1.4.2)
+  bootsnap (>= 1.4.5)
   byebug
   capybara (>= 2.15)
   cloudinary (~> 1.16.0)
@@ -339,15 +339,15 @@ DEPENDENCIES
   pg_search (~> 2.3.0)
   pry-byebug
   pry-rails
-  puma (~> 4.1)
+  puma (~> 4.3.3)
   rails (~> 6.0.3, >= 6.0.3.4)
   redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver
   simple_calendar (~> 2.0)
   simple_form
-  spring
-  spring-watcher-listen (~> 2.0.0)
+  spring (~> 2.1.0)
+  spring-watcher-listen (~> 2.0.1)
   turbolinks (~> 5)
   tzinfo-data
   wdm (>= 0.1.0)
