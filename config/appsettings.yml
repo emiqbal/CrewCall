@@ -1,7 +1,7 @@
 default: &default
   # Do not add a slash to the end of the app_url,
   # It will break the JWT callback string
-  app_url: BASE_URL
+  app_url: <%= ENV.fetch("BASE_URL") %>
   # quickstart is an optional setting and can be enabled by setting it to: true
   quickstart: true
   # Set examples_API to 'Rooms' or 'eSignature' depending on which API you want to use
