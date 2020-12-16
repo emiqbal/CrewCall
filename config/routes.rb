@@ -16,5 +16,9 @@ Rails.application.routes.draw do
   resources :jobs, only: [:show, :destroy] do
     resources :user_jobs, only: [:show, :new, :create, :edit, :update]
   end
+
+  get '/auth/:provider/callback', to: 'ds_common#create_session'
+
+  get '/ds/mustAuthenticate' => 'ds_common#ds_must_authenticate'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -11,6 +11,33 @@ class UserJobsController < ApplicationController
 
   def show
     @user_job = UserJob.find(params[:id])
+    session[:ds_user_job_to_sign] = @user_job.id
+
+    @config = Rails.application.config
+
+    @token_ok = check_token
+    # check if the user is authenticated on Docusign
+    binding.pry
+    if @token_ok
+      # do crazy shit and then render the view
+      # addSpecialAttributes(model)
+      @envelope_ok = session[:envelope_id].present?
+      @documents_ok = session[:envelope_documents].present?
+      @document_options = session.fetch(:envelope_documents, {})['documents']
+      @gateway_ok = @config.gateway_account_id.try(:length) > 25
+      @template_ok = session[:template_id].present?
+      @source_file = file_name.to_s
+      @source_url = "#{@config.github_example_url}#{@source_file}"
+      @documentation = "#{@config.documentation}#{eg_name}" #= Config.documentation + EgName
+      @show_doc = @config.documentation
+    elsif @config.quickstart == true
+      redirect_to '/ds/mustAuthenticate'
+    else
+      # RequestItemsService.EgName = EgName
+      redirect_to '/ds/mustAuthenticate'
+    end
+    # if authenticated, render a view that allows them to go to the signature page
+    # else, render a view that prompts them to sign in first
   end
 
   def new
@@ -58,6 +85,33 @@ class UserJobsController < ApplicationController
   end
 
   private
+
+  def check_token(buffer_in_min = 10)
+    buffer = buffer_in_min * 60
+    expires_at = session[:ds_expires_at]
+    remaining_duration = expires_at.nil? ? 0 : expires_at - buffer.seconds.from_now.to_i
+    if expires_at.nil?
+      Rails.logger.info "==> Token expiration is not available: fetching token"
+    elsif remaining_duration.negative?
+      Rails.logger.debug "==> Token is about to expire in #{time_in_words(remaining_duration)} at: #{Time.at(expires_at)}: fetching token"
+    else
+      Rails.logger.debug "==> Token is OK for #{time_in_words(remaining_duration)} at: #{Time.at(expires_at)}"
+    end
+    remaining_duration > 0
+  end
+
+  def file_name
+    File.basename __FILE__
+  end
+
+  def time_in_words(duration)
+    "#{Object.new.extend(ActionView::Helpers::DateHelper).distance_of_time_in_words(duration)}#{duration.negative? ? ' ago' : ''}"
+  end
+
+  def eg_name
+    controller_name.to(4)
+  end
+
 
   def user_job_params
     params.require(:user_job).permit(:status)

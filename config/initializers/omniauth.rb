@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#require 'docusign'
+require 'docusign'
 
 # Defaults to STDOUT: https://github.com/omniauth/omniauth#logging
 # Logs entries like:
