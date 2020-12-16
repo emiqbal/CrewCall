@@ -4,7 +4,7 @@ def job_seed
     puts "Creating a Job for each Project using seed..."
     job = Job.new(
       title: "Production Assistant Driver",
-      description: "Drive the Production truck throughout the shoot, and run errands",
+      rich_description: "Drive the Production truck throughout the shoot, and run errands",
       department: "Transport",
       start_date: project.start_date,
       end_date: project.end_date,
