@@ -70,7 +70,8 @@ class UserJobsController < ApplicationController
         notification.deliver(@user_job.job.project.user)
         redirect_to project_path(job.project)
       else
-        render :new
+        notification = CommentNotification.with(comment: "You already have a confirmed project during these dates.")
+        notification.deliver(current_user)
       end
     end
   end
