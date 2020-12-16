@@ -35,7 +35,6 @@ class DsCommonController < ApplicationController
 
   def create_session
     # reset the session
-    binding.pry
     internal_destroy
 
     Rails.logger.debug "\n==> DocuSign callback Authentication response:\n#{auth_hash.to_yaml}\n"
