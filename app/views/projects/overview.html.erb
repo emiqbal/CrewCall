@@ -1,7 +1,5 @@
 <h1>Overview</h1>
 
-
-
 <%= ProducersCalendar.new(self, events: @projects).render do |date, projects| %>
   <%= date.day %>
 <% end %>
@@ -20,10 +18,7 @@
       <p><%= link_to "Edit", edit_project_path(project), class: 'btn btn-warning' %></p>
     </div>
     <p><%= "#{project.start_date.strftime('%d %b %Y')} to #{project.end_date.strftime('%d %b %Y')}" %></p>
-    <p><%= link_to "See All Jobs Applicants", project_jobs_path(project), class: 'btn btn-success' %></p>
-    <% project.jobs.each do |job| %>
-      <p><%= job.title %> (<%= job.user_jobs.count %>) </p>
-        <% end %>
+    <p><%= link_to "See All Jobs Applicants", project_jobs_path(project), class: 'btn btn-success w-100 m-0' %></p>
   </div>
 <% end %>
 
