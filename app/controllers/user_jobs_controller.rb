@@ -43,6 +43,21 @@ class UserJobsController < ApplicationController
     if params[:signature] == 'success'
       @user_job.status = "Confirmed"
       @user_job.save
+
+      applicant = @user_job.user
+      all_jobs = applicant.jobs
+      conflicting_jobs = all_jobs.where("(start_date < ? AND end_date > ?) OR (start_date > ? AND end_date < ?)", @user_job.job.start_date, @user_job.job.end_date, @user_job.job.start_date, @user_job.job.end_date)
+      conflicting_user_jobs = conflicting_jobs.map do |job|
+        # need to convert job instances into user_job instances
+        # where user = applicant
+        job.user_jobs.where(user: applicant).first
+      end
+      conflicting_user_jobs.each { |user_job| user_job.update(status: "Rejected") }
+
+      # Other jobs where the user is the confirmed_job user, and status is applied or approved
+      # if the other user jobs start after or equals to confirmed job start date,
+      # and end before or equals to confirmed job end date
+      # status will change to rejected (or other job taken)
       redirect_to user_jobs_path
     end
   end
