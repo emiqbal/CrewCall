@@ -1,39 +1,51 @@
+<div class="d-flex align-items-center">
 <% if @profile.photo.attached? %>
   <%= cl_image_tag @profile.photo.key, gravity: :face, width: 180, height: 180, crop: :fill, class: "avatar-xlarge" %>
 <% else %>
   <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", gravity: :face, width: 180, height: 180, crop: :fill %>
 <% end %>
+    <h3><strong><%= "#{@profile.first_name.upcase} #{@profile.last_name.upcase}" %></strong></h3>
+</div>
 
-<h2><strong><%= "#{@profile.first_name} #{@profile.last_name}" %></strong></h2>
-
+<div class ="d-flex justify-content-between pt-2">
   <% if @profile.department? && @profile.user.is_producer == false %>
     <p><%= @profile.department%> Department</p>
-  <% end %>
+  <i class="fab fa-facebook-f"></i> <i class="fab fa-instagram"></i> <i class="fab fa-twitter"></i> <i class="fab fa-tiktok"></i> <i class="fab fa-linkedin"></i>
+    <% end %>
+</div>
 
+
+<div class="projcontainer">
   <% unless @profile.rich_bio.nil? %>
     <h5 class= "mt-3"><strong>Bio</strong></h5>
     <p><%= @profile.rich_bio %></p>
   <% end %>
 
+
+<div class="projcontainer">
   <% unless @profile.company_name.nil? %>
     <h5 class= "mt-3"><strong>Company</strong></h5>
     <p><%= @profile.company_name %></p>
   <% end %>
+</div>
 
+<div class="projcontainer">
   <% unless video_embed(@profile.videolink).nil? %>
     <h5 class= "mt-3"><strong>Showreel Video</strong></h5>
     <div class="embed-responsive embed-responsive-16by9">
       <iframe class="embed-responsive-item" src="<%= video_embed(@profile.videolink) %>" allowfullscreen></iframe>
     </div>
   <% end %>
-
+</div>
 
 <!-- link mini-avatar and name to user show page -->
 <% if user_signed_in? %>
   <% if current_user.profile == @profile %>
-    <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-flat" %>
-    <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-flat" %>
-    <%= link_to "Back to Projects List", root_path, class: "btn btn-flat" %>
+    <div class="d-flex my-2">
+      <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-flat" %>
+      <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-flat" %>
+    </div>
+      <%= link_to "Back to Projects List", root_path, class: "btn btn-flat" %>
   <% elsif current_user.profile != @profile && current_user.is_producer %>
     <%= link_to "Back to Profiles List", profiles_path, class: "btn btn-flat" %>
   <% else %>
