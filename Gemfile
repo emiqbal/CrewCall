@@ -24,7 +24,7 @@ gem 'cloudinary', '~> 1.16.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Faker for Seeding
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'faker'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -41,7 +41,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.15.1'
 gem 'simple_form'
 
-gem 'docusign_esign', '~> 3.6'
+gem 'docusign_esign', '~> 3.6'  
 gem 'docusign_rooms', '~> 1.0'
 gem 'omniauth-oauth2', '~> 1.6'
 gem 'omniauth-rails_csrf_protection'
