@@ -72,9 +72,10 @@
               <% elsif user_job.status == "Rejected" && user_job.user == current_user %>
                 <div class="badge-status"><p class="badge rounded-pill bg-danger">Status: Rejected</p></div>
               <% else %>
-                <div><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-flat w-100'  %></div>
               <% end %>
             <% end %>
+          <% else %>
+            <div class="btn-abc"><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-primary'  %></div>
           <% end %>
         </div>
       <% end %>
