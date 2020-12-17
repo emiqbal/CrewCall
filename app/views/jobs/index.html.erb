@@ -13,7 +13,7 @@
             <p><%= user_job.user.profile.first_name %> <%= user_job.user.profile.last_name %> (@<%= user_job.user.username %>)</p>
           <% end %>x
           <p>Status: <%= user_job.status %>
-          <%= link_to "Update Status", edit_job_user_job_path(job, user_job), class: "btn btn-flat" %></p>
+          <%= link_to "Update Status", edit_job_user_job_path(job, user_job), class: "btn btn-warning" %></p>
         </div>
       <% end %>
     </div>
