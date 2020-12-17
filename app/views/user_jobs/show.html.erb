@@ -1,4 +1,4 @@
-<h1>Job Acceptance Page for <%= @user_job.job.title %> for <%= @user_job.job.project.title %></h1>
+<h3>Accept <%= @user_job.job.title %> Job for <%= @user_job.job.project.title %></h3>
 
 <form class="eg" id="data_form" action="/signatures" method="post" data-busy="form">
 
@@ -15,5 +15,5 @@
     <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
            value="<%= @config.signer_name %>" required>
   </div>
-  <button type="submit" class="btn btn-flat">Submit</button>
+  <button type="submit" class="btn btn-flat w-100">Submit</button>
 </form>
