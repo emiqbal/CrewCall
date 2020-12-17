@@ -22,9 +22,13 @@
           <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/1134/1134819.svg", class: "project-image"%>
         <% end %>
         <div class="card-product-infos">
-          <h2><%= profile.first_name %> <%= profile.last_name %></h2>
+          <h2><%= profile.first_name.capitalize %> <%= profile.last_name.capitalize %></h2>
           <p><%= profile.user.username %></p>
-          <p><%= profile.department unless profile.user.is_producer %></p>
+          <% if profile.user.is_producer %>
+            <div class="badge rounded-pill bg-warning">Producer</div>
+          <% else %>
+            <div class="badge rounded-pill bg-primary"><%= profile.department %> Department</div>
+          <% end %>
        </div>
       </div>
     <% end %>
