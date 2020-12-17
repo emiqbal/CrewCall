@@ -1,7 +1,7 @@
 class UserJob < ApplicationRecord
   belongs_to :job
   belongs_to :user
-  validate :check_if_user_is_available
+  validate :check_if_user_is_available, on: :create
 
   def start_time
     self.job.start_date
