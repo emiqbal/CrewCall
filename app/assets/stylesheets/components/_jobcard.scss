@@ -12,6 +12,16 @@
   }
 }
 
+  .btn-abc {
+  margin: 4px 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+    .btn {
+      padding: 2px 8px;
+    }
+  }
+
 .jobcard {
   width: 100%;
   background-color: #03203A;
@@ -33,6 +43,7 @@
     text-overflow: ellipsis;
     width: 100%;
   }
+
 
   .jobcard-info {
     justify-content: center;
@@ -75,6 +86,8 @@
     border-top-style: solid;
     display:flex;
     justify-content: space-around;
+
+
   }
 }
 
