@@ -16,6 +16,31 @@ class User < ApplicationRecord
     message: "must be only one word."
   }
 
+  def confirmed_jobs
+    # returns ActiveRecord Relation of UserJob instances
+    # i.e. behaves like an array of hashes
+    user_jobs.where(status: "Confirmed")
+  end
+
+  def unavailable_dates
+    # returns array of date ranges where user
+    # already has confirmed jobs
+
+    # confirmed_jobs_details turns confirmed_jobs
+    # from array of UserJob instances
+    # to array of Job instances
+    confirmed_jobs_details = confirmed_jobs.map do |user_job|
+      user_job.job
+    end
+
+    # confirmed_dates turns confirmed_jobs_details
+    # from array of Job instances
+    # to array of date ranges
+    confirmed_dates = confirmed_jobs_details.map do |job|
+      (job.start_date.to_date..job.end_date.to_date)
+    end
+  end
+
   private
 
   def purge_photo

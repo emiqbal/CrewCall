@@ -1,16 +1,19 @@
 <h2><strong>EDIT STATUS</strong></h2>
 
-<h3>For <%= @user_job.job.title %></h3>
-<h3>Applicant <%= @user_job.user.profile.first_name %> </h3>
-<%= link_to profile_path(@user_job.user.profile) do %>
-  <p>See Profile: <%= @user_job.user.username %></p>
-<% end %>
+<p>Project: <%= @user_job.job.project.title %></p>
+<p>Job: <%= @user_job.job.title %></p>
+<p class="my-1">Applicant: <%= @user_job.user.profile.first_name.capitalize %> <%= @user_job.user.profile.last_name.capitalize %></p>
+<%= link_to "View Profile", profile_path(@user_job.user.profile), class: 'btn btn-primary m-0'  %>
 
 <%= simple_form_for(@user_job, url: job_user_job_path, method: :patch) do |f| %>
   <div class="form-inputs type-form-control">
-    <%= f.input :status, label: 'Status', as: :radio_buttons, collection: %w(Applied Approved Rejected Confirmed), class: "form-check-label"%>
+    <%= f.input :status, label: 'Status:', as: :radio_buttons, collection: %w(Applied Approved Rejected), class: "form-check-label"%>
   </div>
   <div class="form-actions">
     <%= f.submit "Update Status", class: "btn btn-flat" %>
   </div>
 <% end %>
+
+
+
+

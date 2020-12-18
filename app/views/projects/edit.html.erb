@@ -12,3 +12,8 @@
       <%= f.submit "Update", class: "btn btn-flat" %>
     </div>
   <% end %>
+  <p><%= link_to "Delete #{@project.title} Project",
+        project_path(@project),
+        class: 'btn btn-danger',
+        method: :delete,
+        data: { confirm: "Are you sure?" } %></p>
