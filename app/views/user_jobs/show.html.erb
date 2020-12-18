@@ -1,2 +1,19 @@
-<h1>Job Acceptance Page for <%= @user_job.job.title %> for <%= @user_job.job.project.title %></h1>
+<h3>Accept <%= @user_job.job.title %> Job for <%= @user_job.job.project.title %></h3>
 
+<form class="eg" id="data_form" action="/signatures" method="post" data-busy="form">
+
+  <div class="form-group form-inputs type-form-control">
+    <label for="signerEmail">Signer Email</label>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="email" class="form-control" id="signerEmail" name="signerEmail"
+           aria-describedby="emailHelp" placeholder="pat@example.com" required
+           value="<%= @config.signer_email %>">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group  form-inputs type-form-control">
+    <label for="signerName">Signer Name</label>
+    <input type="text" class="form-control" id="signerName" placeholder="Pat Johnson" name="signerName"
+           value="<%= @config.signer_name %>" required>
+  </div>
+  <button type="submit" class="btn btn-flat w-100">Submit</button>
+</form>

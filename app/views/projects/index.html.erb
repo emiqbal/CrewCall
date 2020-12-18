@@ -1,4 +1,7 @@
-<h2 class="text-center pb-2">CREWCALL</h2>
+<div class="header mb-1">
+  <%= image_tag ("CrewcallLogo2.png"), height: 45%>
+  <h2 class="my-2 ml-1" style="font-size: revert;">CREWCALL</h2>
+</div>
 
 <%= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
@@ -9,10 +12,11 @@
   </div>
 <% end %>
 
+
 <div>
   <% @projects.each do |project| %>
     <%= link_to project_path(project) do %>
-      <div class="card-product">
+      <div class="card-product mt-2">
         <%= cl_image_tag project.photo.key, gravity: :auto, class: "project-image" %>
         <div class="card-product-infos">
           <h2><%= project.title %></h2>
@@ -33,5 +37,8 @@
   <% end %>
 </div>
 
+<div>
+  <%= link_to "View Profiles", profiles_path, class: 'btn btn-flat fw-light'  %>
+</div>
 
 
