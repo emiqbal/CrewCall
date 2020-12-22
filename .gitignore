@@ -46,4 +46,4 @@ yarn-debug.log*
 =======
 >>>>>>> a19f2a1bdfbc7a6b6c46ada33d3f9e3c2f3db209
 
-/config/appsettings.yml
+/config/docusign_private_key.txt
