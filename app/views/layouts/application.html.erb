@@ -4,7 +4,7 @@
     <title>CrewCall</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <title><%= meta_title %></title>
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
@@ -30,17 +30,22 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+
     <script src="https://kit.fontawesome.com/67539d8f2d.js" crossorigin="anonymous"></script>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <%= favicon_link_tag %>
+
     <%= render 'shared/ios_pwa_links' %>
   </head>
 
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+
     <div class="container py-4">
       <%= yield %>
     </div>
+
   </body>
 </html>
