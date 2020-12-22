@@ -17,12 +17,12 @@
   <% end %>
 </div>
 
-<div class="projcontainer">
-  <% unless @profile.rich_bio.nil? %>
+<% unless @profile.rich_bio.nil? %>
+  <div class="projcontainer">
     <h5 class= "mt-3"><strong>Bio</strong></h5>
     <p><%= @profile.rich_bio %></p>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
 <% unless @profile.company_name.nil? %>
   <div class="projcontainer">
