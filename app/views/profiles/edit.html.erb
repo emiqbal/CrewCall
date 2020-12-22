@@ -1,6 +1,5 @@
   <h2><strong>PROFILE</strong></h2>
 
-
 <% if current_user.profile.nil? %>
   <% @notifications.each do |notification| %>
     <div class="alert alert-warning" role="alert">
@@ -14,33 +13,39 @@
 <% else %>
   <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", gravity: :face, width: 180, height: 180, crop: :fill %>
 <% end %>
-   
+
   <% if current_user.is_producer? %>
-      <%= simple_form_for(@profile) do |f| %>
-        <div class="form-inputs type-form-control">
-          <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
-          <%= f.input :first_name, required: true, label: 'First Name' %>
-          <%= f.input :last_name, required: true, label: 'Last Name' %>
-          <%= f.input :company_name, required: true, label: "What's your company?" %>
-          <%= f.input :rich_bio, as: :rich_text_area, input_html: {style: 'min-height:200px !important;', class: 'rounded-0'}, label: 'Biography', placeholder: 'Provide more information' %>
-          <%= f.input :videolink, label: 'Showreel Video', hint: "YouTube or Vimeo Link only" %>
-        </div>
-        <div class="form-actions">
-          <%= f.submit "Submit Your Profile", class: "btn btn-flat w-100" %>
-        </div>
-      <% end %>
+    <%= simple_form_for(@profile) do |f| %>
+
+      <div class="form-inputs type-form-control">
+        <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
+        <%= f.input :first_name, required: true, label: 'First Name' %>
+        <%= f.input :last_name, required: true, label: 'Last Name' %>
+        <%= f.input :company_name, required: true, label: "What's your company?" %>
+        <%= f.input :rich_bio, as: :rich_text_area, input_html: {style: 'min-height:200px !important;', class: 'rounded-0'}, label: 'Biography', placeholder: 'Provide more information' %>
+        <%= f.input :videolink, label: 'Showreel Video', hint: "YouTube or Vimeo Link only" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "Submit Your Profile", class: "btn btn-flat w-100" %>
+      </div>
+
+    <% end %>
   <% else %>
-      <%= simple_form_for(@profile) do |f| %>
-        <div class="form-inputs type-form-control">
-          <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
-          <%= f.input :first_name, required: true, label: 'First Name' %>
-          <%= f.input :last_name, required: true, label: 'Last Name' %>
-          <%= f.input :rich_bio, as: :rich_text_area, input_html: {style: 'min-height:200px !important;', class: 'rounded-0'}, label: 'Personal Biography', placeholder: 'Tell us more about yourself' %>
-          <%= f.input :department, required: true, collection: %w(Camera Lighting Casting Talent AD Production Transport Location) %>
-          <%= f.input :videolink, label: 'Showreel Video', hint: "YouTube or Vimeo Link only" %>
-        </div>
-        <div class="form-actions">
-          <%= f.submit "Submit Your Profile", class: "btn btn-flat w-100" %>
-        </div>
-      <% end %>
+    <%= simple_form_for(@profile) do |f| %>
+
+      <div class="form-inputs type-form-control">
+        <%= f.input :photo, as: :file, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload/Edit Profile Pic' %>
+        <%= f.input :first_name, required: true, label: 'First Name' %>
+        <%= f.input :last_name, required: true, label: 'Last Name' %>
+        <%= f.input :rich_bio, as: :rich_text_area, input_html: {style: 'min-height:200px !important;', class: 'rounded-0'}, label: 'Personal Biography', placeholder: 'Tell us more about yourself' %>
+        <%= f.input :department, required: true, collection: %w(Camera Lighting Casting Talent AD Production Transport Location) %>
+        <%= f.input :videolink, label: 'Showreel Video', hint: "YouTube or Vimeo Link only" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "Submit Your Profile", class: "btn btn-flat w-100" %>
+      </div>
+
+    <% end %>
   <% end %>
