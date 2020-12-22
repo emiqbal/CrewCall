@@ -32,7 +32,6 @@ class DsCommonController < ApplicationController
     end
   end
 
-
   def create_session
     # reset the session
     internal_destroy
@@ -43,7 +42,6 @@ class DsCommonController < ApplicationController
     user_job = UserJob.find(session[:ds_user_job_to_sign])
     redirect_to job_user_job_path(user_job.job, user_job) # how do we get the right job and the right user
   end
-
 
   private
 
@@ -62,7 +60,6 @@ class DsCommonController < ApplicationController
     session.delete :template_id
   end
 
-
   def store_auth_hash_from_docusign_callback
     session[:ds_expires_at]   = auth_hash.credentials['expires_at']
     session[:ds_user_name]    = auth_hash.info.name
@@ -72,9 +69,7 @@ class DsCommonController < ApplicationController
     session[:ds_base_path]    = auth_hash.extra.base_uri
   end
 
-
   def auth_hash
     @auth_hash ||= request.env['omniauth.auth']
   end
-
 end
