@@ -53,7 +53,6 @@ class UserJobsController < ApplicationController
         job.user_jobs.where(user: applicant).first
       end
       conflicting_user_jobs.each { |user_job| user_job.update(status: "Rejected") }
-
       # Other jobs where the user is the confirmed_job user, and status is applied or approved
       # if the other user jobs start after or equals to confirmed job start date,
       # and end before or equals to confirmed job end date
@@ -134,7 +133,6 @@ class UserJobsController < ApplicationController
   def eg_name
     controller_name.to(4)
   end
-
 
   def user_job_params
     params.require(:user_job).permit(:status)
