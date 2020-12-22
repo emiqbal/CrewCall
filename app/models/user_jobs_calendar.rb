@@ -1,4 +1,3 @@
-
 class UserJobsCalendar < SimpleCalendar::MonthCalendar
   def td_classes_for(day)
     td_class = super
