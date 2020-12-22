@@ -2,6 +2,8 @@
 
 CrewCall is a Progressive Web App (PWA) written with the Ruby on Rails framework. It is an onboarding platform to connect Producers with Film/Media freelance crew.
 
+The app is live at https://crew-call.herokuapp.com
+
 ## About
 
 CrewCall is a final project as part of [Le Wagon](https://github.com/lewagon)'s Full Stack Web Development bootcamp (Batch #512, Singapore).
