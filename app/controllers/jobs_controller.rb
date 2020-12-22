@@ -1,5 +1,4 @@
 class JobsController < ApplicationController
-
   def index
     @project = Project.find(params[:project_id])
     @jobs = Job.where(project: @project)
@@ -8,7 +7,7 @@ class JobsController < ApplicationController
   def new
     @job = Job.new
     @project = Project.find(params[:project_id])
-    #create instance variables for min date and max date
+    # create instance variables for min date and max date
     @min_date = @project.start_date
     @max_date = @project.end_date
     @user = current_user
@@ -28,6 +27,7 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
+    @job.salary /= 100
     @project = Project.find(params[:project_id])
   end
 
