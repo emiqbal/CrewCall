@@ -1,22 +1,28 @@
 <div class="mb-4">
-<h1>Job Applicants for <%= @project.title %></h1>
+  <h1>Job Applicants for <%= @project.title %></h1>
 </div>
 
 <% @jobs.each do |job| %>
   <div class="submissions">
+
     <h5>Job: <%= job.title %></h5>
     <p><%= job.description %></p>
     <button type="button" class="btn btn-info w-100" data-toggle='collapse' data-target="#demo-<%=job.id%>">View Applicants (<%= job.user_jobs.count %>)</button>
+
     <div id="demo-<%= job.id%>" class ="collapse">
       <% job.user_jobs.each_with_index do |user_job, index| %>
         <div class="submissions-user">
+
           <%= link_to profile_path(user_job.user.profile) do %>
             <p><%= index + 1 %>. <%= user_job.user.profile.first_name.capitalize %> <%= user_job.user.profile.last_name.capitalize %> (@<%= user_job.user.username %>)</p>
           <% end %>
+
           <p>Status: <%= user_job.status %>
           <%= link_to "Update Status", edit_job_user_job_path(job, user_job), class: "btn btn-warning" %></p>
+
         </div>
       <% end %>
     </div>
+
   </div>
 <% end %>
