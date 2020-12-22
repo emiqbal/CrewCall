@@ -1,7 +1,7 @@
 <h1>Edit Job for <%=  @project.title %></h1>
 
 <%= simple_form_for([@project, @job]) do |f| %>
-  <div id="form_with_calendar" data-min-date="<%= @min_date %>" data-max-date="<%= @max_date %>">
+  <div id="form_with_calendar" data-min-date="<%= @min_date %>" data-max-date="<%= @max_date %>"></div>
     <div class="form-inputs type-form-control">
       <%= f.input :title %>
       <p>Description</p>
