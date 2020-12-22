@@ -30,5 +30,3 @@ class UserJob < ApplicationRecord
 
   end
 end
-#user_job.job.project.user
-#user_job.user.username
