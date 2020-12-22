@@ -15,24 +15,31 @@
 
 <div>
   <% @profiles.each do |profile| %>
+
     <%= link_to profile_path(profile) do %>
       <div class="card-product mt-2">
+
         <% if profile.user.profile.photo.attached? %>
           <%= cl_image_tag profile.user.profile.photo.key, gravity: :auto, class: "project-image" %>
         <% else %>
           <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/1134/1134819.svg", class: "project-image"%>
         <% end %>
+
         <div class="card-product-infos">
           <h2><%= profile.first_name.capitalize %> <%= profile.last_name.capitalize %></h2>
           <p><%= profile.user.username %></p>
+
           <% if profile.user.is_producer %>
             <div class="badge rounded-pill bg-warning">Producer</div>
           <% else %>
             <div class="badge rounded-pill bg-primary"><%= profile.department %> Department</div>
           <% end %>
+
        </div>
+
       </div>
     <% end %>
+
   <% end %>
 </div>
 
