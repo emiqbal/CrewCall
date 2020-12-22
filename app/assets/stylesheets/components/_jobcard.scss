@@ -4,23 +4,26 @@
   border-top-style: solid;
   margin: 8px 0px;
   padding: 8px 0px;
+
   p {
     margin: 0;
   }
+
   btn {
     display: inherit;
   }
 }
 
-  .btn-abc {
+.btn-abc {
   margin: 4px 24px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-    .btn {
-      padding: 2px 8px;
-    }
+
+  .btn {
+    padding: 2px 8px;
   }
+}
 
 .jobcard {
   width: 100%;
@@ -86,11 +89,9 @@
     border-top-style: solid;
     display:flex;
     justify-content: space-around;
-
-
   }
 }
 
-    .badge-status {
-      margin: 0px 24px;
-    }
+.badge-status {
+  margin: 0px 24px;
+}

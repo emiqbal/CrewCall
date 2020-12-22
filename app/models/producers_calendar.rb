@@ -1,4 +1,3 @@
-
 class ProducersCalendar < SimpleCalendar::MonthCalendar
   def td_classes_for(day)
     td_class = super
@@ -18,4 +17,3 @@ class ProducersCalendar < SimpleCalendar::MonthCalendar
     td_class
   end
 end
-

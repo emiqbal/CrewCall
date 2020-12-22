@@ -7,10 +7,9 @@ class Job < ApplicationRecord
   validates :title, presence: true, length: { maximum: 40 }
   validates :rich_description, presence: true
   validates :salary, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :department, presence: true, inclusion: { in: %w(Camera Lighting Casting Talent AD Production Transport Location)}
-
-
+  validates :department, presence: true, inclusion: { in: %w[Camera Lighting Casting Talent AD Production Transport Location]}
   validates :start_date, :end_date, presence: true
+
   validate :end_date_after_start_date
 
   private
@@ -22,5 +21,4 @@ class Job < ApplicationRecord
       errors.add(:end_date, "must be after the start date")
     end
   end
-
 end
