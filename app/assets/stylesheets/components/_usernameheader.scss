@@ -7,14 +7,14 @@
   align-items: center;
 
   a {
-  color: white;
-  border-radius: 30px;
-  padding-right: 4px;
-  transition: background 0.3s ease;
-  text-transform: capitalize;
-}
-  a:hover {
-  color: white;
-}
+    color: white;
+    border-radius: 30px;
+    padding-right: 4px;
+    transition: background 0.3s ease;
+    text-transform: capitalize;
+  }
 
+  a:hover {
+    color: white;
+  }
 }

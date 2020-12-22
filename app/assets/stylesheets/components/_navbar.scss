@@ -9,12 +9,15 @@
 
 .navbar-dark a {
   color: gray;
+
   &:hover {
     color: white;
   }
+
   i .main-icon {
     position: absolute;
   }
+
   i.navbar-badge {
     position: relative;
     width: 20px;
@@ -25,6 +28,4 @@
     right: 11px;
     font-size: .75rem;
   }
-
 }
-
