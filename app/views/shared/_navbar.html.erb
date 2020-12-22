@@ -8,6 +8,7 @@
     <% if current_user.is_producer? %>
 
       <%= link_to overview_path, class: "nav-link" do %>
+
         <% if current_user.notifications.unread.empty? %>
           <i class="fas fa-clipboard-list"></i>
           <i class="fas fa-circle navbar-badge d-none"></i>
@@ -15,16 +16,17 @@
           <i class="fas fa-clipboard-list"></i>
           <i class="fas fa-circle navbar-badge"></i>
         <% end %>
+
       <% end %>
 
       <%= link_to new_project_path, class: "nav-link" do %>
         <i class="fas fa-plus"></i>
-        <!-- TODO only producers + will create project, users + will create application -->
       <% end %>
 
     <% else %>
 
       <%= link_to user_jobs_path, class: "nav-link" do %>
+
         <% if current_user.notifications.unread.empty? %>
           <i class="fas fa-clipboard-list"></i>
           <i class="fas fa-circle navbar-badge d-none"></i>
@@ -32,6 +34,7 @@
           <i class="fas fa-clipboard-list"></i>
           <i class="fas fa-circle navbar-badge"></i>
         <% end %>
+
       <% end %>
 
     <% end %>
@@ -45,11 +48,13 @@
     <% else %>
 
       <%= link_to profile_path(current_user.profile), class: "nav-link" do %>
+
         <% if current_user.profile.photo.attached? %>
           <%= cl_image_tag current_user.profile.photo.key, width: 25, height: 25, crop: :fill, class: "avatar-card" %>
         <% else %>
           <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar-card"%>
         <% end %>
+
       <% end %>
 
     <% end %>
@@ -57,20 +62,23 @@
     <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
       <i class="fas fa-sign-out-alt"></i>
     <% end %>
+
   <% else %>
+
     <%= link_to "Login", new_user_session_path, class: "btn nav-link" %>
     <%= link_to root_path, class: "nav-link" do %>
       <i class="fas fa-home"></i>
     <% end %>
     <%= link_to "Sign Up",  new_user_registration_path , class: "btn nav-link" %>
+
   <% end %>
 </div>
 
 <% unless @notification.nil? do %>
-  <% @notifications.each do |notification| %>
-    <div class="alert alert-warning" role="alert">
-      <p><%= render notification %></p>
-    </div>
+    <% @notifications.each do |notification| %>
+      <div class="alert alert-warning" role="alert">
+        <p><%= render notification %></p>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 <% end %>
