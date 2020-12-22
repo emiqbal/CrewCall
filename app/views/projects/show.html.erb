@@ -1,91 +1,104 @@
 <div class="rounded border">
   <% if @project.photo.attached? %>
-  <%= cl_image_tag @project.photo.key, height: 200, crop: :fill, class: "photobanner" %>
+    <%= cl_image_tag @project.photo.key, height: 200, crop: :fill, class: "photobanner" %>
   <% end %>
 </div>
 
 <div class="container">
+
   <div class="pt-2">
     <h3><strong><%= @project.title.upcase %></strong></h3>
   </div>
+
   <div class="usernameheader d-flex justify-content-between">
     <div>
       <%= link_to profile_path(@project.user.profile) do %>
-      <% if @project.user.profile.photo.attached? %>
-        <%= cl_image_tag @project.user.profile.photo.key, width: 25, height: 25, crop: :fill, class: "avatar"%>
-      <% else %>
-        <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar" %>
-      <% end %>
-      <%= @project.user.username %>
+        <% if @project.user.profile.photo.attached? %>
+          <%= cl_image_tag @project.user.profile.photo.key, width: 25, height: 25, crop: :fill, class: "avatar"%>
+        <% else %>
+          <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar" %>
+        <% end %>
+        <%= @project.user.username %>
       <% end %>
     </div>
   </div>
-  <!-- link mini-avatar and name to user show page -->
+
   <h4 class= "mt-3">About the Project</h4>
   <%= @project.rich_description %>
-  <div class="projcontainer">
 
+  <div class="projcontainer">
     <h4>Project Timeline</h4>
     <p><%= @project.start_date.strftime('%d %b %Y') %> to <%= @project.end_date.strftime('%d %b %Y') %></p>
   </div>
 
   <div class="projcontainer">
     <h4>Project Jobs</h4>
+
     <% if @project.jobs.exists? %>
       <div>
         <% @project.jobs.each do |job| %>
-        <div class="jobcard">
-          <div class="jobcard-info">
-            <p class="job-title"><%= job.title %></p>
-            <p class="job-dept badge rounded-pill bg-light text-dark px-2"><%= job.department %></p>
-            <%= job.rich_description %>
-            <% if current_user == @project.user %>
-              <div class="btn-abc">
-                <%= link_to "Edit Job", edit_project_job_path(@project, job), class: 'btn btn-primary' %>
-                <%= link_to "Delete Job",
-                    job_path(job),
-                    class: 'btn btn-danger',
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %>
-              </div>
-            <% end %>
-          </div>
+          <div class="jobcard">
+            <div class="jobcard-info">
+              <p class="job-title"><%= job.title %></p>
+              <p class="job-dept badge rounded-pill bg-light text-dark px-2"><%= job.department %></p>
+              <%= job.rich_description %>
+              <% if current_user == @project.user %>
+                <div class="btn-abc">
+                  <%= link_to "Edit Job", edit_project_job_path(@project, job), class: 'btn btn-primary' %>
+                  <%= link_to "Delete Job",
+                      job_path(job),
+                      class: 'btn btn-danger',
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+                </div>
+              <% end %>
+            </div>
 
-          <div class="jobcard-info-glance">
-            <div><p>Salary</p> <p>$<%= job.salary / 100 %> per Day</p></div>
-            <div><p>Start Date</p> <p><%= job.start_date.strftime('%d %b %Y') %></p></div>
-            <div><p>End Date</p> <p><%= job.end_date.strftime('%d %b %Y') %></p></div>
-          </div>
-          <% if user_signed_in? %>
-            <% user_job = UserJob.find_by(job: job.id, user: current_user) %>
-            <% if user_job.nil? %>
-              <% if job.project.user != current_user %>
-                <div class="btn-abc"><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-primary'  %></div>
-              <% end %>
-            <% else %>
-              <% if user_job.status == "Applied" && user_job.user == current_user %>
-                <div class="badge-status"><p class="badge rounded-pill bg-warning">Status: Applied</p></div>
-              <% elsif user_job.status == "Approved" && user_job.user == current_user %>
-                <div class="badge-status"><p class="badge rounded-pill bg-primary">Status: Approved</p></div>
-              <% elsif user_job.status == "Confirmed" && user_job.user == current_user %>
-                <div class="badge-status"><p class="badge rounded-pill bg-success">Status: Confirmed</p></div>
-              <% elsif user_job.status == "Rejected" && user_job.user == current_user %>
-                <div class="badge-status"><p class="badge rounded-pill bg-danger">Status: Rejected</p></div>
+            <div class="jobcard-info-glance">
+              <div><p>Salary</p> <p>$<%= job.salary / 100 %> per Day</p></div>
+              <div><p>Start Date</p> <p><%= job.start_date.strftime('%d %b %Y') %></p></div>
+              <div><p>End Date</p> <p><%= job.end_date.strftime('%d %b %Y') %></p></div>
+            </div>
+
+            <% if user_signed_in? %>
+              <% user_job = UserJob.find_by(job: job.id, user: current_user) %>
+
+              <% if user_job.nil? %>
+
+                <% if job.project.user != current_user %>
+                  <div class="btn-abc"><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-primary'  %></div>
+                <% end %>
+
               <% else %>
+
+                <% if user_job.status == "Applied" && user_job.user == current_user %>
+                  <div class="badge-status"><p class="badge rounded-pill bg-warning">Status: Applied</p></div>
+                <% elsif user_job.status == "Approved" && user_job.user == current_user %>
+                  <div class="badge-status"><p class="badge rounded-pill bg-primary">Status: Approved</p></div>
+                <% elsif user_job.status == "Confirmed" && user_job.user == current_user %>
+                  <div class="badge-status"><p class="badge rounded-pill bg-success">Status: Confirmed</p></div>
+                <% elsif user_job.status == "Rejected" && user_job.user == current_user %>
+                  <div class="badge-status"><p class="badge rounded-pill bg-danger">Status: Rejected</p></div>
+                <% else %>
+                <% end %>
+
               <% end %>
+
+            <% else %>
+              <div class="btn-abc"><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-primary'  %></div>
             <% end %>
-          <% else %>
-            <div class="btn-abc"><%= link_to "Apply Job", job_user_jobs_path(job), method: :post, class: 'btn btn-primary'  %></div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   <% if current_user == @project.user %>
     <%= link_to "Add Jobs", new_project_job_path(@project), class: 'btn btn-flat'  %>
     <%= link_to "Edit Project", edit_project_path(@project), class: 'btn btn-flat' %>
   <% end %>
-</div>
 
-  <%= link_to "Back", root_path, class: 'btn btn-flat'  %>
+  </div>
+
+<%= link_to "Back", root_path, class: 'btn btn-flat'  %>
+
 </div>
