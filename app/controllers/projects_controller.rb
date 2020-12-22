@@ -21,8 +21,8 @@ class ProjectsController < ApplicationController
       notification.deliver(current_user)
       redirect_to edit_profile_path
     else
-    @project = Project.new
-    @jobs = Job.where(project: @project)
+      @project = Project.new
+      @jobs = Job.where(project: @project)
     end
   end
 
@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
         url = "https://source.unsplash.com/720x480/?filmmaking"
         image = URI.open(url)
         @project.photo.attach(io: image, filename: "project_#{@project.id}.jpeg", content_type: 'image/jpeg')
-        end
+      end
       redirect_to project_path(@project)
     else
       render :new
@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
         url = "https://source.unsplash.com/720x480/?filmmaking"
         image = URI.open(url)
         @project.photo.attach(io: image, filename: "project_#{@project.id}.jpeg", content_type: 'image/jpeg')
-        end
+      end
       redirect_to project_path(@project)
     else
       render :edit
