@@ -1,4 +1,4 @@
-meta_product_name: "Product Name"
-meta_title: "Product name - Product tagline"
-meta_description: "Relevant description"
-meta_image: "cover.png" # should exist in `app/assets/images/`
+meta_product_name: "CrewCall"
+meta_title: "CrewCall - Media Crew Onboarding Platform"
+meta_description: "CrewCall is a Progressive Web App (PWA) written with the Ruby on Rails framework. It is an onboarding platform to connect Producers with Film/Media freelance crew."
+meta_image: "CrewcallLogo2.png" # should exist in `app/assets/images/`
