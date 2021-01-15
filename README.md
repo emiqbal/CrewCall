@@ -10,7 +10,7 @@ CrewCall is a final project as part of [Le Wagon](https://github.com/lewagon)'s 
 
 It was initially pitched by Iqbal in response to his difficulties onboarding freelance crew members to his projects within a short period of time, and the amount of tedious work needed to get them started.
 
-The app aims to improve Producers' productivity by streamling the processes involved in forming a crew for a project.
+The app aims to improve Producers' productivity by streamlining the processes involved in forming a crew for a project.
 
 ## Team
 
