@@ -2,6 +2,8 @@ require 'open-uri'
 
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :find_project, only: [:show, :edit, :update, :destroy]
+
   def index
     if params[:query]
       @projects = Project.search_by_project(params[:query]).order(updated_at: :desc)
@@ -11,7 +13,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
     render layout: 'no-container'
   end
 
@@ -42,11 +43,9 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
     @project.update(project_params)
     if @project.save
       if project_params[:photo].nil?
@@ -61,7 +60,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
     redirect_to overview_path
   end
@@ -72,6 +70,10 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def find_project
+    @project = Project.find(params[:id])
+  end
 
   def project_params
     params.require(:project).permit(:title, :description, :photo, :start_date, :end_date, :rich_description)
