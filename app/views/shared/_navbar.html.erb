@@ -41,7 +41,7 @@
 
     <% if current_user.profile.nil? %>
 
-      <%= link_to edit_profile_path, class: "nav-link" do %>
+      <%= link_to edit_profile_path(current_user), class: "nav-link" do %>
           <%= image_tag "https://www.flaticon.com/svg/static/icons/svg/599/599305.svg", width: 25, height: 25, crop: :fill, class: "avatar-card"%>
       <% end %>
 
